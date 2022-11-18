@@ -82,10 +82,10 @@
 # # Exercise 5: Bonus Challenge (Not finished)
 # # Given a histogram tally (one returned from either letter_histogram or word_summary), print the top 3 words or letters.
 
-# def histogram_tally():
-#     # printing 'tally' will return the dictionary with the word/number key/value pairs. We want to compare the values, then maybe store the highest in a list?
-#     word_histogram()
-#     print(wordDictionary.values())
+def histogram_tally():
+    # printing 'tally' will return the dictionary with the word/number key/value pairs. We want to compare the values, then maybe store the highest in a list?
+    word_histogram()
+    print(wordDictionary.values())
 
 
 # histogram_tally()
