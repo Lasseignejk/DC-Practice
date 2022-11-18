@@ -63,23 +63,23 @@
 # $ python word_histogram.py Please enter a sentence: To be or not to be {'to': 2, 'be': 2, 'or': 1, 'not': 1}
 # In this exercise, are you using dynamic keys or fixed keys?
 
-def word_histogram():
-    wordDictionary = {}
-    dictionaryKeys = wordDictionary.keys()
-    sentence = input("Please enter a sentence: ")
-    newList = sentence.split()
-    for word in newList:
-        if word not in dictionaryKeys:
-            wordDictionary[word] = 1
-        elif word in dictionaryKeys:
-            wordDictionary[word] += 1
+# def word_histogram():
+#     wordDictionary = {}
+#     dictionaryKeys = wordDictionary.keys()
+#     sentence = input("Please enter a sentence: ")
+#     newList = sentence.split()
+#     for word in newList:
+#         if word not in dictionaryKeys:
+#             wordDictionary[word] = 1
+#         elif word in dictionaryKeys:
+#             wordDictionary[word] += 1
 
-    print(wordDictionary)
+#     print(wordDictionary)
 
 
 # word_histogram()
 
-# # Exercise 5: Bonus Challenge
+# # Exercise 5: Bonus Challenge (Not finished)
 # # Given a histogram tally (one returned from either letter_histogram or word_summary), print the top 3 words or letters.
 
 # def histogram_tally():
