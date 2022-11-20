@@ -97,6 +97,7 @@ def histogram_tally():
                 letterDictionary[letter] += 1
         # So on the next line of code, we're sorting letterDictionary by the values. To do that, we're first using items() to retrieve they key/value pairs in tuples. Once we have those, we pass get_value in the key section. The 'items' are the tuples, which are indexed, and we access the values by using index 1. Those values are then sorted highest to lowest because reverse=True.
         # If we don't have a key in the below, or the reverse=True, they're sorted alphabetically based on the key only.
+        # You can also use lambda in the key instead of get_value, but I don't understand that yet.
         tally = sorted(letterDictionary.items(), key=get_value, reverse=True)
         print(
             f"The top three letters in the word '{word}' are: \n {tally[0]}\n {tally[1]} \n {tally[2]}")
