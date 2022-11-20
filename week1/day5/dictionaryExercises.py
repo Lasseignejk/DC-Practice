@@ -79,13 +79,29 @@
 
 # word_histogram()
 
-# # Exercise 5: Bonus Challenge (Not finished)
+# # Exercise 5: Bonus Challenge
 # # Given a histogram tally (one returned from either letter_histogram or word_summary), print the top 3 words or letters.
 
 def histogram_tally():
-    # printing 'tally' will return the dictionary with the word/number key/value pairs. We want to compare the values, then maybe store the highest in a list?
-    word_histogram()
-    print(wordDictionary.values())
+    # This is a sort key, which has nothing to do with a dictionary key. This goes into the 'key' part of sorted(), which takes a callback function. A callback function is a function that's passed as an argument to another function.
+    def get_value(item):
+        return item[1]
+    letterDictionary = {}
+    word = input("Please enter a word with at least 3 letters: ")
+    dictionaryKeys = letterDictionary.keys()
+    while len(word) >= 3:
+        for letter in word:
+            if letter not in dictionaryKeys:
+                letterDictionary[letter] = 1
+            elif letter in dictionaryKeys:
+                letterDictionary[letter] += 1
+        # So on the next line of code, we're sorting letterDictionary by the values. To do that, we're first using items() to retrieve they key/value pairs in tuples. Once we have those, we pass get_value in the key section. The 'items' are the tuples, which are indexed, and we access the values by using index 1. Those values are then sorted highest to lowest because reverse=True.
+        # If we don't have a key in the below, or the reverse=True, they're sorted alphabetically based on the key only.
+        tally = sorted(letterDictionary.items(), key=get_value, reverse=True)
+        print(
+            f"The top three letters in the word '{word}' are: \n {tally[0]}\n {tally[1]} \n {tally[2]}")
+        return
+    print("I'm sorry, please enter a valid word.")
 
 
-# histogram_tally()
+histogram_tally()
