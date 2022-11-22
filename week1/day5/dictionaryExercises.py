@@ -101,3 +101,5 @@ def histogram_tally():
 
 
 histogram_tally()
+
+#  See balance and transfer. You should be able to see who is available to transfer to
