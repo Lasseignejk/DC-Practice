@@ -35,7 +35,12 @@ for student in students:
 for student in students:
     print(student + " is cool")
 # 5f if the students name is your name add "IT ME!!" to the end
-
+for student in students:
+    print(student + " is cool")
+if "Jaye" in students:
+    print("Jaye IT ME!!")
+else:
+    print("I guess I'm not cool.")
 # 5g if you are not in the list print "I guess I'm not cool"
 for student in students:
     print(student + " is cool")
