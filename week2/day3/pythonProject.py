@@ -27,14 +27,13 @@ class CatchPokemon:
         self.playerPokemon = []
         self.player = [{"name": "name"}, {
             "# of pokeballs": 10}, {"# of berries": 5}]
-        self.secondInt = 10
-        self.pokemonEncounter = random.randint(0, self.secondInt)
+        self.randomWildPokemon = random.choice(self.wildPokemon)
 
     def menu(self):
         print(
             """What would you like to do? Please type a number from 1 to 3.
     1. Go into the tall grass
-    2. Check your Pokedex and inventory 
+    2. Check your Pokedex and inventory
     3. Quit
         """)
 
@@ -55,7 +54,7 @@ class CatchPokemon:
     def tallGrass(self):
         print("****************************************")
         print("You walk into the tall grass.")
-        print(f"A wild {self.wildPokemon[self.pokemonEncounter]} appears!")
+        print(f"A wild {self.randomWildPokemon} appears!")
         time.sleep(2)
         print("What do you want to do?")
         # for numbers 4-10: Pokemon
@@ -64,41 +63,42 @@ class CatchPokemon:
 
     def throwPokeball(self):
         print("****************************************")
-        self.secondInt -= 1
         print(
-            f"You throw a pokeball at the wild {self.wildPokemon[self.pokemonEncounter]}.")
+            f"You throw a pokeball at the wild {self.randomWildPokemon}.")
         print("The ball shakes once...")
-        time.sleep(1)
-        print("Twice...")
-        time.sleep(1)
-        print("Three times...")
-        time.sleep(1)
+        # time.sleep(1)
+        # print("Twice...")
+        # time.sleep(1)
+        # print("Three times...")
+        # time.sleep(1)
         print(
-            f"Good job! {self.wildPokemon[self.pokemonEncounter]} was caught!\n")
-        self.playerPokemon.append(self.wildPokemon[self.pokemonEncounter])
-        self.wildPokemon.remove(self.wildPokemon[self.pokemonEncounter])
+            f"Good job! {self.randomWildPokemon} was caught!\n")
+        self.playerPokemon.append(self.randomWildPokemon)
+        self.wildPokemon.remove(self.randomWildPokemon)
+        print(self.wildPokemon)
+        self.randomWildPokemon = random.choice(self.wildPokemon)
         self.player[1]['# of pokeballs'] -= 1
-        time.sleep(2)
+        # time.sleep(2)
         print(
-            f"You have {self.player[1]['# of pokeballs']} pokeballs left.\n")
+            f"You have {self.player[1]['# of pokeballs']} pokeballs left.")
 
     def run(self):
         print(
-            f"You decide not to catch the wild {self.wildPokemon[self.pokemonEncounter]} and leave the tall grass. \n")
-        self.pokemonEncounter = random.randint(0, self.secondInt)
+            f"You decide not to catch the wild {self.randomWildPokemon} and leave the tall grass. \n")
+        self.randomWildPokemon = random.choice(self.wildPokemon)
 
     def throwBerry(self):
         print("****************************************")
         self.player[2]['# of berries'] -= 1
         print(
-            f"You throw a berry at the wild {self.wildPokemon[self.pokemonEncounter]}.")
+            f"You throw a berry at the wild {self.randomWildPokemon}.")
         print(f"{self.player[2]['# of berries']} berries remaining")
         time.sleep(1)
         print(
-            f"The wild {self.wildPokemon[self.pokemonEncounter]} eats it, eying you cautiously the whole time.\n")
+            f"The wild {self.randomWildPokemon} eats it, eying you cautiously the whole time.\n")
         time.sleep(1)
         print(
-            f"The wild {self.wildPokemon[self.pokemonEncounter]} looks a little happier -- maybe it will be easier to catch!")
+            f"The wild {self.randomWildPokemon} looks a little happier -- maybe it will be easier to catch!")
         time.sleep(1)
         print("Would you like to throw another pokeball or run away?")
         print("""
@@ -123,7 +123,7 @@ while (stillPlaying == "y"):
         print("""
         1. Throw a pokeball
         2. Throw a berry
-        3. Run 
+        3. Run
             """)
         choice = input("")
         if choice == "1":
@@ -149,5 +149,5 @@ while (stillPlaying == "y"):
         print("Great job!")
         print(
             f"You were able to catch {len(userCatchPokemon.playerPokemon)} pokemon!")
-        stillPlaying = input(
-            "Would you like to play again? Please type y or n. \n")
+    stillPlaying = input(
+        "Would you like to play again? Please type y or n. \n")
