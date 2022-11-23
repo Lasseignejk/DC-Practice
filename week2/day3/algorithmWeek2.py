@@ -15,16 +15,15 @@
 redShirtSpeeds = [5, 5, 3, 9, 2]
 blueShirtSpeeds = [3, 6, 7, 2, 1]
 
-redShirtSpeeds.sort(reverse=True)
-# [9, 5, 5, 3, 2]
-blueShirtSpeeds.sort(reverse=False)
-# [1, 2, 3, 6 ,7]
-
 
 def totalSpeed(fastest):
+    redShirtSpeeds.sort(reverse=True)
+    # [9, 5, 5, 3, 2]    descending
+    blueShirtSpeeds.sort(reverse=False)
+    # [1, 2, 3, 6 ,7]    ascending
     if fastest == True:
-        counter = 0
         maxSpeed = 0
+        counter = 0
         for rider in redShirtSpeeds:
             if rider >= blueShirtSpeeds[counter]:
                 maxSpeed += redShirtSpeeds[counter]
@@ -33,6 +32,7 @@ def totalSpeed(fastest):
             counter += 1
         print(
             f"The max speed for this group of tandem bicycles is {maxSpeed}.")
+    # So because the only thing different between the above and below is the >< sign, you can combine the logic below and only do one for loop.
     else:
         counter = 0
         minSpeed = 0
@@ -46,4 +46,4 @@ def totalSpeed(fastest):
             f"The min speed for this group of tandem bicycles is {minSpeed}.")
 
 
-totalSpeed(False)
+totalSpeed(True)
