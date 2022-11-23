@@ -1,20 +1,24 @@
-# Pokemon Go
-# Catch Pokemon, give a choice to throw a ball or a berry
-# Battle Team Rocket? Choose one of your pokemon to battle one of their's?
-# Chance to find something in the grass instead of a pokemon?
+# Pokemon Python
 # Go into the tall grass
-# Go to a Pokemon Center
-# Encounter a Team Rocket Grunt
-# Fantasy choose your own adventure
-# Fantasy Quest type game
-# Choose between a Fighter, Wizard, and Rogue. Each have different stats.
-# Choose from a list which path you want to take, have different attacks(?)
-# Have ability to hold items
+# Encounter a pokemon(throw a ball or berry), item(update item count), or a member of Team Rocket(subtract one from the number of pokemon player has)
 
-# Look up:
-# How to make text wait before running   import time   seconds_for_sleep = 4    time.sleep(int(seconds_for_sleep))
-# Different stylistic methods
-# Traveling mechanic?
+# Done:
+# [x] Basic logic for pokemon encounter
+# [x] Randomized which pokemon will appear for the pokemon encounter
+# [x] Added the ability to run from a pokemon encounter, in which case that pokemon will remain in the list of wild pokemon and the encounter will randomize again
+# [x] User can check their pokedex, to see which pokemon they've caught and which ones remain in the area, and their inventory to keep track of their pokeballs and berries
+# [x] Added a quit function to exit the game, and an end condition where if the user runs out of pokeballs, the game ends.
+
+# Things I still want to do:
+# [ ] Look up different stylistic methods
+# [ ] Traveling mechanic?
+# [ ] Add team rocket and item encounters so every encounter isn't a pokemon
+# [ ] If it's a team rocket encounter, subtract 1 from the player's list of pokemon, unless they don't have any pokemon, then they'll taunt the user
+# [ ] If it's an item encounter, randomize if it's pokeballs or berries and how many it gives
+# [ ] Add a condition that ends the game if wild pokemon reaches 0 (unlikely but still possible)
+# [ ] Add a condition so if the player doesn't have berries, it doesn't give them the option to throw one
+# [ ] Once the encounters are done, enhance the catch mechanic so there's a chance a pokemon might flee instead of be caught.
+# [ ] Once the catch mechanic is enhanced, make using a berry increase the chances of a pokemon being caught. If too complicated, scrap the berries and just have catch or not catch, and rocket encounters
 
 import random
 import time
@@ -22,8 +26,8 @@ import time
 
 class CatchPokemon:
     def __init__(self):
-        self.wildPokemon = ["Pikachu", "Eevee",
-                            "Charmander", "Bulbasaur", "Squirtle", "Pidgy", "Jigglypuff", "Clefairy", "Cubone", "Magikarp", "Caterpie"]
+        self.wildPokemon = ["Bulbasaur", "Charmander", "Squirtle", "Caterpie", "Weedle", "Pidgey", "Rattata", "Spearow", "Ekans", "Pikachu", "Eevee", "Sandshrew", "NidoranBoy", "NidoranGirl", "Clefairy", "Vulpix", "Jigglypuff", "Zubat", "Oddish", "Paras", "Venonat", "Diglett", "Meowth", "Psyduck", "Mankey", "Growlithe", "Poliwag", "Abra", "Machop", "Bellsprout", "Tentacool", "Geodude", "Ponyta", "Slowpoke", "Magnemite", "Farfetch'd",
+                            "Doduo", "Seel", "Grimer", "Shellder", "Gastly", "Onix", "Drowzee", "Krabby", "Voltorb", "Exeggcute", "Cubone", "Hitmonlee", "Hitmonchan", "Lickitung", "Koffing", "Rhyhorn", "Chansey", "Tangela", "Kangaskhan", "Horsea", "Goldeen", "Staryu", "Mr. Mime", "Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir", "Tauros", "Magikarp", "Lapras", "Ditto", "Porygon", "Omanyte", "Kabuto", "Aerodactyl", "Snorlax", "Dratini"]
         self.playerPokemon = []
         self.player = [{"name": "name"}, {
             "# of pokeballs": 10}, {"# of berries": 5}]
@@ -45,15 +49,15 @@ class CatchPokemon:
             print("These are the pokemon you have caught so far:")
             for pokemon in self.playerPokemon:
                 print(pokemon)
-        print(f"These are the pokemon that are still available:")
-        for pokemon in self.wildPokemon:
-            print(pokemon)
+        print(
+            f"There are {len(userCatchPokemon.wildPokemon)} pokemon still in the wild!")
         print(
             f"You have {self.player[1]['# of pokeballs']} pokeballs and {self.player[2]['# of berries']} berries left.\n")
 
     def tallGrass(self):
         print("****************************************")
         print("You walk into the tall grass.")
+        time.sleep(2)
         print(f"A wild {self.randomWildPokemon} appears!")
         time.sleep(2)
         print("What do you want to do?")
@@ -66,19 +70,18 @@ class CatchPokemon:
         print(
             f"You throw a pokeball at the wild {self.randomWildPokemon}.")
         print("The ball shakes once...")
-        # time.sleep(1)
-        # print("Twice...")
-        # time.sleep(1)
-        # print("Three times...")
-        # time.sleep(1)
+        time.sleep(1)
+        print("Twice...")
+        time.sleep(1)
+        print("Three times...")
+        time.sleep(1)
         print(
             f"Good job! {self.randomWildPokemon} was caught!\n")
         self.playerPokemon.append(self.randomWildPokemon)
         self.wildPokemon.remove(self.randomWildPokemon)
-        print(self.wildPokemon)
         self.randomWildPokemon = random.choice(self.wildPokemon)
         self.player[1]['# of pokeballs'] -= 1
-        # time.sleep(2)
+        time.sleep(1)
         print(
             f"You have {self.player[1]['# of pokeballs']} pokeballs left.")
 
@@ -149,5 +152,5 @@ while (stillPlaying == "y"):
         print("Great job!")
         print(
             f"You were able to catch {len(userCatchPokemon.playerPokemon)} pokemon!")
-    stillPlaying = input(
-        "Would you like to play again? Please type y or n. \n")
+        stillPlaying = input(
+            "Would you like to play again? Please type y or n. \n")
