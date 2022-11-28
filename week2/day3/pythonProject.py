@@ -23,14 +23,30 @@
 
 import random
 import time
-# , "Rattata", "Spearow", "Ekans", "Pikachu", "Eevee", "Sandshrew", "NidoranBoy", "NidoranGirl", "Clefairy", "Vulpix", "Jigglypuff", "Zubat", "Oddish", "Paras", "Venonat", "Diglett", "Meowth", "Psyduck", "Mankey", "Growlithe", "Poliwag", "Abra", "Machop", "Bellsprout", "Tentacool", "Geodude", "Ponyta", "Slowpoke", "Magnemite", "Farfetch'd",
-# "Doduo", "Seel", "Grimer", "Shellder", "Gastly", "Onix", "Drowzee", "Krabby", "Voltorb", "Exeggcute", "Cubone", "Hitmonlee", "Hitmonchan", "Lickitung", "Koffing", "Rhyhorn", "Chansey", "Tangela", "Kangaskhan", "Horsea", "Goldeen", "Staryu", "Mr. Mime", "Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir", "Tauros", "Magikarp", "Lapras", "Ditto", "Porygon", "Omanyte", "Kabuto", "Aerodactyl", "Snorlax", "Dratini"]
+
+
+logo = """
+
+                                  ,'\/
+    _.----.        ____         ,'  _\   ___    ___     ____
+_,-'       `.     |    |  /`.   \,-'    |   \  /   |   |    \  |`.
+\      __    \    '-.  | /   `.  ___    |    \/    |   '-.   \ |  |
+ \.    \ \   |  __  |  |/    ,','_  `.  |          | __  |    \|  |
+   \    \/   /,' _`.|      ,' / / / /   |          ,' _`.|     |  |
+    \     ,-'/  /   \    ,'   | \/ / ,`.|         /  /   \  |     |
+     \    \ |   \_/  |   `-.  \    `'  /|  |    ||   \_/  | |\    |
+      \    \ \      /       `-.`.___,-' |  |\  /| \      /  | |   |
+       \    \ `.__,'|  |`-._    `|      |__| \/ |  `.__,'|  | |   |
+        \_.-'       |__|    `-._ |              '-.|     '-.| |   |
+                                `'                            '-._|
+                                """
 
 
 class CatchPokemon:
     def __init__(self):
         self.wildPokemon = ["Bulbasaur", "Charmander",
-                            "Squirtle", "Caterpie", "Weedle", "Pidgey"]
+                            "Squirtle", "Caterpie", "Weedle", "Pidgey", "Rattata", "Spearow", "Ekans", "Pikachu", "Eevee", "Sandshrew", "Nidoran", "Clefairy", "Vulpix", "Jigglypuff", "Zubat", "Oddish", "Paras", "Venonat", "Diglett", "Meowth", "Psyduck", "Mankey", "Growlithe", "Poliwag", "Abra", "Machop", "Bellsprout", "Tentacool", "Geodude", "Ponyta", "Slowpoke", "Magnemite", "Farfetch'd",
+                            "Doduo", "Seel", "Grimer", "Shellder", "Gastly", "Onix", "Drowzee", "Krabby", "Voltorb", "Exeggcute", "Cubone", "Hitmonlee", "Hitmonchan", "Lickitung", "Koffing", "Rhyhorn", "Chansey", "Tangela", "Kangaskhan", "Horsea", "Goldeen", "Staryu", "Mr. Mime", "Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir", "Tauros", "Magikarp", "Lapras", "Ditto", "Porygon", "Omanyte", "Kabuto", "Aerodactyl", "Snorlax", "Dratini"]
         self.playerPokemon = []
         self.player = [{
             "# of pokeballs": 10}, {"# of berries": 5}]
@@ -101,6 +117,7 @@ class CatchPokemon:
         print(
             f"You throw a pokeball at the wild {self.randomWildPokemon}.")
         self.player[0]['# of pokeballs'] -= 1
+        time.sleep(1)
         print("The ball shakes once...")
         time.sleep(1)
         if self.pokemonCatchChance == 1:
@@ -142,24 +159,37 @@ class CatchPokemon:
 
     def throwBerry(self):
         print("****************************************")
-        self.player[1]['# of berries'] -= 1
-        print(
-            f"You throw a berry at the wild {self.randomWildPokemon} ({self.player[1]['# of berries']} berries remaining)")
-        self.pokemonCatchChance += 2
-        time.sleep(2)
-        print(
-            f"The wild {self.randomWildPokemon} eats it, eying you cautiously the whole time.")
-        time.sleep(2)
-        print(
-            f"The wild {self.randomWildPokemon} looks a little happier -- maybe it will be easier to catch!")
-        time.sleep(2)
-        print("Would you like to throw another pokeball or run away?")
-        print("""
-    1. Throw a pokeball
-    2. Run
-        """)
+        if self.player[1]['# of berries'] > 0:
+            self.player[1]['# of berries'] -= 1
+            print(
+                f"You throw a berry at the wild {self.randomWildPokemon}.")
+            print(f"You have {self.player[1]['# of berries']} berries left.")
+            self.pokemonCatchChance += 2
+            time.sleep(2)
+            print(
+                f"The wild {self.randomWildPokemon} eats it, eying you cautiously the whole time.")
+            time.sleep(2)
+            print(
+                f"The wild {self.randomWildPokemon} looks a little happier -- maybe it will be easier to catch!")
+            time.sleep(3)
+            print("Would you like to throw another pokeball or run away?")
+            time.sleep(2)
+            print("""
+        1. Throw a pokeball
+        2. Run
+            """)
+        else:
+            print("Oh no! It looks like you don't have any berries to throw.")
+            time.sleep(1)
+            print("Would you like to throw a pokeball or run away?")
+            time.sleep(2)
+            print("""
+        1. Throw a pokeball
+        2. Run
+            """)
 
     def rocketEncounter(self):
+        counter = 1
         print("Two figures drop down from a tree in front of you.")
         time.sleep(1)
         print("Oh no! It's Team Rocket!")
@@ -169,9 +199,30 @@ class CatchPokemon:
             time.sleep(2)
             print(
                 f"When the smokescreen clears, you notice one of your pokeballs is missing! They've stolen {self.playerPokemon[0]}!")
+            time.sleep(2)
             stolenPokemon = self.playerPokemon.pop(0)
             self.wildPokemon.append(stolenPokemon)
             self.pokemonItemRocketChance = random.randint(1, 10)
+            if counter == 1:
+                print("*ring ring ring*")
+                time.sleep(1)
+                print("Someone is calling you!")
+                time.sleep(1)
+                print(f"Hello, Trainer {name}? This is Professor Jaye.")
+                time.sleep(2)
+                print(
+                    "I see you've just had an encounter with that terrible Team Rocket.")
+                time.sleep(3)
+                print("Don't worry!")
+                time.sleep(1)
+                print(
+                    "If they steal a Pokemon from you, you can still catch it again in the wild.")
+                time.sleep(3)
+                print("Good luck!")
+                time.sleep(1)
+                print("*click*")
+                time.sleep(1)
+                counter += 1
         else:
             print("They cackle at you, then notice that you don't have any pokemon.")
             time.sleep(2)
@@ -215,19 +266,32 @@ class CatchPokemon:
 userCatchPokemon = CatchPokemon()
 stillPlaying = "y"
 
-print("****************************************")
-name = input("Hello! What is your name? \n")
-print(f"Welcome to your Pokemon adventure, Trainer {name}!")
+print(logo)
+print("***********************************************************************")
+print("   Hello there!")
 time.sleep(2)
-print("Your goal, as always, is to catch 'em all.")
+print("   Welcome to the world of Pokemon!")
 time.sleep(2)
-print("But be careful, Team Rocket has been seen in the area!")
+print("   My name is Jaye.")
 time.sleep(2)
-print(f"Good luck on your adventure, Trainer {name}! \n")
+print("   People call me the Pokemon Prof!")
 time.sleep(2)
-# for numbers 4-10: Pokemon
-# 2-3: item
-# 1: Rocket grunt
+print("   I study Pokemon for a living.")
+time.sleep(2)
+name = input("   What might your name be? \n")
+print(f"   Welcome to your Pokemon adventure, Trainer {name}!")
+time.sleep(2)
+print("   Please help me with my research and catch as many Pokemon as you can!")
+time.sleep(3)
+print("   But be careful, Team Rocket has been seen in the area.")
+time.sleep(2)
+print(
+    f"   Good luck on your adventure, Trainer {name}! I can't wait to see what exciting Pokemon you catch!")
+time.sleep(3)
+print("Professor Jaye gives you 10 pokeballs and 5 berries to start your journey.")
+time.sleep(3)
+print("You leave Professor Jaye's lab and head to a nearby forest. Adventure awaits! \n")
+time.sleep(2)
 while (stillPlaying == "y"):
     time.sleep(2)
     userCatchPokemon.menu()
@@ -248,12 +312,19 @@ while (stillPlaying == "y"):
         userCatchPokemon.pokedexAndInventory()
     elif choice == "3":
         if userCatchPokemon.playerPokemon != []:
-            print(f"Great job, Trainer {name}!")
+            print("*ring ring ring*")
+            time.sleep(2)
+            print("Professor Jaye is calling you!")
+            time.sleep(2)
+            print(f"   Great job, Trainer {name}!")
             time.sleep(1)
             print(
-                f"You were able to catch {len(userCatchPokemon.playerPokemon)} pokemon!")
+                f"   You were able to catch {len(userCatchPokemon.playerPokemon)} pokemon!")
+            time.sleep(2)
+            print("   Thank you for your help with my research.")
             time.sleep(1)
-            print("Thank you for playing! Have a nice day!")
+            print("   I couldn't have done it without you!")
+            time.sleep(2)
         else:
             print("Thank you for playing! Have a nice day!")
         stillPlaying = "n"
@@ -261,8 +332,17 @@ while (stillPlaying == "y"):
         print("I'm sorry, please choose a valid option.\n")
 
     if userCatchPokemon.player[0]['# of pokeballs'] == 0:
-        print(f"Great job, Trainer {name}!")
+        print("*ring ring ring*")
+        time.sleep(2)
+        print("Professor Jaye is calling you!")
+        time.sleep(2)
+        print(f"   Great job, Trainer {name}!")
+        time.sleep(1)
         print(
             f"You were able to catch {len(userCatchPokemon.playerPokemon)} pokemon!")
+        print("   Thank you for your help with my research.")
+        time.sleep(1)
+        print("   I couldn't have done it without you!")
+        time.sleep(2)
         stillPlaying = input(
             "Would you like to play again? Please type y or n. \n")
