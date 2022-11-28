@@ -12,14 +12,15 @@
 # [x] Enhanced the team rocket encounter. If the player has caught any pokemon: the first in the list will be 'stolen' and returned to the wild. If the player hasn't caught any pokemon: team rocket will taunt the player
 # [x] Randomized the item encounter so it will either be pokeballs or berries. The quantity has also been randomized.
 # [x] Enhanced the berry mechanic so that it increases the chances of a pokemon being caught.
+# [x] Added a condition so if the player doesn't have berries, it doesn't give them the option to throw one
 
 
 # Things I still want to do:
 # [ ] Look up different stylistic methods
 # [ ] Traveling mechanic?
 # [ ] Add a condition that ends the game if wild pokemon reaches 0 (unlikely but still possible)
-# [ ] Add a condition so if the player doesn't have berries, it doesn't give them the option to throw one
 # [ ] Once the encounters are done, enhance the catch mechanic so there's a chance a pokemon might flee instead of be caught.
+# [ ] Let players choose what environment they want to go to
 
 import random
 import time
