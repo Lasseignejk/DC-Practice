@@ -10,15 +10,16 @@
 # [x] Added a quit function to exit the game, and an end condition where if the user runs out of pokeballs, the game ends.
 # [x] Added team rocket and item encounters so every encounter isn't a pokemon
 # [x] Enhanced the team rocket encounter. If the player has caught any pokemon: the first in the list will be 'stolen' and returned to the wild. If the player hasn't caught any pokemon: team rocket will taunt the player
+# [x] Randomized the item encounter so it will either be pokeballs or berries. The quantity has also been randomized.
+# [x] Enhanced the berry mechanic so that it increases the chances of a pokemon being caught.
+
 
 # Things I still want to do:
 # [ ] Look up different stylistic methods
 # [ ] Traveling mechanic?
-# [ ] If it's an item encounter, randomize if it's pokeballs or berries and how many it gives
 # [ ] Add a condition that ends the game if wild pokemon reaches 0 (unlikely but still possible)
 # [ ] Add a condition so if the player doesn't have berries, it doesn't give them the option to throw one
 # [ ] Once the encounters are done, enhance the catch mechanic so there's a chance a pokemon might flee instead of be caught.
-# [ ] Once the catch mechanic is enhanced, make using a berry increase the chances of a pokemon being caught. If too complicated, scrap the berries and just have catch or not catch, and rocket encounters
 
 import random
 import time
@@ -31,15 +32,17 @@ class CatchPokemon:
         self.wildPokemon = ["Bulbasaur", "Charmander",
                             "Squirtle", "Caterpie", "Weedle", "Pidgey"]
         self.playerPokemon = []
-        self.player = [{"name": "name"}, {
+        self.player = [{
             "# of pokeballs": 10}, {"# of berries": 5}]
         self.randomWildPokemon = random.choice(self.wildPokemon)
         self.pokemonItemRocketChance = random.randint(1, 10)
+        self.pokemonCatchChance = random.randint(1, 10)
+        self.pokemonCaught = "n"
 
     def menu(self):
         print("****************************************")
         print(
-            """What would you like to do? Please type a number from 1 to 3.
+            """What would you like to do? Please type a number from 1 to 3.\n
     1. Go into the tall grass
     2. Check your Pokedex and inventory
     3. Quit
@@ -65,7 +68,7 @@ class CatchPokemon:
             f"There are {len(userCatchPokemon.wildPokemon)} pokemon still in the wild!")
         time.sleep(2)
         print(
-            f"You have {self.player[1]['# of pokeballs']} pokeballs and {self.player[2]['# of berries']} berries left.\n")
+            f"You have {self.player[0]['# of pokeballs']} pokeballs and {self.player[1]['# of berries']} berries left.\n")
 
     def pokemonEncounter(self):
         print(f"A wild {self.randomWildPokemon} appears!")
@@ -75,26 +78,86 @@ class CatchPokemon:
         # 2-3: item
         # 1: Rocket grunt
 
+    def throwPokeballOrBerry(self):
+        while self.pokemonCaught == "n":
+            self.catchMenu()
+            choice = input("")
+            if choice == "1":
+                self.throwPokeball()
+            elif choice == "2":
+                self.throwBerry()
+                choice = input("")
+                if choice == "1":
+                    self.throwPokeball()
+                else:
+                    self.run()
+                    self.pokemonCaught = "y"
+            else:
+                self.run()
+                self.pokemonCaught = "y"
+
     def throwPokeball(self):
         print("****************************************")
         print(
             f"You throw a pokeball at the wild {self.randomWildPokemon}.")
+        self.player[0]['# of pokeballs'] -= 1
         print("The ball shakes once...")
         time.sleep(1)
-        print("Twice...")
-        time.sleep(1)
-        print("Three times...")
+        if self.pokemonCatchChance == 1:
+            self.pokemonBreaksOut()
+        else:
+            print("Twice...")
+            time.sleep(2)
+            if self.pokemonCatchChance <= 3:
+                self.pokemonBreaksOut()
+            else:
+                print("Three times...")
+                time.sleep(3)
+                if self.pokemonCatchChance == 4:
+                    self.pokemonBreaksOut()
+                else:
+                    print(
+                        f"Good job! {self.randomWildPokemon} was caught!\n")
+                    self.playerPokemon.append(self.randomWildPokemon)
+                    self.wildPokemon.remove(self.randomWildPokemon)
+                    self.randomWildPokemon = random.choice(
+                        self.wildPokemon)
+                    time.sleep(1)
+                    print(
+                        f"You have {self.player[0]['# of pokeballs']} pokeballs left. \n")
+                    self.pokemonItemRocketChance = random.randint(
+                        1, 10)
+                    self.pokemonCatchChance = random.randint(1, 10)
+                    self.pokemonCaught = "y"
+
+    def pokemonBreaksOut(self):
+        print(
+            f"Oh no! The wild {self.randomWildPokemon} broke out of the pokeball!")
         time.sleep(1)
         print(
-            f"Good job! {self.randomWildPokemon} was caught!\n")
-        self.playerPokemon.append(self.randomWildPokemon)
-        self.wildPokemon.remove(self.randomWildPokemon)
-        self.randomWildPokemon = random.choice(self.wildPokemon)
-        self.player[1]['# of pokeballs'] -= 1
+            f"You have {self.player[0]['# of pokeballs']} pokeballs left. \n")
         time.sleep(1)
+        print("What do you want to do?")
+        self.pokemonCatchChance = random.randint(1, 10)
+
+    def throwBerry(self):
+        print("****************************************")
+        self.player[1]['# of berries'] -= 1
         print(
-            f"You have {self.player[1]['# of pokeballs']} pokeballs left.")
-        self.pokemonItemRocketChance = random.randint(1, 10)
+            f"You throw a berry at the wild {self.randomWildPokemon} ({self.player[1]['# of berries']} berries remaining)")
+        self.pokemonCatchChance += 2
+        time.sleep(2)
+        print(
+            f"The wild {self.randomWildPokemon} eats it, eying you cautiously the whole time.")
+        time.sleep(2)
+        print(
+            f"The wild {self.randomWildPokemon} looks a little happier -- maybe it will be easier to catch!")
+        time.sleep(2)
+        print("Would you like to throw another pokeball or run away?")
+        print("""
+    1. Throw a pokeball
+    2. Run
+        """)
 
     def rocketEncounter(self):
         print("Two figures drop down from a tree in front of you.")
@@ -122,46 +185,46 @@ class CatchPokemon:
             self.pokemonItemRocketChance = random.randint(1, 10)
 
     def itemEncounter(self):
-        print("You find something burried in the grass.")
-        time.sleep(1)
-        print("You find 2 pokeballs! Sweet!")
-        self.player[1]['# of pokeballs'] += 2
-        time.sleep(2)
-        print(f"Now you have {self.player[1]['# of pokeballs']} pokeballs.\n")
-        self.pokemonItemRocketChance = random.randint(1, 10)
+        itemFound = random.randint(1, 2)
+        numItems = random.randint(2, 3)
+        if itemFound == 1:
+            print("You find something buried by a tree.")
+            time.sleep(1)
+            print(f"You uncover {numItems} pokeballs!")
+            self.player[0]['# of pokeballs'] += numItems
+            time.sleep(2)
+            print(
+                f"You now have {self.player[0]['# of pokeballs']} pokeballs.\n")
+            self.pokemonItemRocketChance = random.randint(1, 10)
+        else:
+            print("You stumble upon a berry bush.")
+            time.sleep(1)
+            print(f"You collect {numItems} berries!")
+            self.player[1]['# of berries'] += numItems
+            time.sleep(2)
+            print(f"You now have {self.player[1]['# of berries']} berries.")
+            self.pokemonItemRocketChance = random.randint(1, 10)
 
     def run(self):
+        print("****************************************")
         print(
             f"You decide not to catch the wild {self.randomWildPokemon} and leave the tall grass. \n")
         self.randomWildPokemon = random.choice(self.wildPokemon)
 
-    def throwBerry(self):
-        print("****************************************")
-        self.player[2]['# of berries'] -= 1
-        print(
-            f"You throw a berry at the wild {self.randomWildPokemon}.")
-        print(f"{self.player[2]['# of berries']} berries remaining")
-        time.sleep(1)
-        print(
-            f"The wild {self.randomWildPokemon} eats it, eying you cautiously the whole time.\n")
-        time.sleep(1)
-        print(
-            f"The wild {self.randomWildPokemon} looks a little happier -- maybe it will be easier to catch!")
-        time.sleep(1)
-        print("Would you like to throw another pokeball or run away?")
-        print("""
-    1. Throw a pokeball
-    2. Run
-        """)
-
 
 userCatchPokemon = CatchPokemon()
 stillPlaying = "y"
-pokemonCaught = "n"
 
 print("****************************************")
-print("Welcome to your Pokemon adventure!")
-print("For this game, you'll be working to catch as many Pokemon as you can. \n")
+name = input("Hello! What is your name? \n")
+print(f"Welcome to your Pokemon adventure, Trainer {name}!")
+time.sleep(2)
+print("Your goal, as always, is to catch 'em all.")
+time.sleep(2)
+print("But be careful, Team Rocket has been seen in the area!")
+time.sleep(2)
+print(f"Good luck on your adventure, Trainer {name}! \n")
+time.sleep(2)
 # for numbers 4-10: Pokemon
 # 2-3: item
 # 1: Rocket grunt
@@ -173,35 +236,32 @@ while (stillPlaying == "y"):
         print("****************************************")
         print("You walk into the tall grass.")
         time.sleep(2)
-        if userCatchPokemon.pokemonItemRocketChance <= 2:
+        if userCatchPokemon.pokemonItemRocketChance == 1:
             userCatchPokemon.rocketEncounter()
-        elif userCatchPokemon.pokemonItemRocketChance <= 5:
+        elif userCatchPokemon.pokemonItemRocketChance <= 3:
             userCatchPokemon.itemEncounter()
         else:
+            userCatchPokemon.pokemonCaught = "n"
             userCatchPokemon.pokemonEncounter()
-            userCatchPokemon.catchMenu()
-            choice = input("")
-            if choice == "1":
-                userCatchPokemon.throwPokeball()
-            elif choice == "2":
-                userCatchPokemon.throwBerry()
-                choice = input("")
-                if choice == "1":
-                    userCatchPokemon.throwPokeball()
-                else:
-                    userCatchPokemon.run()
-            else:
-                userCatchPokemon.run()
+            userCatchPokemon.throwPokeballOrBerry()
     elif choice == "2":
         userCatchPokemon.pokedexAndInventory()
     elif choice == "3":
-        print("Thank you for playing! Have a nice day!")
+        if userCatchPokemon.playerPokemon != []:
+            print(f"Great job, Trainer {name}!")
+            time.sleep(1)
+            print(
+                f"You were able to catch {len(userCatchPokemon.playerPokemon)} pokemon!")
+            time.sleep(1)
+            print("Thank you for playing! Have a nice day!")
+        else:
+            print("Thank you for playing! Have a nice day!")
         stillPlaying = "n"
     else:
         print("I'm sorry, please choose a valid option.\n")
 
-    if userCatchPokemon.player[1]['# of pokeballs'] == 0:
-        print("Great job!")
+    if userCatchPokemon.player[0]['# of pokeballs'] == 0:
+        print(f"Great job, Trainer {name}!")
         print(
             f"You were able to catch {len(userCatchPokemon.playerPokemon)} pokemon!")
         stillPlaying = input(
