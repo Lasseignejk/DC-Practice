@@ -12,7 +12,7 @@ class CatchPokemon:
                             "ruins": ["Clefairy", "Vulpix", "Growlithe", "Abra", "Ponyta", "Charmander", "Grimer", "Gastly", "Drowzee", "Voltorb", "Cubone", "Porygon", "Tauros", "Lickitung", "Ditto", "Nidoran", "Mankey"]}
         self.playerPokemon = []
         self.player = [{
-            "# of pokeballs": 10}, {"# of berries": 5}]
+            "# of pokeballs": 5}, {"# of berries": 5}]
         self.pokemonItemRocketChance = random.randint(1, 10)
         self.pokemonCatchChance = random.randint(1, 10)
         self.pokemonCaught = "n"
@@ -113,6 +113,7 @@ class CatchPokemon:
             search = input(
                 f"Do you want to search for another Pokemon in the {self.location}? Type y or n. \n")
             if search == "y":
+                self.pokemonItemRocketChance = random.randint(1, 10)
                 self.stayHere == "y"
                 print("****************************************")
             else:
@@ -345,7 +346,7 @@ time.sleep(2)
 print(
     f"   Good luck on your adventure, Trainer {name}! I can't wait to see what exciting Pokemon you catch!")
 time.sleep(3)
-print("Professor Jaye gives you 10 Pokeballs and 5 berries to start your journey.")
+print("Professor Jaye gives you 5 Pokeballs and 5 berries to start your journey.")
 time.sleep(3)
 print("You leave Professor Jaye's lab. Adventure awaits! \n")
 time.sleep(1)
