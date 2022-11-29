@@ -1,6 +1,6 @@
 import random
 import time
-import pythonProjectArt
+import pythonProject_Art
 
 
 class CatchPokemon:
@@ -323,7 +323,7 @@ class CatchPokemon:
 userCatchPokemon = CatchPokemon()
 stillPlaying = "y"
 
-print(pythonProjectArt.logo)
+print(pythonProject_Art.logo)
 print("***********************************************************************")
 print("   Hello there!")
 time.sleep(2)
@@ -367,7 +367,7 @@ while (stillPlaying == "y"):
                 else:
                     userCatchPokemon.stayHere = "y"
                     print("****************************************")
-                    print(pythonProjectArt.cave)
+                    print(pythonProject_Art.cave)
                     time.sleep(1)
                     print("Armed with a flashlight, you walk into a dark cave.")
                     time.sleep(2)
@@ -381,7 +381,7 @@ while (stillPlaying == "y"):
                 else:
                     userCatchPokemon.stayHere = "y"
                     print("****************************************")
-                    print(pythonProjectArt.beach)
+                    print(pythonProject_Art.beach)
                     time.sleep(1)
                     print("You grab a hat and some sunscreen and head to the beach.")
                     time.sleep(2)
@@ -395,7 +395,7 @@ while (stillPlaying == "y"):
                 else:
                     userCatchPokemon.stayHere = "y"
                     print("****************************************")
-                    print(pythonProjectArt.forest)
+                    print(pythonProject_Art.forest)
                     time.sleep(1)
                     print(
                         "You go to run into the forest, then run back and grab your bugspray.")
@@ -410,7 +410,7 @@ while (stillPlaying == "y"):
                 else:
                     userCatchPokemon.stayHere = "y"
                     print("****************************************")
-                    print(pythonProjectArt.ruins)
+                    print(pythonProject_Art.ruins)
                     time.sleep(1)
                     print(
                         "You grab an extra pair of underwear before heading into the ruins.")
