@@ -1,24 +1,3 @@
-
-
-# Done:
-# [x] Basic logic for pokemon encounter
-# [x] Randomized which pokemon will appear for the pokemon encounter
-# [x] Added the ability to run from a pokemon encounter, in which case that pokemon will remain in the list of wild pokemon and the encounter will randomize again
-# [x] User can check their pokedex, to see which pokemon they've caught and which ones remain in the area, and their inventory to keep track of their pokeballs and berries
-# [x] Added a quit function to exit the game, and an end condition where if the user runs out of pokeballs, the game ends.
-# [x] Added team rocket and item encounters so every encounter isn't a pokemon
-# [x] Enhanced the team rocket encounter. If the player has caught any pokemon: the first in the list will be 'stolen' and returned to the wild. If the player hasn't caught any pokemon: team rocket will taunt the player
-# [x] Randomized the item encounter so it will either be pokeballs or berries. The quantity has also been randomized.
-# [x] Enhanced the berry mechanic so that it increases the chances of a pokemon being caught.
-# [x] Added a condition so if the player doesn't have berries, it doesn't give them the option to throw one
-# [x] Let players choose what environment they want to go to
-
-# Things I still want to do:
-# [ ] Look up different stylistic methods
-# [ ] Traveling mechanic?
-# [ ] Add a condition that ends the game if wild pokemon reaches 0 (unlikely but still possible)
-# [ ] Once the encounters are done, enhance the catch mechanic so there's a chance a pokemon might flee instead of be caught.
-
 import random
 import time
 import pythonProjectArt
@@ -31,23 +10,24 @@ class CatchPokemon:
                             "beach": ["Squirtle", "Poliwag", "Tentacool", "Slowpoke", "Seal", "Shellder", "Krabby", "Horsea", "Goldeen", "Staryu", "Magikarp", "Lapras", "Dratini", "Psyduck", "Eevee", "Spearow", "Mr. Mime", "Jigglypuff"],
                             "forest": ["Bulbasaur", "Caterpie", "Weedle", "Pidgey", "Rattata", "Ekans", "Pikachu", "Oddish", "Venonat", "Meowth", "Bellsprout", "Farfetch'd", "Doduo", "Exeggcute", "Chansey", "Tangela", "Scyther", "Pinsir", "Snorlax"],
                             "ruins": ["Clefairy", "Vulpix", "Growlithe", "Abra", "Ponyta", "Charmander", "Grimer", "Gastly", "Drowzee", "Voltorb", "Cubone", "Porygon", "Tauros", "Lickitung", "Ditto", "Nidoran", "Mankey"]}
-        self.playerPokemon = ["Pikachu", "Eevee"]
+        self.playerPokemon = []
         self.player = [{
             "# of pokeballs": 10}, {"# of berries": 5}]
-        self.pokemonItemRocketChance = 1
+        self.pokemonItemRocketChance = random.randint(1, 10)
         self.pokemonCatchChance = random.randint(1, 10)
-        self.wildPokemonLength = len(self.wildPokemon["cave"]) + len(self.wildPokemon["beach"]) + len(
-            self.wildPokemon["forest"]) + len(self.wildPokemon["ruins"])
         self.pokemonCaught = "n"
-        self.location = "cave"
+        self.location = "beach"
         self.stayHere = "y"
         self.randomPokemon = random.choice(self.wildPokemon[self.location])
         self.counter = 1
+        self.tryAgain = "y"
+        self.cueEnding = False
 
     def menu(self):
         print("****************************************")
-        print("What would you like to do?\n")
-        time.sleep(2)
+        print("                Main Menu")
+        print("****************************************")
+        print("What would you like to do?")
         print(
             """
     1. Look for a Pokemon
@@ -65,13 +45,13 @@ class CatchPokemon:
     def mapMenu(self):
         print("****************************************")
         print("Where would you like to go Pokemon hunting?")
-        time.sleep(2)
         print(
             """
     1. A cave
     2. The beach
     3. A forest
     4. The ruins
+    5. Return to top menu
         """)
 
     def pokedexAndInventory(self):
@@ -84,7 +64,7 @@ class CatchPokemon:
                 print(pokemon)
         time.sleep(2)
         print(
-            f"There are {self.wildPokemonLength} Pokemon still in the wild!")
+            f"There are still lots of Pokemon left in the wild!")
         time.sleep(2)
         print(
             f"You have {self.player[0]['# of pokeballs']} Pokeballs and {self.player[1]['# of berries']} berries left.\n")
@@ -127,7 +107,7 @@ class CatchPokemon:
                 self.pokemonEncounter()
                 self.throwPokeballOrBerry()
 
-            if self.player[0]['# of pokeballs'] == 0:
+            if (self.player[0]['# of pokeballs'] == 0) or self.cueEnding == True:
                 break
 
             search = input(
@@ -137,6 +117,7 @@ class CatchPokemon:
                 print("****************************************")
             else:
                 print(f"You decide to leave the {self.location}.")
+                time.sleep(2)
                 self.location = ""
                 self.stayHere = "n"
 
@@ -167,31 +148,41 @@ class CatchPokemon:
                         self.playerPokemon.append(self.randomPokemon)
                         self.wildPokemon[self.location].remove(
                             self.randomPokemon)
-                        # self.wildPokemon.remove([self.location][self.randomPokemon])
-                        # self.randomPokemon[self.location]
                         time.sleep(1)
                         print(
                             f"You have {self.player[0]['# of pokeballs']} Pokeballs left. \n")
-                        # self.pokemonItemRocketChance = random.randint(
-                        #     1, 10)
+                        self.pokemonItemRocketChance = random.randint(
+                            1, 10)
                         self.pokemonCatchChance = random.randint(1, 10)
-                        self.pokemonCaught = "y"
                         self.randomPokemon = random.choice(
                             self.wildPokemon[self.location])
+                        if self.player[0]['# of pokeballs'] == 0:
+                            print("It looks like you're out of Pokeballs!")
+                            time.sleep(2)
+                            self.pokemonCaught = "y"
+                            self.cueEnding = True
+                        else:
+                            self.pokemonCaught = "y"
         else:
             print("It looks like you're out of Pokeballs!")
             time.sleep(2)
             self.pokemonCaught = "y"
+            self.cueEnding = True
 
     def pokemonBreaksOut(self):
         print(
             f"Oh no! The wild {self.randomPokemon} broke out of the Pokeball!")
         time.sleep(1)
-        print(
-            f"You have {self.player[0]['# of pokeballs']} Pokeballs left. \n")
-        time.sleep(1)
-        print("What do you want to do?")
-        self.pokemonCatchChance = random.randint(1, 10)
+        if self.player[0]['# of pokeballs'] == 0:
+            print("Oh no! It looks like you're out of Pokeballs!")
+            self.pokemonCaught = "y"
+            self.cueEnding = True
+        else:
+            print(
+                f"You have {self.player[0]['# of pokeballs']} Pokeballs left. \n")
+            time.sleep(1)
+            print("What do you want to do?")
+            self.pokemonCatchChance = random.randint(1, 10)
 
     def throwBerry(self):
         print("****************************************")
@@ -237,15 +228,15 @@ class CatchPokemon:
             time.sleep(2)
             print(
                 f"When the smokescreen clears, you notice one of your Pokeballs is missing! They've stolen {self.playerPokemon[0]}!")
-            time.sleep(2)
+            time.sleep(3)
             stolenPokemon = self.playerPokemon.pop(0)
             self.wildPokemon["forest"].append(stolenPokemon)
             self.pokemonItemRocketChance = random.randint(1, 10)
             if self.counter == 1:
                 print("*ring ring ring*")
-                time.sleep(1)
+                time.sleep(2)
                 print("Someone is calling you!")
-                time.sleep(1)
+                time.sleep(2)
                 print(f"   Hello, Trainer {name}? This is Professor Jaye.")
                 time.sleep(2)
                 print(
@@ -271,8 +262,9 @@ class CatchPokemon:
             print("They turn and run into the distance.")
             time.sleep(2)
             print(
-                "   Hopefully the next time we see you you'll be worth robbing. Team Rocket, out!")
-            # self.pokemonItemRocketChance = random.randint(1, 10)
+                "   Hopefully the next time we see you you'll be worth robbing. Team Rocket, out! \n")
+            time.sleep(2)
+            self.pokemonItemRocketChance = random.randint(1, 10)
 
     def itemEncounter(self):
         itemFound = random.randint(1, 2)
@@ -285,6 +277,7 @@ class CatchPokemon:
             time.sleep(2)
             print(
                 f"You now have {self.player[0]['# of pokeballs']} Pokeballs.\n")
+            time.sleep(2)
             self.pokemonItemRocketChance = random.randint(1, 10)
         else:
             print("You stumble upon a berry bush.")
@@ -292,7 +285,8 @@ class CatchPokemon:
             print(f"You collect {numItems} berries!")
             self.player[1]['# of berries'] += numItems
             time.sleep(2)
-            print(f"You now have {self.player[1]['# of berries']} berries.")
+            print(f"You now have {self.player[1]['# of berries']} berries.\n")
+            time.sleep(2)
             self.pokemonItemRocketChance = random.randint(1, 10)
 
     def run(self):
@@ -302,26 +296,28 @@ class CatchPokemon:
         self.randomPokemon = random.choice(self.wildPokemon[self.location])
 
     def ending(self):
-        print("*ring ring ring*")
-        time.sleep(2)
-        print("Professor Jaye is calling you!")
-        time.sleep(2)
-        print(f"   Great job, Trainer {name}!")
-        time.sleep(1)
-        if self.player[0]['# of pokeballs'] <= 0:
-            print(
-                "   It looks like you're out of Pokeballs, so your adventure is at an end.")
+        if self.playerPokemon == []:
+            print("Thanks for playing! Have a good day!")
+        else:
+            print("*ring ring ring*")
             time.sleep(2)
-        if self.playerPokemon != []:
+            print("Professor Jaye is calling you!")
+            time.sleep(2)
+            print(f"   Great job, Trainer {name}!")
+            time.sleep(1)
+            if self.player[0]['# of pokeballs'] <= 0:
+                print(
+                    "   It looks like you're out of Pokeballs, so your adventure is at an end.")
+                time.sleep(2)
             print(
-                f"   You were able to catch {len(userCatchPokemon.playerPokemon)} pokemon!")
-        time.sleep(2)
-        print("   Thank you for your help with my research.")
-        time.sleep(1)
-        print("   I couldn't have done it without you!")
-        time.sleep(2)
-        print("*click*")
-        time.sleep(1)
+                f"   You were able to catch {len(userCatchPokemon.playerPokemon)} Pokemon!")
+            time.sleep(1)
+            print("   Thank you for your help with my research.")
+            time.sleep(1)
+            print("   I couldn't have done it without you!")
+            time.sleep(2)
+            print("*click*")
+            time.sleep(1)
 
 
 userCatchPokemon = CatchPokemon()
@@ -355,61 +351,83 @@ print("You leave Professor Jaye's lab. Adventure awaits! \n")
 time.sleep(1)
 while (stillPlaying == "y"):
     time.sleep(2)
+    userCatchPokemon.tryAgain == "y"
     userCatchPokemon.menu()
     choice = input("")
     if choice == "1":
-        userCatchPokemon.mapMenu()
-        mapChoice = input("")
-        if mapChoice == "1":
-            userCatchPokemon.location = "cave"
-            userCatchPokemon.stayHere = "y"
-            print("****************************************")
-            print(pythonProjectArt.cave)
-            time.sleep(1)
-            print("Armed with a flashlight, you walk into a dark cave.")
-            time.sleep(2)
-            userCatchPokemon.atLocation()
-        elif mapChoice == "2":
-            userCatchPokemon.location = "beach"
-            userCatchPokemon.stayHere = "y"
-            print("****************************************")
-            print(pythonProjectArt.beach)
-            time.sleep(1)
-            print("You grab a hat and some sunscreen and head to the beach.")
-            time.sleep(2)
-            userCatchPokemon.atLocation()
-        elif mapChoice == "3":
-            userCatchPokemon.location = "forest"
-            userCatchPokemon.stayHere = "y"
-            print("****************************************")
-            print(pythonProjectArt.forest)
-            time.sleep(1)
-            print("You go to run into the forest, then run back and grab your bugspray.")
-            time.sleep(2)
-            userCatchPokemon.atLocation()
-        elif mapChoice == "4":
-            userCatchPokemon.location = "ruins"
-            userCatchPokemon.stayHere = "y"
-            print("****************************************")
-            print(pythonProjectArt.ruins)
-            time.sleep(1)
-            print("You grab an extra pair of underwear before heading into the ruins.")
-            time.sleep(2)
-            userCatchPokemon.atLocation()
-        else:
-            print("I'm sorry, please enter a valid number.")
+        while (userCatchPokemon.tryAgain == "y") and userCatchPokemon.cueEnding == False:
+            userCatchPokemon.mapMenu()
+            mapChoice = input("")
+            if mapChoice == "1":
+                userCatchPokemon.location = "cave"
+                if len(userCatchPokemon.wildPokemon["cave"]) == 0:
+                    print(
+                        "Oh! It looks like there are no more Pokemon to catch in the cave. You should try somewhere else!")
+                    time.sleep(2)
+                else:
+                    userCatchPokemon.stayHere = "y"
+                    print("****************************************")
+                    print(pythonProjectArt.cave)
+                    time.sleep(1)
+                    print("Armed with a flashlight, you walk into a dark cave.")
+                    time.sleep(2)
+                    userCatchPokemon.atLocation()
+            elif mapChoice == "2":
+                userCatchPokemon.location = "beach"
+                if len(userCatchPokemon.wildPokemon["beach"]) == 0:
+                    print(
+                        "Oh! It looks like there are no more Pokemon to catch at the beach. You should try somewhere else!")
+                    time.sleep(2)
+                else:
+                    userCatchPokemon.stayHere = "y"
+                    print("****************************************")
+                    print(pythonProjectArt.beach)
+                    time.sleep(1)
+                    print("You grab a hat and some sunscreen and head to the beach.")
+                    time.sleep(2)
+                    userCatchPokemon.atLocation()
+            elif mapChoice == "3":
+                userCatchPokemon.location = "forest"
+                if len(userCatchPokemon.wildPokemon["forest"]) == 0:
+                    print(
+                        "Oh! It looks like there are no more Pokemon to catch in the forest. You should try somewhere else!")
+                    time.sleep(2)
+                else:
+                    userCatchPokemon.stayHere = "y"
+                    print("****************************************")
+                    print(pythonProjectArt.forest)
+                    time.sleep(1)
+                    print(
+                        "You go to run into the forest, then run back and grab your bugspray.")
+                    time.sleep(2)
+                    userCatchPokemon.atLocation()
+            elif mapChoice == "4":
+                userCatchPokemon.location = "ruins"
+                if len(userCatchPokemon.wildPokemon["ruins"]) == 0:
+                    print(
+                        "Oh! It looks like there are no more Pokemon to catch in the ruins. You should try somewhere else!")
+                    time.sleep(2)
+                else:
+                    userCatchPokemon.stayHere = "y"
+                    print("****************************************")
+                    print(pythonProjectArt.ruins)
+                    time.sleep(1)
+                    print(
+                        "You grab an extra pair of underwear before heading into the ruins.")
+                    time.sleep(2)
+                    userCatchPokemon.atLocation()
+            elif mapChoice == "5":
+                break
+            else:
+                print("I'm sorry, please enter a valid number.")
     elif choice == "2":
         userCatchPokemon.pokedexAndInventory()
     elif choice == "3":
-        if userCatchPokemon.playerPokemon != []:
-            userCatchPokemon.ending()
-            stillPlaying = "n"
-        else:
-            print("Thank you for playing! Have a nice day!")
+        userCatchPokemon.ending()
         stillPlaying = "n"
     else:
         print("I'm sorry, please choose a valid option.\n")
 
-    if userCatchPokemon.player[0]['# of pokeballs'] <= 0:
+    if (userCatchPokemon.player[0]['# of pokeballs'] <= 0) or userCatchPokemon.cueEnding == True:
         userCatchPokemon.ending()
         stillPlaying = "n"
