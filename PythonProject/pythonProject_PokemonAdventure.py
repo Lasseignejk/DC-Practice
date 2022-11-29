@@ -71,7 +71,7 @@ class CatchPokemon:
 
     def pokemonEncounter(self):
         self.randomPokemon = random.choice(self.wildPokemon[self.location])
-        print(f"A wild {self.randomPokemon} appears!")
+        print(f"A wild {self.randomPokemon} appeared!")
         time.sleep(2)
         print("What do you want to do?")
         time.sleep(2)

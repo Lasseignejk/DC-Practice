@@ -4,11 +4,9 @@ The goal of the game is simple -- catch as many Pokemon as you can. You only sta
 
 ## What I used
 
----
-
 This was built as a final project for the Python section of my bootcamp, so Python is the only language used.
 
-**Some of the things I used:**
+**Some of the things used:**
 
 - **A class** -- Used to store all the functions for the game.
 - **Dictionaries** -- Used to store the Pokemon available in the game, as well as the number of Pokeballs and berries the player has. For the Pokemon, a dictionary was built with different locations as the keys, and the Pokemon available in those locations were stored in lists as the values. This way, players can go to different locations and find different Pokemon.
@@ -20,8 +18,6 @@ This was built as a final project for the Python section of my bootcamp, so Pyth
 
 ## Some things I learned
 
----
-
 I learned a TON from this project. I think one of the biggest things I learned was **I really need to push my code to github more often.** I usually go two hours between pushes, which is too long when you're constantly changing things around.
 
 I also learned to **be careful of what you call your variables.** There were a couple of times where I kept getting an error and it was because one of my variables shared a name with one of my functions. When the code is as long as mine was getting to be, I feel like I need to have a written list of all my different variables and functions I've made.
@@ -32,8 +28,8 @@ The last big thing I learned was to **stop being stubborn and just look up the e
 
 ## Looking forward
 
----
-
 Right now, I'm pretty happy with my code because, as far as I've tested, it works. That being said, I am looking forward to coming back to this code in the future and finding ways to make it more efficient. I changed so much at a time that I feel like there are probably lines of code doing the same thing as others.
 
 I also would like to redo this project in the future, once I learn some frontend stuff. It would definitely make it nicer for the user if a picture of the Pokemon appeared when you encountered it, and maybe I'll have some ideas on how to make the code more efficient by then too.
+
+Lastly, I think it might be cool to have an option to skip some of the dialogue, for example the beginning dialogue with the Professor explaining what's going on. Not super crucial, but it would be nice if someone wanted to play the game more than once.
