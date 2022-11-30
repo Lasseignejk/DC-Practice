@@ -1,7 +1,8 @@
 # Welcome to Your Pokemon Adventure!
 
 The goal of the game is simple -- catch as many Pokemon as you can. You only start off with 5 Pokeballs, but if you're lucky, you can find more while you're adventuring. If your number of Pokeballs reaches 0, the game ends. And be warned -- Team Rocket has been seen in the area! Now get out there and catch 'em all!
-link to medium article [here](https://medium.com/@jayelonlasseigne/making-a-pokemon-game-using-python-3d56bd020448)
+
+Link to medium article [here](https://medium.com/@jayelonlasseigne/making-a-pokemon-game-using-python-3d56bd020448).
 
 ## What I used
 
