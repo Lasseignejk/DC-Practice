@@ -175,7 +175,8 @@ class CatchPokemon:
             f"Oh no! The wild {self.randomPokemon} broke out of the Pokeball!")
         time.sleep(1)
         if self.player[0]['# of pokeballs'] == 0:
-            print("Oh no! It looks like you're out of Pokeballs!")
+            print("Oh no! It looks like you're out of Pokeballs!\n")
+            time.sleep(1)
             self.pokemonCaught = "y"
             self.cueEnding = True
         else:
@@ -237,21 +238,21 @@ class CatchPokemon:
                 print("*ring ring ring*")
                 time.sleep(2)
                 print("Someone is calling you!")
-                time.sleep(2)
+                time.sleep(3)
                 print(f"   Hello, Trainer {name}? This is Professor Jaye.")
                 time.sleep(2)
                 print(
                     "   I see you've just had an encounter with that terrible Team Rocket.")
                 time.sleep(3)
                 print("   Don't worry!")
-                time.sleep(1)
+                time.sleep(2)
                 print(
                     "   If they steal a Pokemon from you, you can still catch it again in the forest.")
                 time.sleep(3)
                 print("   Good luck!")
                 time.sleep(1)
                 print("*click*")
-                time.sleep(1)
+                time.sleep(2)
             self.counter = 2
             print("****************************************")
         else:
@@ -272,7 +273,7 @@ class CatchPokemon:
         numItems = random.randint(2, 3)
         if itemFound == 1:
             print("You find something buried by a rock.")
-            time.sleep(1)
+            time.sleep(2)
             print(f"You uncover {numItems} Pokeballs!")
             self.player[0]['# of pokeballs'] += numItems
             time.sleep(2)
@@ -282,7 +283,7 @@ class CatchPokemon:
             self.pokemonItemRocketChance = random.randint(1, 10)
         else:
             print("You stumble upon a berry bush.")
-            time.sleep(1)
+            time.sleep(2)
             print(f"You collect {numItems} berries!")
             self.player[1]['# of berries'] += numItems
             time.sleep(2)
@@ -305,16 +306,16 @@ class CatchPokemon:
             print("Professor Jaye is calling you!")
             time.sleep(2)
             print(f"   Great job, Trainer {name}!")
-            time.sleep(1)
+            time.sleep(2)
             if self.player[0]['# of pokeballs'] <= 0:
                 print(
                     "   It looks like you're out of Pokeballs, so your adventure is at an end.")
                 time.sleep(2)
             print(
                 f"   You were able to catch {len(userCatchPokemon.playerPokemon)} Pokemon!")
-            time.sleep(1)
+            time.sleep(2)
             print("   Thank you for your help with my research.")
-            time.sleep(1)
+            time.sleep(2)
             print("   I couldn't have done it without you!")
             time.sleep(2)
             print("*click*")
@@ -349,7 +350,7 @@ time.sleep(3)
 print("Professor Jaye gives you 5 Pokeballs and 5 berries to start your journey.")
 time.sleep(3)
 print("You leave Professor Jaye's lab. Adventure awaits! \n")
-time.sleep(1)
+time.sleep(2)
 while (stillPlaying == "y"):
     time.sleep(2)
     userCatchPokemon.tryAgain == "y"
