@@ -1,0 +1,60 @@
+body {
+    font-family: 'Indie Flower', cursive;
+    font-family: 'Outfit', sans-serif;
+    margin: auto;
+    max-width: 700px;
+    background-image: url("pictures/jayebackgroundpic.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    text-align: center;
+    margin: 50px;
+    background-color: rgb(250, 235, 215);
+    padding:20px;
+    border-radius: 20px;
+}
+
+img {
+    width: 300px;
+    height: auto;
+    border-radius: 20px;
+    border: 5px solid black;
+    float: left;
+    margin-right: 50px;
+    filter: drop-shadow(15px 15px 10px grey);
+}
+
+div {
+    background-color: rgb(250, 235, 215);
+    border-radius: 20px;
+    padding: 20px;
+}
+h3 {
+    text-align: center;
+}
+
+ul {
+    width: 150px;
+    margin: auto;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.insta:hover {
+    color: #458eff;
+    text-decoration: underline;
+}
+
+.linked:hover {
+    color: #0072b1;
+    text-decoration: underline;
+}
+
+.git:hover {
+    color: black;
+    text-decoration: underline;
+}
