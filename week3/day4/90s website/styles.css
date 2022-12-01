@@ -46,7 +46,7 @@ div > p{
 
 }
 
-button {
+.blink {
     animation: blinker 2s step-start infinite;
     padding: 10px 10px;
     border-radius: 5px;
@@ -63,9 +63,18 @@ button:hover {
     background-color: rgb(174, 0, 255);
 }
 
-.form {
+.form{
     background-color: white;
     margin-top: 10px;
     width: 80%;
     margin: auto;
+    text-align: left;
+}
+.formbutton{
+    border-radius: 5px;
+    padding: 10px;
+}
+
+form {
+    padding: 10px;
 }

@@ -14,12 +14,19 @@
         <a href="">About</a>
     </nav>
     <h2>Order Your </h2>
-    <h1 class="oven"> EASY-BAKE OVEN&#169</h1> 
+    <h1 class="oven"> EASY-BAKE OVEN<sup>&#169</sup></h1> 
     <h2>Today!</h2>
     <div class="form">
         <form action="">
-            <label for="name">Name: </label> <input id="name" name="name" type="text"> <br>
-            <label for="address">Address: </label> <input id="address" name="address" type="text">
+            <label for="name">Name: </label> <input id="name" name="name" type="text" required> <br>
+            <label for="address">Address: </label> <input id="address" name="address" type="text" required> <br>
+            <label for="ovennumber">How many EASY-BAKE OVEN<sup>&#169</sup>s would you like?</label> <input id="ovennumber" type="number" min="1" required>
+            <p class="form">Please check which of the following EASY-BAKE OVEN<sup>&#169</sup> mixes you'd like to receive: </p>
+            <input type="checkbox" id="chocchip"><label for="chocchip">Chocolate Chip Cookie</label><br>
+            <input type="checkbox" id="vancake"><label for="vancake">Vanilla Cake</label><br>
+            <input type="checkbox" id="redvel"><label for="redvel">Red Velvet Cake</label><br>
+            <input type="checkbox" id="sugar"><label for="sugar">Sugar Cookie</label><br>
+            <button class="formbutton">Submit Order</button>
         </form>
     </div>
 
