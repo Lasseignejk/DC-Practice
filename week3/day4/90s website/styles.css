@@ -1,12 +1,14 @@
 body {
     background-image: url("pictures/sparklebackground.jpg");
     background-repeat: repeat;
-    text-align: center;
+    margin: auto;
+    width: 800px;
     font-family: 'Anonymous Pro', monospace;
 }
 
-h1, h4, p, ul{
+h1, h4, p, ul, h2{
     background-color: rgb(207, 10, 181);
+    text-align: center;
 }
 nav {
     background-color: white;
@@ -47,6 +49,8 @@ div > p{
 button {
     animation: blinker 2s step-start infinite;
     padding: 10px 10px;
+    border-radius: 5px;
+    margin: auto;
 }
 
 @keyframes blinker {
@@ -54,3 +58,14 @@ button {
       opacity: 0;
     }
   }
+
+button:hover {
+    background-color: rgb(174, 0, 255);
+}
+
+.form {
+    background-color: white;
+    margin-top: 10px;
+    width: 80%;
+    margin: auto;
+}
