@@ -1,0 +1,56 @@
+body {
+    background-image: url("pictures/sparklebackground.jpg");
+    background-repeat: repeat;
+    text-align: center;
+    font-family: 'Anonymous Pro', monospace;
+}
+
+h1, h4, p, ul{
+    background-color: rgb(207, 10, 181);
+}
+nav {
+    background-color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+img {
+    width: 500px;
+    height: auto;
+}
+
+div {
+    text-align: center;
+}
+
+ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+.price {
+    font-size: 150%;
+}
+
+.oven {
+    font-size: 200%
+}
+
+div > p{
+    position: absolute;
+    bottom: 10px;
+    font-size: 10px;
+
+}
+
+button {
+    animation: blinker 2s step-start infinite;
+    padding: 10px 10px;
+}
+
+@keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
