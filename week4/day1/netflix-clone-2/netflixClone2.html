@@ -4,21 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflix</title>
-    <link rel="stylesheet" href="netflix.css">
+    <title>Netflix Clone Ver. 2</title>
+    <link rel="stylesheet" href="netflixClone2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <nav class="nav-bar">
-        <div class="nav-bar-name"><img class="logo" src="netflix-logo-resized.png" alt=""></div>
+        <div class="nav-left">
+        <div class="logo-div"><img class="logo" src="netflix-logo-resized.png" alt=""></div>
+        <ul class="nav-bar-menu">
+            <li class="nav-bar-item"><a href="#">Home</a></li>
+            <li class="nav-bar-item"><a href="#">TV Shows</a></li>
+            <li class="nav-bar-item"><a href="#">Movies</a></li>
+            <li class="nav-bar-item"><a href="#">New & Popular</a></li>
+            <li class="nav-bar-item"><a href="#">My List</a></li>
+            <li class="nav-bar-item"><a href="#">Browse by Languages</a></li>
+          </ul>
+        </div>
         <div class="nav-bar-menu">
-            <span class="nav-text">UNLIMITED TV SHOWS & MOVIES</span>
-            <button class="join">JOIN NOW</button>
-            <button class="sign">SIGN IN</button>
+            <div class="search"><label for="search"><i class="fa-solid fa-magnifying-glass"></i></label><input type="text" id="search" placeholder="Titles, people, genres"></div>
+            <a href="#">DVD</a>
+            <a href="#"><i class="fa-solid fa-bell"></i></a>
+            <img src="profile-icon.png" class="avatar" alt="">
         </div>
       </nav>
-    <div class="header">
+    <nav class="nav-bar2">
         <h1>Movies</h1>
-        <p>Movies move us like nothing else can, whether they're scary, funny, dramatic, romantic or anywhere in-between. So many titles, so much to experience.</p>
+        <div class="genres">Genres</div>
+      </nav>
+    <div class="header">
     </div>
 
     <h3>Popular on Netflix</h3>
@@ -69,6 +83,6 @@
         <span>Hell's Kitchen</span>
     </div>
 
+<script src="netflixClone2.js"></script>
 </body>
 </html>
-

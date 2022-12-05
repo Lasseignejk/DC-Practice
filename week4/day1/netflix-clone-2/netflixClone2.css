@@ -1,0 +1,185 @@
+
+html,body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #141414;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+.nav-bar {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 0;
+    font-size: 14px;
+}
+
+.nav-bar li:nth-child(3) {
+    font-weight: bold;
+}
+
+.nav-bar-menu {
+    display: flex;
+    list-style-type: none;
+    gap: 20px;
+}
+
+.nav-left {
+    display: flex;
+}
+
+a:link {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+.fa-magnifying-glass {
+    padding: 5px 5px;
+    font-size: 15px;
+}
+
+.avatar {
+    height: 30px;
+    width: auto;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+.fa-bell {
+    font-size: 15px;
+    padding: 5px 5px;
+}
+
+input[type="text"] {
+    background-color: black;
+    border: none transparent;
+    outline: none;
+    color: white;
+    font-size: 14px;
+}
+
+.genres {
+    background-color: black;
+    border: 1px solid white;
+    padding: 5px 10px;
+    outline: none;
+    color: white;
+    font-size: 20px; 
+    margin-left: 50px;
+    font-weight: bold;
+}
+
+.nav-bar2 > button {
+    background-color: black;
+    border: none transparent;
+    outline: none;
+    color: white;
+    font-size: 14px;
+}
+
+.nav-bar2.scrolled {
+    background-color: black;
+}
+
+.search {
+    border: 1px solid white;
+}
+
+.nav-bar2 {
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 10px;
+    margin-left: 50px;
+    height: 50px;
+    background-color: rgba(255,255,255,0);
+}
+.nav-bar2 > h1 {
+    font-size: 35px;
+    position: sticky;
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+}
+
+.logo-div {
+    margin: auto;
+    padding-left: 30px;
+}
+
+.join {
+    background-color: #E50914;
+    width: 100px;
+    padding: 5px;
+    font-size: 10px;
+    color: white;
+}
+
+.sign {
+    background-color: black;
+    border: 1px solid white;
+    width: 75px;
+    padding: 5px;
+    font-size: 10px;
+    color: white;
+}
+
+.nav-text {
+    font-size: 10px;
+}
+
+.header {
+    width: 100%;
+    height: 90%;
+    padding: 0 20px;
+    margin-top: 0;
+    margin-bottom: 50px;
+    background-image: url("holidate2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+h3 {
+    font-weight: 400;
+    padding: 0 20px;
+}
+
+.movie-cards {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.movie-cards > img {
+    width: 360px;
+    height: 202.5px;
+}
+
+.movie-names {
+    display: flex;
+    font-size: 15px;
+    margin-top: 5px;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+.movie-names > span {
+    width: 360px;
+    text-align: center;
+}
