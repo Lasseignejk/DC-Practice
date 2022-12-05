@@ -1,0 +1,125 @@
+.button-container {
+    height: 500px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+}
+
+.column-container {
+    display: flex;
+    height: 350px;
+    width: 900px;
+}
+
+.red {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(240, 76, 76);
+    flex-grow: 1;
+    font-size: 50px;
+}
+.blue {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(106, 76, 240);
+    flex-grow: 1;
+    font-size: 50px;
+}
+.yellow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(237, 240, 76);
+    flex-grow: 1;
+    font-size: 50px;
+}
+
+.darkbrownfirst {
+    display: flex;
+}
+
+.darkbrownfirst > div {
+    height: 50px;
+    width: 50px;
+}
+
+.darkbrownfirst > div:nth-of-type(even) {
+    background-color:#ffce9e;
+}
+.darkbrownfirst > div:nth-of-type(odd) {
+    background-color:#d18a46;
+}
+
+.lightbrownfirst {
+    display: flex;
+}
+
+.lightbrownfirst > div {
+    height: 50px;
+    width: 50px;
+}
+
+.lightbrownfirst > div:nth-of-type(even) {
+    background-color:#d18a46;
+}
+
+.lightbrownfirst > div:nth-of-type(odd) {
+    background-color:#ffce9e;
+}
+
+.nav-bar {
+    display: flex;
+    background-color: rgb(97, 163, 221);
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+
+}
+
+.nav-bar-name {
+    font-weight: bold;
+}
+
+.nav-bar-menu {
+    display: flex;
+    list-style-type: none;
+    gap: 20px;
+}
+
+a:link {
+    text-decoration: none;
+    color: white;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+}
+
+.icon {
+    background-color: antiquewhite;
+    width: 80px;
+    padding: 10px;
+    text-align: center;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid antiquewhite;
+}
+
+.button {
+    padding: 10px;
+    border: 1px solid antiquewhite;
+    background-color: antiquewhite;
+}

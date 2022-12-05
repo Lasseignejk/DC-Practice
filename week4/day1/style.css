@@ -1,0 +1,30 @@
+body {
+    background-color: rgb(53, 54, 58);
+    color: white;
+}
+
+.main-container {
+    display: flex;
+    /* centered along the main-axis, default is left/right */
+    justify-content: center;
+    /* centered along the cross-axis, default is up/down */
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* @media (min-width: 1250px) {
+    /* as long as the width is above 1250, the background color of the main containter is white. */
+    /* .main-container {
+        background-color: white;
+    }
+} */
+
+@media (width <= 500px) and (orientation: portrait) {
+    body {
+        background-color: rgb(49, 128, 88);
+    }
+    h1 {
+        font-size: 40px;
+    }
+}

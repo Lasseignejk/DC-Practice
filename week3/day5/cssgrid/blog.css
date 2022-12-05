@@ -1,0 +1,35 @@
+.main {
+    display: grid;
+    grid-template-areas: 
+    "header header"
+    "content sidebar"
+    "footer footer";
+    border: 2px solid black;
+    max-width: 800px;
+    margin: auto;
+}
+
+.header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(206, 199, 199);
+    place-items: center;
+}
+
+
+.content {
+    grid-area: content
+}
+
+.footer {
+    grid-area: footer;
+    background-color: rgb(206, 199, 199);
+
+    text-align: center;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    padding-right: 100px;
+}
