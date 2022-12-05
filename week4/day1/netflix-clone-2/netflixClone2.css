@@ -4,6 +4,8 @@ html,body {
     height: 100%;
     margin: 0px;
     padding: 0px;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 body {
@@ -102,7 +104,7 @@ input[type="text"] {
     align-items: center;
     position: sticky;
     top: 10px;
-    margin-left: 50px;
+    padding-left: 50px;
     height: 50px;
     background-color: rgba(255,255,255,0);
 }
