@@ -98,7 +98,6 @@ const printBanner = (text) => {
     console.log(newText)
     console.log(border.repeat([newText.length]))
 }
-
 // printBanner("Hello")
 
 // Leetspeak
@@ -108,8 +107,30 @@ const leetspeak = (string) => {
     let lower = string.toLowerCase();
     // .replace will only replace the first instance of whatever you're wanting to replace. To get around that, put the thing-you're-searching-for in / / with a g after it. The g marks it as global, meaning it will search the whole thing and replace all instances.
     let leet = lower.replace(/a/g, 4).replace(/e/g, 3).replace(/g/g, 6).replace(/i/g, 1).replace(/o/g, 0).replace(/s/g, 5).replace(/t/g, 7)
-    console.log(leet)
+    return leet
+}
+// leetspeak("YEET")
+
+// Long-long Vowels
+// Write a function, which is given a string, return the result of extending any long vowels to the length of 5.
+const longLongVowels = (string) => {
+    let newString = string.replace("a", "aaaaa").replace("e", "eeeee").replace("i", "iiiii").replace("o", "ooooo").replace("u", "uuuuuu");
+    return newString
+}
+// longLongVowels("Cheese")
+
+// Just the Positives 
+// Write a function positiveNumbers which is given an array of numbers and returns a new array containing only the positive numbers within the given array.
+const positiveNumbers = (array) => {
+    newArray = []
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] >= 0) {
+            let num = array.slice(i,i+1);
+            let num2 = parseInt(num)
+            newArray.push(num2)
+        }
+    }
+    console.log(newArray)
 }
 
-
-leetspeak("YEET")
+positiveNumbers([1, -3, 5, -3, 0])
