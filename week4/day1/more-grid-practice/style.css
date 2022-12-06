@@ -17,10 +17,13 @@ body {
     margin: 100px auto;
     padding: 10px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-columns: repeat(3, 1fr); */
+    /* if you set the columns to auto-fill and add a minmax, it'll make the grid more responsive and add the ability to wrap. So in the below, the max the columns can be is 1fr across. The min is 200px. So if any of the columns goes below 200px, it's going to shrink the number of available columns and wrap some of the text to get the columns back above 200px. */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 10px;
-
-    align-items: start;
+    /* Just like flexbox, grid also has align-items start, center, end, etc. The default is stretch, where the areas will stretch to fit the inner content. Align-items moves things to the top/bottom of your container*/
+    /* align-items: start; */
+    /* It also has justify-content start, center, end, etc. Justify-content will move things to the left/right of your container. Also has the space-around/between and stuff too. */
 
     /* grid-auto-rows: minmax(100px, auto); */
     /* grid-template-rows: repeat(3, 1fr); */
@@ -32,4 +35,28 @@ body {
     font-size: 20px;
     padding: 20px;
     border: 1px solid skyblue;
+}
+/* 
+.item:nth-of-type(1) {
+    background-color: black;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-column: 1 / 3;
+    grid-column: 1 / span 2;
+}
+
+.item:nth-of-type(3) {
+    background-color: #333;
+    grid-row: 2 / 4;
+}
+
+.item:nth-of-type(4) {
+    background-color: #333;
+    grid-row: 2 / 4;
+} */
+
+@media(max-wdith: 500px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
 }
