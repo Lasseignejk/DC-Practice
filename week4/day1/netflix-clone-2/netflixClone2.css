@@ -93,6 +93,7 @@ input[type="text"] {
 
 .search {
     border: 1px solid white;
+    background-color: black;
 }
 
 .nav-bar2 {
@@ -149,7 +150,7 @@ input[type="text"] {
     width: auto;
     height: 100%;
     padding: 0 20px;
-    margin-top: -60px;
+    margin-top: -130px;
     margin-bottom: -270px;
     background-image: url("holidate2.jpg");
     background-repeat: no-repeat;
