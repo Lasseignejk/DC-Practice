@@ -8,6 +8,8 @@ function madlib(name, subject) {
 }
 // madlib('Jaye', 'science');
 
+
+
 // Tip Calculator
 // Write a function called tipAmount that is given the bill amount and the level of service (good, fair, and poor) and returns the dollar amount for the tip. Based on: good --> 20%   fair --> 15%   bad --> 10%
 function tipAmount(bill, service) {
@@ -25,6 +27,8 @@ function tipAmount(bill, service) {
     }
 } 
 // tipAmount(40, "fair")
+
+
 
 // Tip Calculator 2
 // Write a function totalAmount that takes the same arguments as tipAmount except it returns the total as the tip amount plus the bill amount. This function may make use of tipAmount as a sub-task.
@@ -44,10 +48,11 @@ function totalAmount(bill, service) {
         }
     }
     let tips = tipAmount(bill,service);
-    let total = tips + bill;
-    return total
+    return tips + bill;
 }
 // totalAmount(100, "good")
+
+
 
 // Print Numbers 
 // Write a function printNumbers which is given a start number and an end number. It will print the numbers from one to the other, one per line. Write two versions of this function, one with a while loop and the other using a for loop.
@@ -65,6 +70,8 @@ const printNumbers2 = (startnum, endnum) => {
 }
 // printNumbers(1, 10)
 
+
+
 // Print a Square 
 // Write a function printSquare which is given a size and prints a square of that size using asterisks. 
 const printSquare = (size) => {
@@ -74,6 +81,8 @@ const printSquare = (size) => {
     }
 }
 // printSquare(5)
+
+
 
 // Print a box 
 // Write a function printBox which is given a width and height and prints a hollow box of those given dimensions.
@@ -88,6 +97,8 @@ const printBox = (width, height) => {
 }
 // printBox(3, 3)
 
+
+
 // Print a Banner
 // Write a function printBanner which is given some text and prints a banner with a border surrounding the text. The border has to stretch to the length of the text.
 const printBanner = (text) => {
@@ -100,6 +111,8 @@ const printBanner = (text) => {
 }
 // printBanner("Hello")
 
+
+
 // Leetspeak
 // Write a function leetspeak which is given a string, and returns the leetspeak equivalent of the string. To convert text to its leetspeak version, make the following substitutions: 
 // A --> 4   E --> 3   G --> 6   I --> 1   O --> 0   S --> 5   T --> 7
@@ -111,6 +124,8 @@ const leetspeak = (string) => {
 }
 // leetspeak("YEET")
 
+
+
 // Long-long Vowels
 // Write a function, which is given a string, return the result of extending any long vowels to the length of 5.
 const longLongVowels = (string) => {
@@ -118,6 +133,8 @@ const longLongVowels = (string) => {
     return newString
 }
 // longLongVowels("Cheese")
+
+
 
 // Just the Positives 
 // Write a function positiveNumbers which is given an array of numbers and returns a new array containing only the positive numbers within the given array.
@@ -132,5 +149,51 @@ const positiveNumbers = (array) => {
     }
     console.log(newArray)
 }
+// positiveNumbers([1, -3, 5, -3, 0])
 
-positiveNumbers([1, -3, 5, -3, 0])
+
+
+// Caesar Cipher 
+// Write a function cipher which is given a string, an offset, and returns the Caesar cipher of the string. 
+const cipher = (string, offset) => {
+    let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    let lower = string.toLowerCase();
+    let encoded = "";
+    for (const letter of lower) {
+        if (letter == " ") {
+            encoded += letter;
+        } else {
+            let index = alphabet.indexOf(letter);
+            let newIndex = index + offset;
+            if (newIndex > 25) {
+                newIndex = newIndex % 26;
+            }
+            encoded += alphabet[newIndex]
+        }
+    }
+    console.log(encoded)
+}
+
+// cipher("hello there", 5)
+
+// Caesar Cipher 2 
+// Write a function decipher which is given a string, an offset, and returns the original message.
+const decipher = (string, offset) => {
+    let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    let lower = string.toLowerCase();
+    let decoded = "";
+    for (const letter of lower) {
+        if (letter == " ") {
+            decoded += letter;
+        } else {
+            let index = alphabet.indexOf(letter);
+            let newIndex = index - offset; 
+            if (newIndex < 0) {
+                newIndex = 26 - offset
+            }
+            decoded += alphabet[newIndex]
+        }
+    }
+    console.log(decoded)
+}
+// decipher("hnanqnefynts", 5)
