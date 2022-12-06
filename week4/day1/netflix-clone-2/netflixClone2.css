@@ -149,7 +149,7 @@ input[type="text"] {
     width: auto;
     height: 100%;
     padding: 0 20px;
-    margin-top: 0;
+    margin-top: -60px;
     margin-bottom: -270px;
     background-image: url("holidate2.jpg");
     background-repeat: no-repeat;
