@@ -17,6 +17,7 @@ body {
     justify-content: space-between;
     padding: 10px;
     margin: 0;
+    width: 98%;
 }
 
 .logo {
@@ -49,6 +50,7 @@ body {
     width: 26%;
     padding: 0 20px;
     margin-bottom: 50px;
+    font-size: 14px;
 }
 
 h3 {
@@ -60,11 +62,14 @@ h3 {
     display: flex;
     gap: 10px;
     justify-content: center;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 .movie-cards > img {
     width: 360px;
     height: 202.5px;
+    /* flex-shrink: 1; */
 }
 
 .movie-names {
@@ -74,9 +79,45 @@ h3 {
     justify-content: center;
     gap: 10px;
     margin-bottom: 50px;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 .movie-names > span {
     width: 360px;
     text-align: center;
+}
+
+@media (width <= 1200px) and (orientation: landscape) {
+    body {
+        overflow-x: hidden;
+    }
+    .movie-cards > img{
+        width: 200px;
+        height:auto;
+    }
+
+    .movie-names > span {
+        width: 200px;
+        font-size: 12px;
+    }
+    .header {
+        width: 100%;
+        font-size: 12px;
+    }
+    h3 {
+        font-size: 14px;
+    }
+
+}
+
+@media (width <= 600px) and (orientation: landscape) {
+    .movie-cards > img{
+        width: 100px;
+        height: auto;
+    }
+    .movie-names > span {
+        width: 100px; 
+        font-size: 10px;
+    }
 }
