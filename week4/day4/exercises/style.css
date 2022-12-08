@@ -1,0 +1,14 @@
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: whitesmoke; 
+    color: darkslategray;
+}
+
+.imgEdit {
+    border: 5px solid black;
+    height: 300px;
+    width: auto;
+    margin: 10px;
+    border-radius: 20px;
+}
+
