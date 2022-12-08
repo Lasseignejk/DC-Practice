@@ -9,8 +9,18 @@ const jayesDiv = document.querySelector(".mainContainer")
 const jayeHeader = document.createElement("h1");
 jayeHeader.innerText = "Jaye Lasseigne";
 
+const dogDiv = document.createElement("div");
+dogDiv.setAttribute('class', 'doggyDiv')
+
+const jayeButton = document.createElement("button");
+jayeButton.innerText = "Click me!"
+jayeButton.addEventListener("click", () => console.log("I have been clicked"))
+
+const foodDiv = document.createElement("div");
+foodDiv.setAttribute('class', 'foodyDiv')
+
 const jayeImage = document.createElement("img");
-jayeImage.setAttribute('src', 'puppy.jpg');
+jayeImage.src = 'puppy.jpg';
 jayeImage.setAttribute('class', 'imgEdit');
 
 const jayePara = document.createElement("p");
@@ -25,7 +35,7 @@ const foodPicArray = ["https://images.unsplash.com/photo-1602273660127-a0000560a
 
 
 //append
-jayesDiv.append(jayeHeader, jayeImage, jayePara)
+jayesDiv.append(jayeHeader, jayeImage, jayePara, jayeButton, dogDiv, foodHeader, foodDiv)
 
 
 
@@ -33,13 +43,13 @@ for (const dog of dogPicArray) {
     const dogpic = document.createElement("img");
     dogpic.setAttribute('src', dog)
     dogpic.classList.add('imgEdit')
-    jayesDiv.append(dogpic)
+    dogDiv.append(dogpic)
+    // jayesDiv.append(dogpic)
 }
-jayesDiv.append(foodHeader)
 
 for (const food of foodPicArray) {
     const foodpic = document.createElement("img");
     foodpic.setAttribute('src', food)
     foodpic.classList.add('imgEdit')
-    jayesDiv.append(foodpic)
+    foodDiv.append(foodpic)
 }
