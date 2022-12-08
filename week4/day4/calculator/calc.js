@@ -36,12 +36,21 @@ let equation = []
             equation.push(button.value)
             console.log(equation)
         })
+        button.addEventListener("click", () => {
+            digits.length = 0;
+        })
     }
 
+    result.addEventListener("click", () => {
+        let lastUserNumber = digits.join('');
+        console.log(lastUserNumber)
+        equation.push(lastUserNumber)
+        let answer = equation.join('');
+        let realAnswer = eval?.(`"use strict";(${answer})`)
+        console.log(realAnswer)
+        screen.innerText = realAnswer
+    })
 
-    // result.addEventListener("click", () => {
-
-    // })
 
 
 // function userPushEqual() {
