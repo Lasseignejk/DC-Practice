@@ -1,6 +1,128 @@
+html, body {
+    padding: 0;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: grid;
+    place-content: center;
+    background-color: aliceblue;
+}
+
+.calculator {
+    border: 5px solid rgb(62, 55, 85);
+    border-radius: 20px;
+    width: 300px;
+    background-color: rgb(62, 55, 85);
+    padding: 20px;
+    height: 400px;
+    box-shadow: 20px 20px 40px rgb(70, 69, 69);
+}
+
 .numScreen {
-    height: 50px;
-    width: 100px;
+    min-height: 2.5em;
+    height: auto;
+    width: 100%;
+    overflow-wrap: break-word;
     text-align: center;
-    border: 1px solid black;
+    padding-top: 4px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: aliceblue;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 25px;
+    box-shadow: 5px 5px 5px rgb(16, 14, 22);
+    border: none;
+}
+
+.calcButtons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: 
+    "clear clear clear divide"
+    "seven eight nine mult"
+    "four five six sub"
+    "one two three add"
+    "zero dot result result"
+    ;
+    gap: 10px;
+}
+
+button {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: larger;
+    height: 50px;
+    background-color: lightsteelblue;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgb(16, 14, 22);
+    border: none;
+    transition: background-color 300ms, color 300ms;
+}
+
+button.operator {
+    background-color: steelblue;
+}
+button.result {
+    background-color: deepskyblue;
+}
+
+button:hover {
+    background-color:rgb(9, 38, 61);
+    color: lightsteelblue;
+}
+
+
+
+.clear {
+    grid-area: clear
+}
+
+.divide {
+    grid-area: divide
+}
+.seven {
+    grid-area: seven
+}
+.eight {
+    grid-area: eight
+}
+.nine {
+    grid-area: nine
+}
+.mult {
+    grid-area: mult
+}
+.four {
+    grid-area: four
+}
+.five {
+    grid-area: five
+}
+.six {
+    grid-area: six
+}
+.sub {
+    grid-area: sub
+}
+.one {
+    grid-area: one
+}
+.two {
+    grid-area: two
+}
+.three {
+    grid-area: three
+}
+.add {
+    grid-area: add
+}
+.zero {
+    grid-area: zero
+}
+.dot {
+    grid-area: dot
+}
+.result {
+    grid-area: result
 }

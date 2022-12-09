@@ -8,26 +8,34 @@
     <title>Calculator</title>
 </head>
 <body>
-    <div class="mainContainer">
-        <div class="numScreen"></div>
-        <button value="0" class="num">0</button>
-        <button value="1" class="num">1</button>
-        <button value="2" class="num">2</button>
-        <button value="3" class="num">3</button>
-        <button value="4" class="num">4</button>
-        <button value="5" class="num">5</button>
-        <button value="6" class="num">6</button>
-        <button value="7" class="num">7</button>
-        <button value="8" class="num">8</button>
-        <button value="9" class="num">9</button>
+    <!-- <div class="calcContainer"> -->
+        <div class="calculator">
+            <div class="numScreen">
+                <div class="math"></div>
+                <div class="answer"></div>
+            </div>
+            <div class="calcButtons">
+                <button class="clear" >Clear</button>
+                <button value="0" class="num zero">0</button>
+                <button value="1" class="num one">1</button>
+                <button value="2" class="num two">2</button>
+                <button value="3" class="num three">3</button>
+                <button value="4" class="num four">4</button>
+                <button value="5" class="num five">5</button>
+                <button value="6" class="num six">6</button>
+                <button value="7" class="num seven">7</button>
+                <button value="8" class="num eight">8</button>
+                <button value="9" class="num nine">9</button>
 
-        <button value="x" class="operator" >x</button>
-        <button value="/" class="operator" >/</button>
-        <button value="-" class="operator" >-</button>
-        <button value="+" class="operator" >+</button>
-        <button value="=" class="result" >=</button>
-        <button class="clear" >Clear</button>
-    </div>
+                <button value=" * " class="operator mult" >x</button>
+                <button value=" / " class="operator divide" >/</button>
+                <button value=" - " class="operator sub" >-</button>
+                <button value=" + " class="operator add" >+</button>
+                <button value="." class="num dot">.</button>
+                <button value="=" class="result" >=</button>
+            </div>
+        </div>
+    <!-- </div> -->
 </body>
 <script src="calc.js"></script>
 </html>
