@@ -1,0 +1,87 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: smokewhite;
+}
+
+.pokemonCard {
+    margin: 50px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.oneCard {
+    display: grid;
+    grid-template-areas: 
+    "name name"
+    "picture picture"
+    "hp hp"
+    "moves moves"
+    ;
+
+    border: 5px solid black;
+    border-radius: 20px;
+    height: auto;
+    width: 300px;
+}
+
+.name {
+    grid-area: name;
+    text-align: center;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.picture {
+    grid-area: picture;
+    margin: auto;
+    height: 200px;
+    width: auto;
+}
+
+.backPicture {
+    border:1px solid black;
+    grid-area: picture;
+    margin: auto;
+    height: 200px;
+    width: auto;
+}
+
+.hp {
+    grid-area: hp;
+    text-align: center;
+    margin: 0;
+}
+
+.moves {
+    display: flex;
+    justify-content: space-around;
+    grid-area: moves;
+}
+
+.Gengar-card {
+    background-color: violet;
+}
+
+.MilTank-card {
+    background-color: gold;
+}
+
+.Garchomp-card {
+    background-color: lightcoral;
+}
+
+.Swampert-card {
+    background-color: grey
+}
+
+.Phanpy-card {
+    background-color: skyblue;
+}

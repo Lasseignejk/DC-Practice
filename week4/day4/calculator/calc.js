@@ -5,13 +5,12 @@ const calcDiv = document.querySelector(".calculator");
 const screen = document.querySelector(".numScreen")
 const userMathDiv = document.querySelector(".math")
 const answerDiv = document.querySelector(".answer")
-// this returns an object/dictionary
+// this returns an object/dictionary? array?
 const calcButton = document.querySelectorAll(".num")
 const calcOperator = document.querySelectorAll(".operator")
 const result = document.querySelector(".result")
 const clear = document.querySelector(".clear")
     
-// }
 let digits = [];
 let equation = [];
 const space = " ";
