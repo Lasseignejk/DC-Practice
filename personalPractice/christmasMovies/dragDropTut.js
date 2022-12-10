@@ -34,7 +34,6 @@ function createList() {
     // now that we've sorted, go back through that array and just print out each object's value, which is the name. 
     .map(a => a.value)
     .forEach((person, index) => {
-        console.log(person);
         const listItem = document.createElement("li");
         
         listItem.setAttribute("data-index", index);
@@ -44,35 +43,71 @@ function createList() {
         <div class="draggable" draggable="true">
         <p class="person-name">${person}</p>
         <i class="fas fa-grip-lines"></i>
-        </div
+        </div>
         `;
         listItems.push(listItem);
 
         draggable_list.appendChild(listItem);
-
-        addEventListeners();
-    })
+    });
+    addEventListeners();
 }
 
 function dragStart() {
     // console.log("Event: ", "dragstart")
+
+    // remember, we set up the "data-index" thing on line 40 which is just tracking the index.
+    dragStartIndex = +this.closest("li").getAttribute("data-index");
+    // console.log(dragStartIndex);
 }
 function dragEnter() {
     // console.log("Event: ", "dragenter")
     // this is a keyword that references the item... being entered?
+    // w3schools -- in an event, this refers to the element that received the event. 
+    // so dragEnter is being invoked on the element that is being entered into, not the one you're dragging into its space.
     this.classList.add("over");
 }
 function dragLeave() {
     // console.log("Event: ", "dragleave")
     this.classList.remove("over");
 }
-function dragOver() {
+function dragOver(e) {
     // console.log("Event: ", "dragover")
+    e.preventDefault();
 }
 function dragDrop() {
-    // console.log("Event: ", "drop")
+    // console.log("Event: ", "drop");
+    // the + is a unary operator returns the numeric representation of the object.
+    const dragEndIndex = +this.getAttribute("data-index");
+    swapItems(dragStartIndex, dragEndIndex);
+
+    this.classList.remove("over");
 }
 
+// Swap list items that are drag and drop
+function swapItems(fromIndex, toIndex) {
+    // console.log(123);
+    // this is selecting the elements 
+    const itemOne = listItems[fromIndex].querySelector(".draggable");
+    const itemTwo = listItems[toIndex].querySelector(".draggable");
+
+    // console.log(itemOne, itemTwo)
+    // this is swapping the elements and updating the DOM
+    listItems[fromIndex].appendChild(itemTwo);
+    listItems[toIndex].appendChild(itemOne);
+}
+// Check the order of list items
+function checkOrder() {
+    listItems.forEach((listItem, index) => {
+        const personName = listItem.querySelector('.draggable').innerText.trim();
+
+        if(personName !== richestPeople[index]) {
+            listItem.classList.add("wrong");
+        } else {
+            listItem.classList.remove("wrong");
+            listItem.classList.add("right");
+        }
+    });
+}
 
 function addEventListeners() {
     const draggables = document.querySelectorAll(".draggable");
@@ -83,9 +118,11 @@ function addEventListeners() {
     })
 
     dragListItems.forEach(item => {
-        item.addEventListener("dragover", dragStart);
+        item.addEventListener("dragover", dragOver);
         item.addEventListener("drop", dragDrop);
         item.addEventListener("dragenter", dragEnter);
         item.addEventListener("dragleave", dragLeave);
     })
 }
+
+check.addEventListener("click", checkOrder);
