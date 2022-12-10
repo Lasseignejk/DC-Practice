@@ -57,6 +57,18 @@ const listOfPokemon = [
 
 const pokemonCard = document.querySelector(".pokemonCard")
 
+const flipPokemon = (picture, e, pokemon, newPokeName) => {
+  //if the pokemon has the word back in the classname, change it's picture to the front pic and give it a front classname
+  if (e.className.includes("back")) {
+    picture.src = pokemon.picture;
+    picture.classList = "front";
+  } else {
+    // else switch it to the back pic and give it the back name
+    picture.src = pokemon[newPokeName];
+    picture.classList = "back";
+  }
+}
+
 
 for (const pokemon of listOfPokemon) {
     const oneCard = document.createElement("div")
@@ -67,12 +79,11 @@ for (const pokemon of listOfPokemon) {
     const moves = document.createElement("div")
     moves.setAttribute("class", "moves")
 
-    const picDiv = document.createElement("div")
-    picDiv.setAttribute("class", "picDiv")
-
     const name = document.createElement("h1");
     name.innerText = pokemon["name"];
     name.setAttribute("class", "name");
+    
+    const newPokeName = pokemon.name.toLowerCase() + "Back";
 
     const hp = document.createElement("h2");
     hp.innerText = pokemon["hp"];
@@ -86,43 +97,16 @@ for (const pokemon of listOfPokemon) {
     move2.innerText = pokemon["move2"];
     move2.setAttribute("class", "move2")
 
-    const frontPicture = document.createElement("img");
-    frontPicture.setAttribute("src", pokemon["picture"])
-    frontPicture.setAttribute("class", "picture")
+    const picture = document.createElement("img");
+    picture.src = pokemon.picture;
+    picture.classList = "front"
 
-    const backPicture = document.createElement("img");
-    backPicture.setAttribute("src", pokemon[pokemon.name.toLowerCase() + "Back"])
-    backPicture.setAttribute("class", "picture")
-    // picture.addEventListener("click", () => {
-        
-    // })
-
-    oneCard.append(name, hp, moves, picDiv)
-    picDiv.append(frontPicture, backPicture)
+    oneCard.append(name, hp, moves, picture)
     moves.append(move1, move2)
     pokemonCard.append(oneCard)
+
+    picture.addEventListener("click", (e) => {
+      flipPokemon(picture, e.target, pokemon, newPokeName)
+    })
+  
 }
-
-
-const test = document.querySelector(".test")
-
-const frontPicture = document.createElement("img");
-frontPicture.setAttribute("src", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/231.png");
-frontPicture.setAttribute("class", "picture");
-
-const backPicture = document.createElement("img");
-backPicture.setAttribute("src", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/231.png");
-backPicture.setAttribute("class", "backPicture")
-
-frontPicture.addEventListener("click", () => {
-    test.append(backPicture)
-})
-
-backPicture.addEventListener("click", () => {
-    test.append(frontPicture)
-})
-
-
-test.append(frontPicture)
-
-// [key*=Back])

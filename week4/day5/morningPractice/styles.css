@@ -39,15 +39,7 @@ body {
     margin-top: 10px;
 }
 
-.picture {
-    grid-area: picture;
-    margin: auto;
-    height: 200px;
-    width: auto;
-}
-
-.backPicture {
-    border:1px solid black;
+img {
     grid-area: picture;
     margin: auto;
     height: 200px;
