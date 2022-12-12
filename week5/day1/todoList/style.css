@@ -1,0 +1,94 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.outsideContainer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    /* border: 1px solid black; */
+    justify-content: center;
+    align-items: center;
+}
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    background-color: cornflowerblue;
+    box-shadow: 10px 10px 30px black;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.todoList {
+    display: grid;
+    place-content: center;
+
+    width: 300px;
+    margin: 0;
+    padding: 0;
+}
+
+.listContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.itemContainer {
+    display:flex;
+    list-style-type: none;
+    justify-content: space-between;
+    gap: 15px;
+    min-width: 100px;
+    margin: 5px 0;
+    border-radius: 10px;
+    background-color: snow;
+    padding: 5px;
+}
+
+.inputField {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#input {
+    border-radius: 10px;
+    text-align: center;
+    border: none;
+    padding: 5px;
+    font-size: 15px;
+    background-color: snow;
+
+}
+
+#input::placeholder {
+    text-align: center;
+}
+
+.button {
+    background-color: snow;
+    border: none;
+    border-radius: 10px;
+}
+
+.button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: slateblue;
+    border: 1px solid slateblue;
+    color: white;
+}
+
+.submit {
+    padding: 10px 20px;
+    font-size: 15px;
+}

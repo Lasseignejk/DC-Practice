@@ -4,7 +4,7 @@
 // [] I will be able to delete a todo if I add one by clicking a red x next to each todo
 // [] I will be able to persist all the data if I am so smart and figured this all out so that my todo survives a refresh
 
-const addButton = document.querySelector(".submit")
+const addButton = document.querySelector(".button")
 const todoList = document.querySelector(".todoList")
 const inputValue = document.getElementById("input")
 const toLocalStorage = []
@@ -27,12 +27,14 @@ function addTodo() {
     const deleteButton = document.createElement("button")
 
     item.innerHTML = inputValue.value
+    itemContainer.classList.add("itemContainer")
 
     toLocalStorage.push(inputValue.value)
     console.log(toLocalStorage)
     localStorage.setItem("todoItems", toLocalStorage)
 
-    deleteButton.innerHTML = `<i class="fa-solid fa-trash-can trash"></i>`
+    deleteButton.innerHTML = `<i class="fa-solid fa-trash-can"></i>`
+    deleteButton.classList.add("button")
 
     itemContainer.append(item, deleteButton)
     todoList.append(itemContainer)
@@ -47,10 +49,9 @@ div.remove()
 }
 
 function checkLocalStorage() {
-    
-    const inLocalStorage = localStorage.getItem("todoItems")
+    localStorage.setItem("todoItems", toLocalStorage)
     console.log(inLocalStorage)
-    if (inLocalStorage.length !=0) {
+    if (inLocalStorage.length >0) {
         const storedTodos = inLocalStorage.split(",")
         console.log(storedTodos)
         storedTodos.forEach(todo => {
@@ -59,8 +60,11 @@ function checkLocalStorage() {
             const deleteButton = document.createElement("button")
         
             item.innerHTML = todo
+            itemContainer.classList.add("itemContainer")
         
             deleteButton.innerHTML = `<i class="fa-solid fa-trash-can trash"></i>`
+            deleteButton.classList.add("button")
+            
         
             itemContainer.append(item, deleteButton)
             todoList.append(itemContainer)
