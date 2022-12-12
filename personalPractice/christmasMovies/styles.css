@@ -9,7 +9,7 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     height: 100%;
     text-align: center;
-    background-color: #b8586e;
+    background-color: snow;
 
 }
 
@@ -22,30 +22,29 @@ body {
 .mainContainer {
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
     flex: 1;
-    box-shadow: 15px 15px 30px black;
+}
+
+i {
+    color: forestgreen;
 }
 
 .number {
-    background-color: #4b9259;
+    background-color: crimson;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 28px;
     height: 100%;
-    width: 40px;
-    border-radius: 10px;
+    width: 60px;
 }
 
 .oneMovie {
     border: 1px solid black;
-    border-radius: 10px;
-    background-color: #d5d4da;
     display: flex;
     flex: 1;
     gap: 10px;
-    box-shadow: 10px 10px 10px black;
+    background-color: snow;
 }
 
 .oneMovie:hover {
@@ -66,5 +65,5 @@ body {
 }
 
 .over {
-    background-color: rgb(206, 173, 173);
+    background-color: mistyrose;
 }
