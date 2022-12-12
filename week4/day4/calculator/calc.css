@@ -71,6 +71,10 @@ button:hover {
     color: lightsteelblue;
 }
 
+.mouseDown {
+    transform: scale(.9)
+}
+
 
 
 .clear {

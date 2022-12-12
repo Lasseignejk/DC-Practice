@@ -21,6 +21,12 @@ for (const button of Object.values(calcButton)) {
         userMathDiv.innerText += button.value;
         digits.push(button.value)
     });
+    button.addEventListener("mousedown", () => {
+        button.classList.add("mouseDown")
+    });
+    button.addEventListener("mouseup", () => {
+        button.classList.remove("mouseDown")
+    });
 }
 
 for (const button of Object.values(calcOperator)) {
@@ -35,8 +41,13 @@ for (const button of Object.values(calcOperator)) {
         console.log(equation);
         digits.length = 0;
         userMathDiv.innerText += space;
-    
-    })
+    });
+    button.addEventListener("mousedown", () => {
+        button.classList.add("mouseDown")
+    });
+    button.addEventListener("mouseup", () => {
+        button.classList.remove("mouseDown")
+    });
 }
 
 result.addEventListener("click", () => {
@@ -49,9 +60,22 @@ result.addEventListener("click", () => {
     answerDiv.innerText = realAnswer
 })
 
+result.addEventListener("mousedown", () => {
+    result.classList.add("mouseDown")
+})
+result.addEventListener("mouseup", () => {
+    result.classList.remove("mouseDown")
+})
+
 clear.addEventListener("click", () => {
     digits.length = 0;
     equation.length = 0;
     answerDiv.innerText = ""
     userMathDiv.innerText = ""
+})
+clear.addEventListener("mousedown", () => {
+    clear.classList.add("mouseDown")
+})
+clear.addEventListener("mouseup", () => {
+    clear.classList.remove("mouseDown")
 })

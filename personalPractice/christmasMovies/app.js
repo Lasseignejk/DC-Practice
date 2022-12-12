@@ -21,30 +21,57 @@ function createList(){
     <span class="number">${index+1}</span>
     <div class="draggable" draggable="true">
     <p class="movie-name">${movie}</p>
-    <i class="fas fa-grip-lines"></i>
+    <i class="fa-solid fa-gift"></i>
     </div>
     `
 
     movieContainer.append(oneMovie);
   })
+  addEventListeners();
 }
 
+function addEventListeners() {
+  const draggables = document.querySelectorAll(".draggable");
+  const oneMovie = document.querySelectorAll(".oneMovie");
+  
+  draggables.forEach(draggable => {
+    draggable.addEventListener("dragstart", dragStart);
+  })
+  oneMovie.forEach(item => {
+    item.addEventListener("dragover", dragOver);
+    item.addEventListener("drop", dragDrop);
+    item.addEventListener("dragenter", dragEnter);
+    item.addEventListener("dragleave", dragLeave);
+  })
+}
 
-function dragStart(event) {
-    event.dataTransfer.setData("Text", event.target.id);
-  }
-  
-  function dragging(event) {
-    document.getElementById("demo").innerHTML = "The p element is being dragged";
-  }
-  
-  function allowDrop(event) {
-    event.preventDefault();
-  }
-  
-  function drop(event) {
-    event.preventDefault();
-    var data = event.dataTransfer.getData("Text");
-    event.target.appendChild(document.getElementById(data));
-    document.getElementById("demo").innerHTML = "The p element was dropped";
-  }
+function dragStart() {
+  dragStartIndex = +this.closest(".oneMovie").getAttribute("data-index");
+}
+
+function dragOver(e) {
+e.preventDefault();
+}
+
+function dragDrop() {
+  const dragEndIndex = +this.getAttribute("data-index");
+  swapItems(dragStartIndex, dragEndIndex);
+  this.classList.remove("over");
+}
+
+function dragEnter() {
+  this.classList.add("over");
+}
+
+function dragLeave() {
+  this.classList.remove("over");
+}
+
+function swapItems(fromIndex, toIndex) {
+  const oneMovie = document.querySelectorAll(".oneMovie");
+  const itemOne = oneMovie[fromIndex].querySelector(".draggable");
+  const itemTwo = oneMovie[toIndex].querySelector(".draggable");
+
+  oneMovie[fromIndex].appendChild(itemTwo);
+  oneMovie[toIndex].appendChild(itemOne);
+}
