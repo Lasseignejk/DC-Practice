@@ -8,8 +8,8 @@
 // 8 [x] Image from cards
 // 9 [x] Render hands 
 // 10 [x] Shuffle the deck
-// 11 [] Calculate points for a hand 
-// 12 [] Display points
+// 11 [x] Calculate points for a hand 
+// 12 [x] Display points
 // 13 [] Busts
 // 14 [] Player stands
 // 15 [] Determine winner 
@@ -20,6 +20,8 @@ const playerHand = document.getElementById("player-hand");
 const deck = [];
 const dealerCards = [];
 const playerCards = [];
+const playerPoints = document.getElementById("player-points")
+const dealerPoints = document.getElementById("dealer-points")
 const suits = ["hearts", "spades", "clubs", "diamonds"];
 const ranks = ["ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
@@ -38,21 +40,52 @@ for (let suit of suits) {
   }
 }
 
+function deal() {
+  dealToPlayer();
+  dealToDealer();
+  dealToPlayer();
+  dealToDealer();
+}
+
+function hit() {
+  dealToPlayer();
+  dealToDealer();
+}
+
 function dealToPlayer() {
   const randomNum = Math.floor(Math.random()*deck.length);
   card = deck.splice(randomNum, 1)
-  console.log(deck)
-  // playerCards.push(card)
-  // getCardImage(playerCards)
+  playerCards.push(card)
   playerHand.append(getCardImage(card))
 }
 
 function dealToDealer() {
   const randomNum = Math.floor(Math.random()*deck.length);
   card = deck.splice(randomNum, 1)
-  // dealerCards.push(card)
-  // getCardImage(dealerCards)
+  dealerCards.push(card)
   dealerHand.append(getCardImage(card))
+}
+
+const calculatePoints = (array) => {
+  let sum = 0;
+  array.forEach((card) => {
+    value = card[0]["pointValue"]
+    sum += value
+    console.log(sum)
+  })
+  return sum
+}
+
+const calculatePointsOnHit = (points, array) => {
+  points.innerHTML = 0
+  let sum = parseInt(points.innerHTML);
+  array.forEach((card) => {
+    value = card[0]["pointValue"]
+    sum += value
+    // console.log(sum)
+  })
+  // return sum
+  points.innerHTML = sum
 }
 
 const getCardImage = (array) => {
@@ -68,20 +101,21 @@ const getCardImage = (array) => {
 const dealButton = document.getElementById("deal-button")
 const hitButton = document.getElementById("hit-button")
 
+
 dealButton.addEventListener("click", () => deal())
+dealButton.addEventListener("click", () => {
+  dealerPoints.append(calculatePoints(dealerCards))
+})
+dealButton.addEventListener("click", () => {
+  playerPoints.append(calculatePoints(playerCards))
+})
+
+
 hitButton.addEventListener("click", () => hit())
+hitButton.addEventListener("click", () =>   calculatePointsOnHit(dealerPoints, dealerCards))
+hitButton.addEventListener("click", () =>   calculatePointsOnHit(playerPoints, playerCards))
 
-function deal() {
-  dealToPlayer();
-  dealToDealer();
-  dealToPlayer();
-  dealToDealer();
-}
 
-function hit() {
-  dealToPlayer();
-  dealToDealer();
-}
 
 
 
