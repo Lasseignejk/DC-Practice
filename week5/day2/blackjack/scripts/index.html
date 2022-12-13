@@ -5,29 +5,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blackjack</title>
-  <script defer src="scripts/main.js"></script>
-  <link rel="stylesheet" href="./extras/HereIsOneIPreparedEarlier.css">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <div class="message-box" id="messages"></div>
   <div class="table">
+    <!-- Dealer info -->
     <div class="player">
       <label class="player-name">Dealer: <span id="dealer-points" class="points"></span>
       </label>
+      <!-- Dealer hand -->
       <div id="dealer-hand" class="hand">
-        <!-- Dealer Hand -->
-        <img src="" alt="">
+        <!-- generated cards will go here -->
       </div>
     </div>
+    <!-- Player info -->
     <div class="player">
       <label class="player-name">Player: <span id="player-points" class="points"></span>
       </label>
+      <!-- Player hand  -->
       <div id="player-hand" class="hand">
-        <!-- Player Hand -->
+        <!-- generated cards will go here -->
       </div>
     </div>
+    <!-- Buttons -->
     <div class="buttons">
       <button id="deal-button" type="button">Deal</button>
       <button id="hit-button" type="button">Hit</button>
