@@ -67,16 +67,13 @@ function hit() {
 }
 
 function stand() {
-  console.log("stand()")
   if (parseInt(dealerPoints.innerHTML) < 17) {
     while (parseInt(dealerPoints.innerHTML) < 17) {
-      // console.log("dealer's points are less than 17, deal another card")
       dealToDealer();
       calculatePointsOnStand(dealerPoints, dealerCards)
     }
     standLogic()
   } else {
-    // console.log("dealer's points are more than 17, move straight to standLogic()")
     standLogic()
   }
 }
@@ -100,23 +97,32 @@ function dealToDealer() {
 const checkAce = (sum, array) => {
   console.log("checkAce()")
     array.forEach((element) => {
-      if (sum < 21) {
+      if (sum <= 10 || sum < 21) {
+        console.log("sum is less than 10")
         if (element[0]["rank"] === 1) {
-          console.log("ace found")
           element.pointValue = 11;
           sum += 10
-          console.log(`sum is ${sum}`)
           return sum
         }
-      }
-      if (sum > 21) {
-        if (element[0]["rank"] === 1) {
-          console.log("ace found")
-          element.pointValue = 11;
-          sum -= 10
-          console.log(`sum is ${sum}`)
+        if (sum > 21) {
+          console.log("sum was less than 10 but is now over 21")
+          if (element[0]["rank"] === 1) {
+            element.pointValue = 11;
+            sum -= 10
+            return sum
+          }
           return sum
-        }    
+        }
+        return sum
+      } 
+      if (sum > 21) {
+        console.log("sum is greater than 10")
+        if (element[0]["rank"] === 1) {
+          element.pointValue = 1;
+          sum += 1
+          return sum
+        }
+        return sum    
       }
       return sum
     })
@@ -132,7 +138,6 @@ const calculatePoints = (array) => {
     sum += value
   })
   let sum2 = checkAce(sum, array)
-  console.log(`sum after running checkAce, back in the calculatePoints is ${sum2}`)
   return sum2
 }
 
@@ -242,7 +247,6 @@ hitButton.addEventListener("click", () => {
 })
 
 standButton.addEventListener("click", () => {
-  console.log ("standing")
   stand();
 })
 
