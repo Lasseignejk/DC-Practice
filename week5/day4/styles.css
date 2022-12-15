@@ -9,16 +9,29 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 
 .main-container {
     border: 1px solid black;
-    height: 500px;
+    border-radius: 10px;
+    min-height: 200px;
+    max-height: auto;
     padding: 10px;
 }
 
 .info {
     border: 1px solid red;
     margin: 20px 0;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.dayTime {
+    background-color: yellow;
+}
+
+.nightTime {
+    background-color: blue;
 }
