@@ -14,7 +14,8 @@
 // 14 [x] Player stands
 // 15 [x] Determine winner 
 // 16 [x] Restart game
-// 17 [] Ace functionality
+// 17 [x] Ace functionality
+// 18 [] Have first dealer card be face down, flip on stand? 
 
 const dealerHand = document.getElementById("dealer-hand");
 const playerHand = document.getElementById("player-hand");
@@ -40,7 +41,7 @@ const makeDeck = (rank, suit) => {
   deck.push(card);
 };
 
-
+// ** deal, hit, and stand **
 function deal() {
   messages.innerText = "";
   playerPoints.innerHTML = "";
@@ -65,7 +66,22 @@ function hit() {
   dealToPlayer();
 }
 
+function stand() {
+  console.log("stand()")
+  if (parseInt(dealerPoints.innerHTML) < 17) {
+    while (parseInt(dealerPoints.innerHTML) < 17) {
+      // console.log("dealer's points are less than 17, deal another card")
+      dealToDealer();
+      calculatePointsOnStand(dealerPoints, dealerCards)
+    }
+    standLogic()
+  } else {
+    // console.log("dealer's points are more than 17, move straight to standLogic()")
+    standLogic()
+  }
+}
 
+// ** deal to player/dealer **
 function dealToPlayer() {
   const randomNum = Math.floor(Math.random()*deck.length);
   card = deck.splice(randomNum, 1)
@@ -80,13 +96,44 @@ function dealToDealer() {
   dealerHand.append(getCardImage(card))
 }
 
+// ** Check for aces ** 
+const checkAce = (sum, array) => {
+  console.log("checkAce()")
+    array.forEach((element) => {
+      if (sum < 21) {
+        if (element[0]["rank"] === 1) {
+          console.log("ace found")
+          element.pointValue = 11;
+          sum += 10
+          console.log(`sum is ${sum}`)
+          return sum
+        }
+      }
+      if (sum > 21) {
+        if (element[0]["rank"] === 1) {
+          console.log("ace found")
+          element.pointValue = 11;
+          sum -= 10
+          console.log(`sum is ${sum}`)
+          return sum
+        }    
+      }
+      return sum
+    })
+    return sum
+}
+
+
+// ** Calculating points functions **
 const calculatePoints = (array) => {
   let sum = 0;
   array.forEach((card) => {
-    value = card[0]["pointValue"]
+    value = card[0]["pointValue"] 
     sum += value
   })
-  return sum
+  let sum2 = checkAce(sum, array)
+  console.log(`sum after running checkAce, back in the calculatePoints is ${sum2}`)
+  return sum2
 }
 
 const calculatePointsOnHit = (points, array) => {
@@ -96,18 +143,72 @@ const calculatePointsOnHit = (points, array) => {
     value = card[0]["pointValue"]
     sum += value
   })
-  points.innerHTML = sum
+  let sum2 = checkAce(sum, array)
+  points.innerHTML = sum2
 }
 
+const calculatePointsOnStand = (points, array) => {
+  points.innerHTML = 0
+  let sum = parseInt(points.innerHTML);
+  array.forEach((card) => {
+    value = card[0]["pointValue"]
+    sum += value
+  })
+  let sum2 = checkAce(sum, array)
+  points.innerHTML = sum2
+}
+
+
+// ** Get image for the cards **
 const getCardImage = (array) => {
   for (const item of array) {
-    // console.log(item)
   let newCard = document.createElement("img");
   newCard.setAttribute("src", `/week5/day2/blackjack/images/${item["rank"]}_of_${item["suit"]}.png`)
   return newCard
   }
 }
 
+// ** Game logic / stand logic **
+const gameLogic = () => {
+  if (parseInt(playerPoints.innerHTML) > 21) {
+    messages.append("Player bust -- dealer wins");
+    resetButtons();
+  } 
+  if (parseInt(dealerPoints.innerHTML) == 21) {
+    messages.append("Dealer has reached 21 -- Dealer wins");
+    resetButtons();
+  } 
+  if (parseInt(playerPoints.innerHTML) == 21) {
+    messages.append("Player has reached 21 -- Player wins");
+    resetButtons();
+  } 
+}
+
+const standLogic = () => {
+  calculatePointsOnStand(dealerPoints, dealerCards)
+
+  if (((parseInt(dealerPoints.innerHTML)) >= 17) && ((parseInt(dealerPoints.innerHTML) <= 21))) {
+
+    if (parseInt(dealerPoints.innerHTML) > parseInt(playerPoints.innerHTML)) {
+      messages.append("Dealer wins")
+      resetButtons();
+    } else if (parseInt(dealerPoints.innerHTML) == parseInt(playerPoints.innerHTML)) {
+      messages.append("Tie")
+      resetButtons();
+    } else if (parseInt(dealerPoints.innerHTML) < parseInt(playerPoints.innerHTML)) {
+      messages.append("Player wins")
+      resetButtons();
+    } else {
+      messages.append("Player wins")
+      resetButtons();
+    }
+  } else {
+    messages.append("Player wins");
+    resetButtons();
+  }
+}
+
+// ** Disable/Enable Buttons **
 const resetButtons = () => {
   hitButton.disabled = true;
   dealButton.disabled = false;
@@ -123,87 +224,7 @@ const enableButton = () => {
   standButton.disabled = false;
 }
 
-const gameLogic = () => {
-  if (parseInt(playerPoints.innerHTML) > 21) {
-    messages.append("GAMELOGIC() Player bust -- dealer wins");
-    resetButtons();
-  } 
-  // if (parseInt(dealerPoints.innerHTML) > 21) {
-  //   messages.append("GAMELOGIC() Dealer bust -- player wins");
-  //   resetButtons();
-  // } 
-  if (parseInt(playerPoints.innerHTML) == 21) {
-    messages.append("GAMELOGIC() Player has reached 21 -- Player wins");
-    resetButtons();
-  } 
-  // if (parseInt(dealerPoints.innerHTML) == 21) {
-  //   messages.append("GAMELOGIC() Dealer has reached 21 -- Dealer wins");
-  //   resetButtons();
-  // } 
-}
-
-
-
-function stand() {
-  console.log("stand()")
-  if (parseInt(dealerPoints.innerHTML) < 17) {
-    while (parseInt(dealerPoints.innerHTML) < 17) {
-      console.log("dealer's points are less than 17, deal another card")
-      dealToDealer();
-      calculatePointsOnStand(dealerPoints, dealerCards)
-    }
-    standLogic()
-  } else {
-    console.log("dealer's points are more than 17, move straight to standLogic()")
-    standLogic()
-  }
-}
-  // }
-
-const calculatePointsOnStand = (points, array) => {
-  points.innerHTML = 0
-  let sum = parseInt(points.innerHTML);
-  array.forEach((card) => {
-    value = card[0]["pointValue"]
-    sum += value
-  })
-  points.innerHTML = sum
-}
-
-const standLogic = () => {
-  calculatePointsOnStand(dealerPoints, dealerCards)
-  console.log(`dealer points are ${dealerPoints.innerHTML}`)
-
-  if (((parseInt(dealerPoints.innerHTML)) >= 17) && ((parseInt(dealerPoints.innerHTML) <= 21))) {
-    console.log("dealer's points are greater than 17 but less than 21")
-
-    if (parseInt(dealerPoints.innerHTML) > parseInt(playerPoints.innerHTML)) {
-      console.log("dealer's points are greater than player's points")
-      messages.append("STANDLOGIC() Dealer wins")
-      resetButtons();
-      stillPlaying = false
-    } else if (parseInt(dealerPoints.innerHTML) == parseInt(playerPoints.innerHTML)) {
-      console.log("dealer's points equal player points")
-      messages.append("STANDLOGIC() Tie")
-      resetButtons();
-      stillPlaying = false
-    } else if (parseInt(dealerPoints.innerHTML) < parseInt(playerPoints.innerHTML)) {
-      console.log("dealer's points are less than player points")
-      messages.append("STANDLOGIC() Player wins")
-      resetButtons();
-      stillPlaying = false;
-    } else {
-      messages.append("STANDLOGIC() Player wins")
-      resetButtons();
-      stillPlaying = false
-    }
-  } else {
-    messages.append("STANDLOGIC() ELSE STATEMENT player wins");
-    resetButtons();
-    stillPlaying = false
-  }
-}
-
+// ** Event listeners **
 dealButton.addEventListener("click", () => {
   deal();
   dealerPoints.append(calculatePoints(dealerCards));
