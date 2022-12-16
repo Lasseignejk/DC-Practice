@@ -95,22 +95,20 @@ function dealToDealer() {
 
 // ** Check for aces ** 
 const checkAce = (sum, array) => {
-  console.log("checkAce()")
   array.forEach((element) => {
-    if (sum <= 10) {
-      console.log("sum is less than 10 -- working")
+    if (sum <= 11) {
       if (element[0]["rank"] === 1) {
         element.pointValue = 11;
         sum += 10
         return sum
       }
+    } else if (sum == 21) {
       return sum
-    } 
-    if (sum > 10 || sum > 21) {
-      console.log("sum is greater than 10")
+    }
+
+    if (sum > 11 || sum > 21) {
       if (element[0]["rank"] === 1) {
         element.pointValue = 1;
-        sum += 1
         return sum
       }
       return sum    
@@ -150,6 +148,7 @@ const calculatePointsOnStand = (points, array) => {
     value = card[0]["pointValue"]
     sum += value
   })
+  gameLogic()
   let sum2 = checkAce(sum, array)
   points.innerHTML = sum2
 }
