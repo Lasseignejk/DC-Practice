@@ -5,8 +5,6 @@ const mainContainer = document.querySelector(".main-container")
 const locationContainer = document.querySelector(".locationContainer")
 
 
-
-
 const getWeather = async () => {
   const weatherInput = document.querySelector(".weather").value;
   const weatherData = await fetch(
@@ -35,12 +33,23 @@ const getWeather = async () => {
   const userWeatherIcon = document.createElement("img");
   const userWeatherIconDiv = document.createElement("div");
 
+  const userWeatherDescription = document.createElement("p");
+  const userWeatherDescriptionDiv = document.createElement("div");
+
+  const userMin = document.createElement("span");
+  const userMax = document.createElement("span");
+  const userMinMaxDiv = document.createElement("div");
+
   let location = json.name;
-  let temp = json.main.temp;
-  let feelsLike = json.main.feels_like;
+  let temp = Math.trunc(json.main.temp);
+  let feelsLike = Math.trunc(json.main.feels_like);
   let icon = json.weather[0]["icon"];
+  let description = json.weather[0]["main"];
+  let min = Math.trunc(json.main.temp_min);
+  let max = Math.trunc(json.main.temp_max);
 
   infoDiv.classList.add("info");
+  infoDiv.classList.add("fade-in")
 
   deleteButton.innerHTML = "X";
   deleteButton.classList.add("deleteButton")
@@ -66,15 +75,26 @@ const getWeather = async () => {
     userWeatherIcon.classList.add("weatherPhotoNight")
   }
 
+
+
   userTemp.innerHTML = `${temp}&deg;F`
   userTempDiv.append(userTemp)
   userTempDiv.classList.add("current")
 
-  userFeelsLike.innerHTML = `Feels like: ${feelsLike} &deg;F`
+  userFeelsLike.innerHTML = `Feels like ${feelsLike}&deg;F`
   userFeelsLikeDiv.append(userFeelsLike) 
   userFeelsLikeDiv.classList.add("feelsLike")
 
-  infoDiv.append(noneDiv, deleteButtonDiv, userLocationDiv, userWeatherIconDiv, userTempDiv, userFeelsLikeDiv)
+  userWeatherDescription.innerHTML = `${description}`
+  userWeatherDescriptionDiv.append(userWeatherDescription)
+  userWeatherDescriptionDiv.classList.add("imageDescription")
+
+  userMin.innerHTML = `&#8595: ${min}`
+  userMax.innerHTML = `&#8593: ${max}`
+  userMinMaxDiv.append(userMin, userMax);
+  userMinMaxDiv.classList.add("tempMinMax")
+
+  infoDiv.append(noneDiv, deleteButtonDiv, userLocationDiv, userWeatherIconDiv, userTempDiv, userFeelsLikeDiv, userWeatherDescriptionDiv, userMinMaxDiv)
   locationContainer.append(infoDiv)
   zipInput.value = ""
 };

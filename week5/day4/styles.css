@@ -82,7 +82,7 @@ body {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    max-height: 100vh;
+    max-height: 80vh;
     justify-content: center;
     align-items: center;
     gap: 20px;
@@ -119,6 +119,12 @@ body {
     border: 1px solid black;
 }
 
+::placeholder {
+    font-style: italic;
+    color: rgb(156, 171, 211);
+}
+
+
 .none {
     grid-area: none;
 }
@@ -136,7 +142,6 @@ body {
 .image {
     grid-area: image;
     justify-content: center;
-    margin-bottom: 20px;
 }
 
 .current {
@@ -156,9 +161,53 @@ body {
 }
 
 .imageDescription {
-    grid-area: imageDescription
+    grid-area: imageDescription;
+}
+
+.imageDescription p {
+    margin: 0;
+    margin-bottom: 20px;
 }
 
 .tempMinMax {
-    grid-area: tempMinMax
+    grid-area: tempMinMax;
+    display: grid;
+    grid-template-columns: repeat(2, 50px);
+    place-content: center;
+    font-size: 13px;
+    margin-bottom: 20px;
+    font-weight: 400;
 }
+
+.fade-in {
+    animation: fadeIn 1s;
+    -webkit-animation: fadeIn 1s;
+    -moz-animation: fadeIn 1s;
+    -o-animation: fadeIn 1s;
+    -ms-animation: fadeIn 1s;
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-o-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
