@@ -40,11 +40,14 @@ const getWeather = async () => {
   userLocation.classList.add("location")
 
   userWeatherIcon.src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  userWeatherIcon.classList.add("weatherPhoto")
 
   if (icon.search("d") >= 0) {
     infoDiv.classList.add("dayTime")
+    userWeatherIcon.classList.add("weatherPhotoDay")
   } else {
     infoDiv.classList.add("nightTime")
+    userWeatherIcon.classList.add("weatherPhotoNight")
   }
 
   userTemp.innerHTML = `Currently: ${temp}&deg;F`

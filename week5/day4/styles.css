@@ -7,7 +7,7 @@ html, body {
 
 body {
     width: 100%;
-    background-color: antiquewhite;
+    background-image: linear-gradient(to bottom right, rgb(0, 170, 255), rgb(117, 244, 251), rgb(255, 255, 255));
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -17,7 +17,6 @@ body {
 }
 
 .main-container {
-    border: 1px solid black;
     border-radius: 10px;
     min-height: 80vh;
     /* min-height: 50px; */
@@ -25,7 +24,6 @@ body {
 }
 
 .info {
-    border: 1px solid black;
     /* margin: 20px 0; */
     text-align: center;
     border-radius: 10px;
@@ -33,19 +31,45 @@ body {
 }
 
 .dayTime {
-    background-color: yellow;
+    background-image: linear-gradient(rgb(255, 217, 0), rgb(252, 252, 140));
+}
+
+.weatherPhotoDay {
+    background-color: rgb(255, 217, 0);
+    padding: 0;
+    border: 1px solid black;
+    border-radius: 50px;
 }
 
 .nightTime {
-    background-color: rgb(41, 41, 68);
+    background-image: linear-gradient(rgb(41, 41, 68), rgb(96, 96, 155));
     color: white;
 }
 
-.location {
-    margin-top: 5px;
-    margin-bottom: 5px;
+.weatherPhotoNight {
+    background-color: rgb(115, 115, 189);
+    padding: 0;
+    border: 1px solid white;
+    border-radius: 50px;
 }
 
+.location {
+    margin: 5px;
+}
+
+.deleteButton {
+    margin-top: 9px;
+    margin-left: 160px;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+}
+
+.deleteButton:hover {
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: white;
+}
 
 .locationContainer {
     display: flex;
