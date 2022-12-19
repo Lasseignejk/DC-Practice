@@ -211,3 +211,15 @@ body {
     0% { opacity: 0; }
     100% { opacity: 1; }
   }
+
+  @media screen and (max-width: 860px) {
+    .locationContainer {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        max-height: 100vh;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+  }
