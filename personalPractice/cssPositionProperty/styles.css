@@ -1,0 +1,40 @@
+/* https://www.youtube.com/watch?v=jx5jmI0UlXU */
+
+body {
+    font-size: 30px;
+}
+
+.parent {
+    background-color: cornflowerblue;
+    position: relative;
+}
+
+.child-one {
+    background-color: lime;
+    position: sticky;
+    top: 0;
+}
+
+.child-two {
+    background-color: salmon;
+}
+
+.child-three {
+    background-color: plum;
+}
+
+/* Static */
+/* The normal/default position on all elements */
+
+/* Relative */
+/* Exactly like static but it allows you to change all the sides of the object. For example, if you set 'left' to be 20px, it will shove the whole element to the right by 20px, even shoving it outside of its parent container. You change its position relative to where it would have been if it was staticly positioned. The space it would've occupied is still there however. */
+
+/* Absolute */
+/* Completely removed from the flow of the document. The space it would've occupied isn't reserved anymore, instead, child-two moves into that space and child-one is sitting on top of it. So everything else renders as though child-one doesn't exist. */
+/* You can use top, left, right, bottom with absolute, but it actually moves the item in relation to the viewport itself, not the parent element, because the parent element is static. If you set the parent to position: relative, then the absolute child will use the dimensions of the parent to move itself. This is the most common use of relative -- to set the parent so the child can move relative to it. */
+
+/* Fixed */
+/* Positiion is relative to the html document itself, parent elements have no effect. They also stay in place when you scroll. */
+
+/* Sticky */
+/* Combination of relative and fixed. Stays in the flow of the document until the top of the element hits the top of the screen. Then, it becomes fixed there, it sticks there, as you continue scrolling. */
