@@ -3,6 +3,109 @@ html, body {
     padding: 0;
 }
 
-div {
-    border: 1px solid black;
+body {
+    height: 100vh;
+    border: 1px solid blue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* ----------------------nav bar------------------------ */
+.nav-bar {
+    color: white;
+    background-color: black;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-bar ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid red;
+    width: 300px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-logo {
+    border: 1px solid yellow;
+    margin: 0;
+    margin-left: 10px;
+}
+
+.nav-bar a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-bar a:hover {
+    text-decoration: underline;
+}
+
+/* -----------------------cards------------------------- */
+
+.cardContainer {
+    border: 3px solid black;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding: 20px;
+    perspective: 1000px;
+}
+
+.card:hover {
+    cursor:pointer;
+    transform: rotateY(180deg);
+}
+
+.card {
+    height: 350px;
+    width: 250px;
+    position: relative;
+    transition: transform 1500ms;
+    transform-style: preserve-3d;
+}
+
+.front, .back {
+    height: 100%;
+    width: 100%;
+    border-radius: 2rem;
+    box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front {
+    /* background-image: url(https://source.unsplash.com/random/350x500); */
+    /* document.body.style.backgroundImage = "url('img_tree.png')"; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: white;
+}
+
+.back {
+    background-color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+}
+
+/* ------------------card content----------------------- */
+
+.parkName {
+    margin: 0 10px;
+}
+
+.parkState {
+    margin: 10px 15px;
 }
