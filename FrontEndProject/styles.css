@@ -5,7 +5,7 @@ html, body {
 
 body {
     height: 100vh;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 /* ----------------------nav bar------------------------ */
@@ -45,6 +45,14 @@ body {
     text-decoration: underline;
 }
 
+/* ------------------search for a park----------------------- */
+.searchContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    border: 1px solid black;
+}
+
 /* -----------------------cards------------------------- */
 
 .cardContainer {
@@ -56,7 +64,7 @@ body {
     align-items: center;
     height: auto;
     padding: 20px;
-    perspective: 1000px;
+    perspective: 2100px;
 }
 
 .card:hover {
@@ -68,8 +76,9 @@ body {
     height: 350px;
     width: 250px;
     position: relative;
-    transition: transform 1500ms;
+    transition: transform 1000ms;
     transform-style: preserve-3d;
+
 }
 
 .front, .back {
@@ -83,29 +92,66 @@ body {
 
 .front {
     /* background-image: url(https://source.unsplash.com/random/350x500); */
-    /* document.body.style.backgroundImage = "url('img_tree.png')"; */
+
     display: flex;
+    color: white;
     flex-direction: column;
     justify-content: flex-end;
-    background-color: white;
+    background-color: #141414;
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-size: 220%;
 }
+
+/* .front::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 2rem;
+} */
+
 
 .back {
     background-color: white;
     transform: rotateY(180deg);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5rem;
+    /* overflow-y: auto; */
+
+    height: 100%;
+    padding: 0 10px;
+    /* white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; */
+
+    /* gap: 5rem; */
+}
+
+.back p {
+    margin: 0;
+    padding: 10px 0;
 }
 
 /* ------------------card content----------------------- */
 
 .parkName {
     margin: 0 10px;
+    font-size: 30px;
 }
 
 .parkState {
     margin: 10px 15px;
 }
+
+/* ------------------media queries---------------------- */
+/* Small screens  */
+/* @media only screen and (max-width: 600px) {
+
+}
+
+/* large screens */
+/* @media only screen and (min-width: 600px) {
+    
+} */ 
