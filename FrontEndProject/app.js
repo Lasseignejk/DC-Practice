@@ -4,8 +4,9 @@ const cardContainer = document.querySelector(".cardContainer")
 input = "SC"
 const searchParkAPI = async () => {
     cardContainer.innerHTML="";
-    const searchField = document.querySelector(".inputField").value.toUpperCase();
-  
+    // const searchField = document.querySelector(".inputField").value.toUpperCase();
+    const stateValue = document.querySelector(".stateSelect").value;
+    const url = ;
     // const response = await fetch(url, {
     //   method: "GET",
     //   parameters: {
@@ -45,6 +46,10 @@ const searchParkAPI = async () => {
         // ----------------------create-----------------------
         const card = document.createElement("div");
         const front = document.createElement("div");
+        const parkPhotoDiv = document.createElement("div");
+        const parkPhoto = document.createElement("img");
+        const parkStateDiv = document.createElement("div");
+        const parkFrontInfo = document.createElement("div");
         const back = document.createElement("div");
         const parkName = document.createElement("h1");
         const parkState = document.createElement("h2");
@@ -61,14 +66,33 @@ const searchParkAPI = async () => {
                 return newString
             }
         }
+
+        const addSpace = (str) => {
+            return str.split(',').join(', ');
+        }
+        const parkStateSpaced = addSpace(jsonState)
+
+        const checkStateLength = (str) => {
+            if (str.length > 20) {
+                const slicedString = str.slice(0, 18);
+                const newString = slicedString + "..."
+                return newString
+            } else {
+                const newString = str;
+                return newString
+            }
+        }
+
+
         // const parkActivities = document.createElement("span");
         // const parkEntranceFees = document.createElement("p");
         // const parkWeatherInfo = document.createElement("p");
 
         // -----------------------modify------------------------
-        front.style.backgroundImage = `url(${jsonImage})`
+        // front.style.backgroundImage = `url(${jsonImage})`
+        parkPhoto.src = `${jsonImage}`
         parkName.innerHTML = `${jsonName}`;
-        parkState.innerHTML = `${jsonState}`;
+        parkState.innerHTML = `${checkStateLength(parkStateSpaced)}`;
         parkAddress.innerHTML = `Address: ${jsonStreetAddress + ", " + jsonCity + ", " + jsonStateCode + " " + jsonZipCode}`
         parkDescription.innerHTML = `${checkDescriptionLength(jsonDescription)}`
         // parkEntranceFees.innerHTML = `Entrance Fee: ${checkEntranceFee(jsonFee)}`
@@ -77,12 +101,18 @@ const searchParkAPI = async () => {
         // ------------------modify classes---------------------
         card.classList.add("card")
         front.classList.add("front")
+        parkPhoto.classList.add("parkPhoto")
         back.classList.add("back")
         parkName.classList.add("parkName")
         parkState.classList.add("parkState")
+        parkFrontInfo.classList.add("parkFrontInfo")
+        parkStateDiv.classList.add("parkStateDiv")
 
         // ----------------------append-----------------------
-        front.append(parkName, parkState)
+        parkPhotoDiv.append(parkPhoto)
+        parkStateDiv.append(parkState)
+        parkFrontInfo.append(parkPhotoDiv, parkName)
+        front.append(parkFrontInfo, parkStateDiv)
         back.append(parkAddress, parkDescription)
         card.append(front, back)
         cardContainer.append(card)
@@ -91,14 +121,15 @@ const searchParkAPI = async () => {
 }
 
 // ------------------Event listeners--------------------
-const searchButton = document.querySelector(".searchButton")
+// const searchButton = document.querySelector(".searchButton")
+// searchButton.addEventListener("click", searchParkAPI)
 
-searchButton.addEventListener("click", searchParkAPI)
+// const searchField = document.querySelector(".inputField")
+// searchField.addEventListener("keypress", (e) => {
+//     if (e.key === "Enter") {
+//         searchParkAPI()
+//     }
+// }) 
 
-
-const searchField = document.querySelector(".inputField")
-searchField.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-        searchParkAPI()
-    }
-}) 
+const stateSelect = document.querySelector(".stateSelect")
+stateSelect.addEventListener("change", searchParkAPI)
