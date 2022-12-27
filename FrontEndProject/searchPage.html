@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Park-a-pedia Search</title>
+    <link rel="stylesheet" href="searchPage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- This is the search page -->
+    <nav class="nav-bar">
+        <span class="nav-logo"><a href="index.html"><i class="fa-solid fa-tree tree"></i><p>Park-a-pedia</p></a></span>
+        <ul>
+                <a href="">About</a>
+                <a href="">Search</a>
+                <a href="">My Favorite Parks</a>
+        </ul>
+    </nav>
+    <h1 class="tag">Which state do you want to go adventuring in?</h1>
+
+    <div class="searchContainer">
+        <label for="stateSelect" class="searchLabel">Choose a State:</label><select name="userStateSelection" class="stateSelect" id="stateSelect">
+            <option value="" selected disabled>---</option>
+            <option value="AL">AL -- Alabama</option>
+            <option value="AK">AK -- Alaska</option>
+            <option value="AZ">AZ -- Arizona</option>
+            <option value="AR">AR -- Arkansas</option>
+            <option value="CA">CA -- California</option>
+            <option value="CO">CO -- Colorado</option>
+            <option value="CT">CT -- Connecticut</option>
+            <option value="DE">DE -- Delaware</option>
+            <option value="FL">FL -- Florida</option>
+            <option value="GA">GA -- Georgia</option>
+            <option value="HI">HI -- Hawaii</option>
+            <option value="ID">ID -- Idaho</option>
+            <option value="IL">IL -- Illinois</option>
+            <option value="IN">IN -- Indiana</option>
+            <option value="IA">IA -- Iowa</option>
+            <option value="KS">KS -- Kansas</option>
+            <option value="KY">KY -- Kentucky</option>
+            <option value="LA">LA -- Louisiana</option>
+            <option value="ME">ME -- Maine</option>
+            <option value="MD">MD -- Maryland</option>
+            <option value="MA">MA -- Massachusetts</option>
+            <option value="MI">MI -- Michigan</option>
+            <option value="MN">MN -- Minnesota</option>
+            <option value="MS">MS -- Mississippi</option>
+            <option value="MO">MO -- Missouri</option>
+            <option value="MT">MT -- Montana</option>
+            <option value="NE">NE -- Nebraska</option>
+            <option value="NV">NV -- Nevada</option>
+            <option value="NH">NH -- New Hampshire</option>
+            <option value="NJ">NJ -- New Jersey</option>
+            <option value="NM">NM -- New Mexico</option>
+            <option value="NY">NY -- New York</option>
+            <option value="NC">NC -- North Carolina</option>
+            <option value="ND">ND -- North Dakota</option>
+            <option value="OH">OH -- Ohio</option>
+            <option value="OK">OK -- Oklahoma</option>
+            <option value="OR">OR -- Oregon</option>
+            <option value="PA">PA -- Pennsylvania</option>
+            <option value="RI">RI -- Rhode Island</option>
+            <option value="SC">SC -- South Carolina</option>
+            <option value="SD">SD -- South Dakota</option>
+            <option value="TN">TN -- Tennessee</option>
+            <option value="TX">TX -- Texas</option>
+            <option value="UT">UT -- Utah</option>
+            <option value="VT">VT -- Vermont</option>
+            <option value="VA">VA -- Virginia</option>
+            <option value="WA">WA -- Washington</option>
+            <option value="WV">WV -- West Virginia</option>
+            <option value="WI">WI -- Wisconsin</option>
+            <option value="WY">WY -- Wyoming</option>
+        </select>
+        <!-- <input type="text" placeholder="search by state" class="inputField"><button class="searchButton">Search!</button> -->
+    </div>
+
+    <main class="cardContainer">
+    </main>
+
+    <footer class="footer">
+        <p>Park-a-pedia</p>
+    </footer>
+</body>
+<script src="searchPage.js"></script>
+</html>
