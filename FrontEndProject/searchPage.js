@@ -1,9 +1,10 @@
 // look up lazy-load, infinite scrolling 
 
 const cardContainer = document.querySelector(".cardContainer")
-
+window.localStorage.removeItem('park');
 
 const searchParkAPI = async () => {
+
     cardContainer.innerHTML="";
     // const searchField = document.querySelector(".inputField").value.toUpperCase();
     const stateValue = document.querySelector(".stateSelect").value;
@@ -32,17 +33,8 @@ const searchParkAPI = async () => {
         jsonStateCode = item.addresses[0]["stateCode"]
         jsonImage = item.images[0]["url"];
         jsonDescription = item.description;
-        // jsonFee = parseInt(item.entranceFees[0]["cost"]);
-        // console.log(jsonFee) 
-        // const checkEntranceFee = (entranceFee) => {
-        //     if (entranceFee === 0) {
-        //         const jsonEntranceFee = "Free!"
-        //         return jsonEntranceFee
-        //     } else {
-        //         const jsonEntranceFee = '$' + jsonFee;
-        //         return jsonEntranceFee
-        //     }
-        // }
+        jsonParkID = item.id;
+        console.log(jsonParkID)
 
         // ----------------------create-----------------------
         const card = document.createElement("div");
@@ -59,6 +51,7 @@ const searchParkAPI = async () => {
         const parkPhotoBackup = document.createElement("i")
         const readMoreButton = document.createElement("button")
         const readMoreButtonDiv = document.createElement("div")
+        const readMoreButtonLink = document.createElement("a")
 
         // ---------------------functions----------------------
         const checkDescriptionLength = (str) => {
@@ -88,7 +81,6 @@ const searchParkAPI = async () => {
         }
 
         // const parkActivities = document.createElement("span");
-        // const parkEntranceFees = document.createElement("p");
         // const parkWeatherInfo = document.createElement("p");
 
         // -----------------------modify------------------------
@@ -100,7 +92,9 @@ const searchParkAPI = async () => {
         parkAddress.innerHTML = `Address: ${jsonStreetAddress + ", " + jsonCity + ", " + jsonStateCode + " " + jsonZipCode}`
         parkDescription.innerHTML = `${checkDescriptionLength(jsonDescription)}`
         readMoreButton.innerHTML = "Read More"
-        // parkEntranceFees.innerHTML = `Entrance Fee: ${checkEntranceFee(jsonFee)}`
+        readMoreButton.value = jsonParkID
+        readMoreButtonLink.href = "individualPark.html"
+
         // parkWeatherInfo.innerHTML = `${jsonWeatherInfo}`;
 
         // ------------------modify classes---------------------
@@ -124,7 +118,8 @@ const searchParkAPI = async () => {
         parkStateDiv.append(parkState)
         parkFrontInfo.append(parkPhotoDiv, parkName)
         front.append(parkFrontInfo, parkStateDiv)
-        readMoreButtonDiv.append(readMoreButton)
+        readMoreButtonLink.append(readMoreButton)
+        readMoreButtonDiv.append(readMoreButtonLink)
         back.append(parkAddress, parkDescription, readMoreButtonDiv)
         card.append(front, back)
         cardContainer.append(card)
@@ -133,11 +128,14 @@ const searchParkAPI = async () => {
         card.addEventListener("click", () => {
             card.classList.toggle("switch")
         })
-
-        // readMoreButton.addEventListener("click", makeParkModal)
+        readMoreButton.addEventListener("click", () => {
+            window.localStorage.setItem('park', readMoreButton.value)
+        })
     }
 
 }
+
+
 // ------------------Event listeners--------------------
 // const searchButton = document.querySelector(".searchButton")
 // searchButton.addEventListener("click", searchParkAPI)

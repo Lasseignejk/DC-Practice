@@ -1,0 +1,84 @@
+body {
+    display: grid;
+    height: 100vh;
+    grid-template-areas: 
+    "nav nav"
+    "main aside"
+    "footer footer";
+    grid-template-rows: 3rem 1fr 3rem;
+    grid-template-columns: 1fr 100px;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    grid-area: main;
+    border: 1px solid black;
+    width: 2fr;
+}
+
+aside {
+    grid-area: aside;
+    border: 1px solid black;
+    width: 1fr;
+}
+
+footer {
+    grid-area: footer;
+    border: 1px solid black;
+}
+
+/* ----------------------nav bar------------------------ */
+.nav-bar {
+    color: #fdfae9;
+    background-color: #3b4223;
+    grid-area: nav;
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-bar ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    width: 25rem;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Eczar', serif;
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+.nav-logo {
+    margin: 0;
+    margin-left: 10px;
+    font-family: 'Eczar', serif;
+    font-size: 2rem;
+    width: 15rem;
+    display: grid;
+    place-items: center;
+}
+
+.nav-logo p {
+    margin: 2px 10px;
+    padding: 0;
+    display: inline-block;
+}
+
+.tree {
+    color: #929218;
+}
+
+.nav-bar a {
+    color: #fdfae9;
+    text-decoration: none;
+}
+
+.nav-bar a:hover {
+    text-decoration: underline;
+}
