@@ -31,12 +31,11 @@ const getIndividualPark = async () => {
     const jsonDescription = jsonData.description;
     const jsonParkCode = jsonData.parkCode;
     const jsonActivities = jsonData.activities;
-    console.log(jsonActivities)
+    // console.log(jsonActivities)
     for (let i = 0; i < jsonActivities.length; i++) {
         const activitySpan = document.createElement("span");
         activitySpan.innerHTML = `${jsonActivities[i]["name"]}`
         parkActivities.append(activitySpan)
-        console.log(jsonActivities[i])
     }
 
 
@@ -47,28 +46,34 @@ const getIndividualPark = async () => {
         return newPhone
     }
 
-    const jsonFee = parseInt(jsonData.entranceFees[0]["cost"]);
+    const jsonFee = jsonData.entranceFees;
         const checkEntranceFee = (entranceFee) => {
-            if (entranceFee === 0) {
+            if (entranceFee.length === 0) {
                 const jsonEntranceFee = "Free"
                 return jsonEntranceFee
             } else {
-                const jsonEntranceFee = '$' + jsonFee;
-                return jsonEntranceFee
+                    const money = parseInt(jsonFee[0]["cost"])
+                    if (money === 0) {
+                        const jsonEntranceFee = "Free"
+                        return jsonEntranceFee
+                    } else {
+                        const jsonEntranceFee = '$' + money;
+                        return jsonEntranceFee
+                    }
+                }
             }
-        }
 
-    // const getParkAlerts = async (parkCode) => {
+    const getParkAlerts = async (parkCode) => {
 
     
-    //     const response = await fetch(url)
-    //     // console.log(url)
-    //     const json = await response.json();
-    //     const jsonData = json.data
-    //     console.log(jsonData);
-    // }
+        const response = await fetch(url)
+        // console.log(url)
+        const json = await response.json();
+        const jsonData = json.data
+        console.log(jsonData);
+    }
 
-    // getParkAlerts(jsonParkCode)
+    getParkAlerts(jsonParkCode)
 
     //----------------------create-----------------------
     const parkEntranceFees = document.createElement("p")
@@ -101,23 +106,26 @@ const getIndividualPark = async () => {
 
 
     //----------------event-listeners-----------------
-// heart.addEventListener("mousedown", () => {
-//     heart.classList.add("mouseDown");
-// });
-// heart.addEventListener("mouseup", () => {
-//     heart.classList.remove("mouseDown")
-// });
+heart.addEventListener("mousedown", () => {
+    heart.classList.add("mouseDown");
+});
+heart.addEventListener("mouseup", () => {
+    heart.classList.remove("mouseDown")
+});
+
+solidHeart.addEventListener("mousedown", () => {
+    solidHeart.classList.add("mouseDown")
+})
+solidHeart.addEventListener("mouseup", () => {
+    solidHeart.classList.remove("mouseDown")
+})
+
 heart.addEventListener("click", () => {
     solidHeartSpan.classList.add("showHeart")
 });
 solidHeart.addEventListener("click", () => {
     solidHeartSpan.classList.remove("showHeart")
 })
-// solidHeart.addEventListener("mousedown", () => {
-//     solidHeart.classList.add("mouseDown")
-// })
-// solidHeart.addEventListener("mouseup", () => {
-//     solidHeart.classList.remove("mouseDown")
-// })
+
 
 getIndividualPark()

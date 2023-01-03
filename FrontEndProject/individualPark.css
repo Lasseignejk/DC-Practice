@@ -193,6 +193,7 @@ aside {
     flex-direction: column;
     width: 80%;
     box-sizing: border-box;
+    /* border: 5px solid purple; */
 }
 
 .alerts {
@@ -211,10 +212,11 @@ aside {
 
 .parkBasicInfo {
     display: grid;
+    /* width: 80%; */
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-around;
     margin: 0 5rem;
-    gap: 3rem;
+    gap: 5rem;
     /* border: 1px solid blue; */
 }
 
@@ -225,7 +227,7 @@ aside {
     display: grid;
     place-items: center;
     padding: 0 10px;
-    box-shadow: 0 10px 10px rgb(87, 87, 87);
+    border: 2px solid #3065a7;
     box-sizing: border-box;
     min-height: 7rem;
 }
@@ -250,13 +252,14 @@ aside {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 10px;
 }
 
 .parkActivities {
     box-sizing: border-box;
     text-align: center;
-    display: flex;
     gap: 10px;
+    display: flex;
     justify-content: center;
     flex-wrap: wrap;
     /* border: 1px solid purple; */
@@ -269,13 +272,15 @@ aside {
     color: #fdfae9;
     box-sizing: border-box;
     display: inline-block;
-    width: 10rem;
-    height: auto;
-
+    width: 12rem;
+    max-height: auto;
+    font-family: 'Eczar', serif;
+    font-size: larger;
     display: grid;
     place-items: center;
 }
 
+/* --------------------heart icon--------------------- */
 .addToFavorites {
     text-align: center;
     color: #a65b6f;
@@ -308,11 +313,7 @@ aside {
 
 .solidHeartSpan {
     display: none;
-    /* position: absolute;
-
-    left: 47.1%; */
 }
-
 
 .showHeart {
     display: inline-block;

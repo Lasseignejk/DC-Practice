@@ -8,7 +8,7 @@ const searchParkAPI = async () => {
     cardContainer.innerHTML="";
     // const searchField = document.querySelector(".inputField").value.toUpperCase();
     const stateValue = document.querySelector(".stateSelect").value;
-
+    const url = `https://developer.nps.gov/api/v1/parks?stateCode=${stateValue}&api_key=6FI7loYv9MUwZU9DxO2cLU5fpItuTdciKeFCJZfz`;
     // const response = await fetch(url, {
     //   method: "GET",
     //   parameters: {
