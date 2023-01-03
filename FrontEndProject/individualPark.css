@@ -9,6 +9,7 @@
 html, body {
     margin: 0;
     padding: 0;
+    font-size: 16px;
 }
 
 body {
@@ -48,9 +49,7 @@ body {
 .nav-bar {
     grid-area: nav;
     color: #fdfae9;
-    background-color: #3b4223
-
-    ;
+    background-color: #3b4223    ;
     height: 3rem;
     width: 100%;
     display: flex;
@@ -107,7 +106,6 @@ main {
     display: flex;
     align-items: center;
     flex-direction: column;
-    /* flex-grow: 1; */
 }
 
 aside {
@@ -167,7 +165,6 @@ aside {
 .parkImageContainer:hover {
     background-size: contain;
     /* transform: scale(0.5); */
-
 }
 
 .parkImageText {
@@ -186,27 +183,113 @@ aside {
     transform: translate(-50%, -50%); */
 }
 
+
+/* -----------------------alerts------------------------ */
+/* .alertDiv {
+    width: 50%;
+    height: 3rem;
+    border-radius: 2rem;
+    border: 2px solid #a65b6f;
+    display: grid;
+    place-content: center;
+} */
+
+.alertButton {
+    width: 50%;
+    height: 3rem;
+    border-radius: 2rem;
+    border: 2px solid #a65b6f;
+    background-color: #fdfae9;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    transition: 500ms ease-in-out;
+}
+
+.alertButton:hover {
+    cursor: pointer;
+    background-color: #a65b6f;
+    color: #fdfae9;
+    border: 2px solid black;
+}
+
+.showAlerts {
+    display: block;
+    text-align: center;
+}
+
+.alertContainer {
+    /* border: 1px solid orange; */
+    display: flex;
+    justify-content: center;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modalText {
+    background-color: #fdfae9;
+    border-radius: 2rem;
+    margin: 10% auto;
+    padding: 20px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.alertTitle {
+    color: #a65b6f;
+}
+
+.alertDescription {
+    margin-top: 0;
+}
+
+.closeModal {
+    align-self: flex-end;
+    border: 1px solid #a65b6f;
+    background-color: #fdfae9;
+    transition: 500ms ease-in-out;
+    border-radius: 2rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2rem;
+    padding: 0 10px;
+}
+
+.closeModal:hover {
+    cursor: pointer;
+    background-color: #a65b6f;
+    color: #fdfae9;
+}
+
 /* ------------------park information------------------- */
 .outsideContainer {
     display: flex;
     align-items: center;
     flex-direction: column;
+    gap: 30px;
     width: 80%;
     box-sizing: border-box;
     /* border: 5px solid purple; */
 }
 
-.alerts {
-    width: 100%;
-    height: 100px;
-    border-radius: 2rem;
-    box-shadow: 0 10px 10px #a65b6f;
-}
-
 .parkInformationContainer {
-    margin-top: 10px;
     height: auto;
     box-sizing: border-box;
+    display: grid;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
     /* border: 1px solid black; */
 }
 
@@ -216,7 +299,7 @@ aside {
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-around;
     margin: 0 5rem;
-    gap: 5rem;
+    gap: 3rem;
     /* border: 1px solid blue; */
 }
 
@@ -246,13 +329,13 @@ aside {
     /* border: 1px solid red; */
     text-align: center;
     padding: 0;
+    margin: 0;
 }
 
 .parkDescriptionDiv {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 10px;
 }
 
 .parkActivities {
@@ -282,9 +365,10 @@ aside {
 
 /* --------------------heart icon--------------------- */
 .addToFavorites {
+    border: 1px solid black;
     text-align: center;
     color: #a65b6f;
-    padding: 10px;
+    padding-bottom: 10px;
     /* position: relative; */
     display: grid;
     place-content: center;
@@ -294,6 +378,7 @@ aside {
     width: 5rem;
     height: 5rem;
     position: relative;
+    border: 1px solid red;
 }
 
 .addToFavorites i {
@@ -339,6 +424,8 @@ aside {
     margin-left: 10px;
 }
 
+
+
 /* ------------------media queries---------------------- */
 /* Small screens  */
 /* @media only screen and (max-width: 600px) {
@@ -349,3 +436,102 @@ aside {
 /* @media only screen and (min-width: 600px) {
     
 } */ 
+
+@media only screen and (max-width: 1180px) {
+    .basicInfoDiv i {
+        font-size: 1.5rem;
+    }
+    .parkActivities span {
+        padding: 5px 5px;
+        color: #fdfae9;
+        width: 12rem;
+        font-size: 1rem;
+    }
+    .parkBasicInfo {
+        gap: 1rem;
+        /* border: 1px solid blue; */
+    }
+    .parkImageText {
+        color: #fdfae9;
+        font-family: 'Eczar', serif;
+        text-align: center;
+        font-size: 2rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 2rem;
+    }
+    .outsideContainer {
+        gap: 20px;
+    }
+    
+    .parkInformationContainer {
+        gap: 20px;
+    }
+}
+
+
+@media only screen and (max-width: 950px) {
+    .parkBasicInfo {
+        /* display: grid;
+        grid-template-columns: 1fr 1fr;
+        place-content: center; */
+        display: flex;
+        flex-wrap: wrap;
+
+        /* margin: 0 5rem; */
+        border: 1px solid blue;
+    }
+    .basicInfoDiv {
+        border-radius: 2rem;
+        flex-grow: 1;
+        height: auto;
+        text-align: center;
+        display: grid;
+        place-items: center;
+        padding: 0 10px;
+        border: 2px solid #3065a7;
+        box-sizing: border-box;
+        min-height: 5rem;
+    }
+    html, body {
+        font-size: 22px;
+    }
+    .nav-bar {
+        grid-area: nav;
+        height: 2.5rem;
+    }
+    .nav-bar ul {
+        width: 20rem;
+        font-size: 1.2rem;
+        margin-right: 10px;
+    }
+    
+    .nav-logo {
+        margin: 0;
+        margin-left: 10px;
+        font-size: 1.5rem;
+        width: 11rem;
+    }
+    body {
+        grid-template-areas: 
+        "nav"
+        "main"
+        "footer";
+        grid-template-rows: 3rem 1fr 3rem;
+        grid-template-columns: 1fr;
+    }
+    aside {
+        display: none;
+    }
+    .parkImageContainer {
+        height: 50vh;
+        width: 80%;
+    }
+    .outsideContainer {
+        gap: 20px;
+        width: 100%;
+        /* border: 5px solid purple; */
+    }
+    .parkImageContainer:hover {
+        background-size: cover;
+    }
+}
