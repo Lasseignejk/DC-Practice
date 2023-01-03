@@ -187,6 +187,14 @@ aside {
 }
 
 /* ------------------park information------------------- */
+.outsideContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    box-sizing: border-box;
+}
+
 .alerts {
     width: 100%;
     height: 100px;
@@ -195,10 +203,10 @@ aside {
 }
 
 .parkInformationContainer {
-    border: 1px solid black;
+    margin-top: 10px;
     height: auto;
-    width: 80%;
-    display: grid;
+    box-sizing: border-box;
+    /* border: 1px solid black; */
 }
 
 .parkBasicInfo {
@@ -206,15 +214,20 @@ aside {
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-around;
     margin: 0 5rem;
-    gap: 5rem;
+    gap: 3rem;
+    /* border: 1px solid blue; */
 }
 
 .basicInfoDiv {
     border-radius: 2rem;
-    height: 80px;
+    height: auto;
     text-align: center;
-    padding: 10px;
-    box-shadow: 0 10px 10px gray;
+    display: grid;
+    place-items: center;
+    padding: 0 10px;
+    box-shadow: 0 10px 10px rgb(87, 87, 87);
+    box-sizing: border-box;
+    min-height: 7rem;
 }
 
 .basicInfoDiv i {
@@ -222,28 +235,59 @@ aside {
     font-size: 2rem;
 }
 
+.basicInfoDiv p {
+    margin: 0;
+}
+
 .parkDescription {
-    margin: 20px;
+    width: 80%;
+    /* border: 1px solid red; */
+    text-align: center;
+    padding: 0;
+}
+
+.parkDescriptionDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .parkActivities {
     box-sizing: border-box;
     text-align: center;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* border: 1px solid purple; */
 }
 
 .parkActivities span {
     background-color: #3065a7;
-    border-radius: 1rem;
-    padding: 5px 10px;
+    border-radius: 1.5rem;
+    padding: 10px 10px;
     color: #fdfae9;
     box-sizing: border-box;
     display: inline-block;
+    width: 10rem;
+    height: auto;
+
+    display: grid;
+    place-items: center;
 }
 
 .addToFavorites {
     text-align: center;
     color: #a65b6f;
     padding: 10px;
+    /* position: relative; */
+    display: grid;
+    place-content: center;
+}
+
+.heartDiv {
+    width: 5rem;
+    height: 5rem;
     position: relative;
 }
 
@@ -255,10 +299,18 @@ aside {
     cursor: pointer;
 }
 
+.heartDiv span {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+}
+
 .solidHeartSpan {
     display: none;
-    position: absolute;
-    left: 47.1%;
+    /* position: absolute;
+
+    left: 47.1%; */
 }
 
 

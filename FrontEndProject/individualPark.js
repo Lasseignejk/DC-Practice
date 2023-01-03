@@ -7,6 +7,7 @@ const entranceFeeDiv = document.querySelector(".entranceFeeDiv")
 const phoneDiv = document.querySelector(".phoneDiv")
 const addressDiv = document.querySelector(".addressDiv")
 const parkDescription = document.querySelector(".parkDescription")
+const parkActivities = document.querySelector(".parkActivities")
 
 const getIndividualPark = async () => {
     const userPark = window.localStorage.getItem('park')
@@ -21,17 +22,28 @@ const getIndividualPark = async () => {
 
     const jsonName = jsonData.fullName;
     const jsonWeatherInfo = jsonData.weatherInfo;
-    const jsonZipCode = jsonData.addresses["postalCode"];
+    const jsonZipCode = jsonData.addresses[0]["postalCode"];
+    console.log(jsonZipCode)
     const jsonCity = jsonData.addresses[0]["city"];
     const jsonStreetAddress = jsonData.addresses[0]["line1"];
     const jsonStateCode = jsonData.addresses[0]["stateCode"]
     const jsonImage = jsonData.images[0]["url"];
     const jsonDescription = jsonData.description;
     const jsonParkCode = jsonData.parkCode;
+    const jsonActivities = jsonData.activities;
+    console.log(jsonActivities)
+    for (let i = 0; i < jsonActivities.length; i++) {
+        const activitySpan = document.createElement("span");
+        activitySpan.innerHTML = `${jsonActivities[i]["name"]}`
+        parkActivities.append(activitySpan)
+        console.log(jsonActivities[i])
+    }
+
+
     const jsonParkPhone = jsonData.contacts.phoneNumbers[0]["phoneNumber"]
-    console.log(jsonParkPhone)
     const modifyPhone = (phoneNumber) => {
-        const newPhone = "(" + jsonParkPhone.slice(0, 3) + ") " + jsonParkPhone.slice(3, 6) + "-" + jsonParkPhone.slice(6)
+        const removeHyphens = jsonParkPhone.replace(/-/g, '')
+        const newPhone = "(" + removeHyphens.slice(0, 3) + ") " + removeHyphens.slice(3, 6) + "-" + removeHyphens.slice(6)
         return newPhone
     }
 
@@ -60,8 +72,8 @@ const getIndividualPark = async () => {
 
     //----------------------create-----------------------
     const parkEntranceFees = document.createElement("p")
-    const parkAddress = document.createAttribute("p")
-    const parkHours = document.createAttribute("p")
+    const parkAddress = document.createElement("p")
+    const parkHours = document.createElement("p")
     const parkPhone = document.createElement("p")
 
     //-----------------------modify------------------------
@@ -69,10 +81,10 @@ const getIndividualPark = async () => {
     parkImageContainer.style.backgroundImage = `url(${jsonImage})`
     parkImageText.innerHTML = `${jsonName}`
     parkEntranceFees.innerHTML = `${checkEntranceFee(jsonFee)}`
-    // parkAddress.innerHTML = `${jsonStreetAddress + ", " + jsonCity + ", " + jsonStateCode + " " + jsonZipCode}`
-    parkAddress.innerHTML = "working!"
+    parkAddress.innerHTML = `${jsonStreetAddress + ", " + jsonCity + ", " + jsonStateCode + " " + jsonZipCode}`
     parkDescription.innerHTML = `${jsonDescription}`
     parkPhone.innerHTML = `${modifyPhone(jsonParkPhone)}`
+
 
 
     //------------------modify classes---------------------
@@ -81,7 +93,7 @@ const getIndividualPark = async () => {
     entranceFeeDiv.append(parkEntranceFees)
     phoneDiv.append(parkPhone)
     
-    // addressDiv.append(parkAddress)
+    addressDiv.append(parkAddress)
 }
 
 
