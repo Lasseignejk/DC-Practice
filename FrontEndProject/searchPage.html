@@ -16,14 +16,26 @@
 </head>
 <body>
     <!-- This is the search page -->
-    <nav class="nav-bar">
-        <span class="nav-logo"><a href="index.html"><i class="fa-solid fa-tree tree"></i><p>Park-a-pedia</p></a></span>
-        <ul>
-                <a href="">About</a>
-                <a href="">Search</a>
-                <a href="">My Favorite Parks</a>
-        </ul>
-    </nav>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="nav-logo"><i class="fa-solid fa-tree"></i> Park-a-pedia</a>
+
+            <ul class="nav-menu">
+
+                <li class="nav-item">
+                    <a href="searchPage.html" class="nav-link">Explore Parks</a>
+                </li>
+                <li class="nav-item">
+                    <a href="randomPark.html" class="nav-link">Random Park</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+     </header>
 
     <main>
         <h1 class="tag">Which state do you want to go adventuring in?</h1>
@@ -89,7 +101,7 @@
         </div>
     </main>
 
-    <aside>
+    <!-- <aside>
         <section class="sticky">
             <p class="sidebarSearchList">Recently Searched</p>
             <ul>
@@ -97,7 +109,7 @@
                 <li>That park</li>
             </ul>
         </section>
-    </aside>
+    </aside> -->
 
     <footer class="footer">
         <p>Park-a-pedia</p>

@@ -4,30 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Park-a-pedia Home</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Random Park</title>
+    <link rel="stylesheet" href="individualPark.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- This is the home page -->
-    <!-- <header>
+    <!-- This is the random park page -->
+    <header>
         <nav class="navbar">
             <a href="index.html" class="nav-logo"><i class="fa-solid fa-tree"></i> Park-a-pedia</a>
 
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
                     <a href="searchPage.html" class="nav-link">Explore Parks</a>
                 </li>
                 <li class="nav-item">
-                    <a href="individualPark.html" class="nav-link">Random Park</a>
+                    <a href="randomPark.html" class="nav-link">Random Park</a>
                 </li>
             </ul>
             <div class="hamburger">
@@ -36,21 +34,41 @@
                 <span class="bar"></span>
             </div>
         </nav>
-     </header> -->
+     </header>
 
-     <main class="showcase">
-        <div class="container showcase-inner">
-            <div class="titleDiv contentDiv">
-                <h1>Welcome to <i class="fa-solid fa-tree tree"></i> <a href="#">Park-a-pedia</a>!</h1>
-            <p>A site to explore parks and historical sites across the US</p>
+     <main>
+        <div class="outsideContainer">
+            <div class="parkImageContainer">
+                <div class="parkImageText">
+                </div>
             </div>
-            <div class="exploreDiv contentDiv">
-                <h2>Want to explore parks by state? Check out the 'Explore Parks' feature here!</h2>
-                <a href="searchPage.html"><button>Explore!</button></a>
+
+            <div class="parkInformationContainer">
+                <div class="parkBasicInfo">
+                    <div class="entranceFeeDiv basicInfoDiv"> 
+                        <i class="fa-solid fa-dollar-sign"></i>
+                    </div>
+                    <div class="phoneDiv basicInfoDiv">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div class="addressDiv basicInfoDiv">
+                        <i class="fa-solid fa-map-location"></i>
+                    </div>
+                </div>
+
+                <div class="alertContainer">
+                </div>
+
+                <div class="parkDescriptionDiv">
+                    <p class="parkDescription">
+
+                </p>
             </div>
-            <div class="randomDiv contentDiv">
-                <h2>How about leaving your next adventure up to fate? Click this button and prepare to travel!</h2>
-                <a href="randomPark.html"><button>Random!</button></a>
+                <div class="parkActivities">
+
+                </div>
+
+
             </div>
         </div>
     </main>
@@ -58,6 +76,7 @@
     <footer class="footer">
         <p>Park-a-pedia</p>
     </footer>
+    
 </body>
-<script src="app.js"></script>
+<script src="randomPark.js"></script>
 </html>

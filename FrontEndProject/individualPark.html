@@ -16,14 +16,26 @@
 </head>
 <body>
      <!-- This is the page for an individual park -->
-     <nav class="nav-bar">
-        <span class="nav-logo"><a href="index.html"><i class="fa-solid fa-tree tree"></i><p>Park-a-pedia</p></a></span>
-        <ul>
-                <a href="">About</a>
-                <a href="searchPage.html">Search</a>
-                <a href="">My Favorite Parks</a>
-        </ul>
-    </nav>
+     <header>
+        <nav class="navbar">
+            <a href="index.html" class="nav-logo"><i class="fa-solid fa-tree"></i> Park-a-pedia</a>
+
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="searchPage.html" class="nav-link">Explore Parks</a>
+                </li>
+                <li class="nav-item">
+                    <a href="randomPark.html" class="nav-link">Random Park</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+     </header>
+
 
     <main>
         <div class="outsideContainer">
@@ -47,12 +59,6 @@
 
                 <div class="alertContainer">
                 </div>
-                <!--
-                <div class="modal">
-                    <div class="modalText">
-                        <button class="closeModal">X</button>
-                    </div>
-                </div> -->
 
                 <div class="parkDescriptionDiv">
                     <p class="parkDescription">
@@ -62,18 +68,18 @@
                 <div class="parkActivities">
 
                 </div>
-                <div class="addToFavorites">
+                <!-- <div class="addToFavorites">
                     <div class="heartDiv">
                         <span><i class="fa-regular fa-heart heart"></i></span>
                         <span class="solidHeartSpan"><i class="fa-solid fa-heart solidHeart"></i></span>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>
     </main>
     
-    <aside>
+    <!-- <aside>
         <section class="sticky">
             <p class="sidebarSearchList">Recently Searched</p>
             <ul>
@@ -81,7 +87,7 @@
                 <li>That park</li>
             </ul>
         </section>
-    </aside>
+    </aside> -->
 
     <footer class="footer">
         <p>Park-a-pedia</p>
