@@ -31,16 +31,16 @@ document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", 
 const getIndividualPark = async () => {
     const userPark = window.localStorage.getItem('park')
     console.log(userPark)
-
+    const url = ``;
 
     const response = await fetch(url)
     const json = await response.json();
     const jsonData = json.data[0]
-    console.log(jsonData);
+    // console.log(jsonData);
 
     const jsonName = jsonData.fullName;
+    document.title = jsonName;
     const jsonZipCode = jsonData.addresses[0]["postalCode"];
-    console.log(jsonZipCode)
     const jsonCity = jsonData.addresses[0]["city"];
     const jsonStreetAddress = jsonData.addresses[0]["line1"];
     const jsonStateCode = jsonData.addresses[0]["stateCode"]
@@ -81,7 +81,7 @@ const getIndividualPark = async () => {
             }
 
     const getParkAlerts = async (parkCode) => {
-
+        const url = ``;
     
         const response = await fetch(url)
         const json = await response.json();
@@ -133,7 +133,6 @@ const getIndividualPark = async () => {
                 })
              
             } else {
-                console.log("There are no alerts for this location.")
                 alertContainer.remove()
             }
         }

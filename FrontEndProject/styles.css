@@ -83,6 +83,9 @@ a {
 }
 
 .nav-link {
+    background:
+    linear-gradient(currentColor 0 0) bottom 0   left 50% /var(--a, 0) 3px no-repeat,
+    linear-gradient(currentColor 0 0) bottom 6px left 50% /var(--b, 0) 3px no-repeat;
     transition: 0.7s ease;
     color: #fdfae9;
     font-size: 1.5rem;
@@ -90,7 +93,8 @@ a {
 
 .nav-link:hover {
     color: #cbcb20;
-    text-decoration: underline;
+    --a: 60%;
+    --b: 100%;
 }
 
 .hamburger {
@@ -152,7 +156,7 @@ main {
 }
 
 .showcase {
-    /* background-color: rgba(116, 116, 116, 0.75); */
+    background-color: rgba(116, 116, 116, 0.75);
     color: #3b4223;
     height: 100vh;
     position: relative;
@@ -168,7 +172,7 @@ main {
 .showcase:before {
     content:'';
     background-color: #fdfae9;
-    /* background: url('https://source.unsplash.com/random/900×600/?nature,usa') no-repeat center center/cover; */
+    background: url('https://source.unsplash.com/random/900×600/?nature,usa') no-repeat center center/cover;
     position: absolute;
     top: 0;
     left: 0;
@@ -195,11 +199,13 @@ main {
     justify-content: center;
     align-items: center;
     border-radius: 2rem;
+    padding: 10px;
 }
 
 .titleDiv {
     grid-area: title;
     margin: 2rem 0;
+    padding: 0 10px;
 }
 
 .titleDiv a {
@@ -223,16 +229,36 @@ main {
 
 .showcase h1 {
     font-size: 4rem;
+    margin: 0;
 }
 
 .showcase p {
     font-size: 1.3rem;
 }
 
-.tree {
-    color: #929218;
-}
+main button {
+    padding: 15px;
+    background:
+      linear-gradient(currentColor 0 0) 50% var(--d,0px),
+      linear-gradient(currentColor 0 0) var(--d,0px) 50%,
+      linear-gradient(currentColor 0 0) 50% calc(100% - var(--d,0px)),
+      linear-gradient(currentColor 0 0) calc(100% - var(--d,0px)) 50%;
+    background-size: 100% 2px,2px 100%;
+    background-repeat: no-repeat;
+    transition: 0.5s;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #3b4223;
+  }
+main button:hover {
+    cursor: pointer;
+    --d:6px;
+  }
 
+.mousedown {
+    transform: scale(.9);
+}
 /* -----------------------footer------------------------ */
 .footer {
     width: 100%;

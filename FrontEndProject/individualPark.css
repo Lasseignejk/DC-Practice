@@ -88,6 +88,9 @@ a {
 }
 
 .nav-link {
+    background:
+        linear-gradient(currentColor 0 0) bottom 0   left 50% /var(--a, 0) 3px no-repeat,
+        linear-gradient(currentColor 0 0) bottom 6px left 50% /var(--b, 0) 3px no-repeat;
     transition: 0.7s ease;
     color: #fdfae9;
     font-size: 1.5rem;
@@ -95,7 +98,8 @@ a {
 
 .nav-link:hover {
     color: #cbcb20;
-    text-decoration: underline;
+    --a: 60%;
+    --b: 100%;
 }
 
 .hamburger {
@@ -158,41 +162,9 @@ main {
     flex-direction: column;
 }
 
-/* aside {
-    grid-area: aside;
-    margin: 10px 0;
-    color: #fdfae9;
-    height: 100%;
-}
-
-.sticky {
-    position: sticky;
-    top: 0;
-    background-color: #3b4223;
-    border-top-left-radius: 2rem;
-    border-bottom-left-radius: 2rem;
-    padding: 50px 0;
-
-}
-
-.sticky ul {
-    list-style-type: none;
-    padding: 0 10px;
-}
-
-.sidebarSearchList {
-    font-size: 1.3rem;
-    margin: 0;
-    padding: 0;
-    margin-left: 10px;
-    font-family: 'Eczar', serif;
-    text-decoration: underline;
-    text-align: center;
-} */
-
 /* ------------------park image----------------------- */
 .parkImageContainer {
-    height: 50vh;
+    height: 56vh;
     width: 90%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -203,32 +175,17 @@ main {
     border-radius: 2rem;
     display: grid;
     place-items: center;
-    /* transition: 2s ease-in-out; */
-
-    /* transition-property: background-size;
-    transition-duration: 2s;
-    transition-timing-function: ease-in-out; */
-
 }
-
-/* .parkImageContainer:hover {
-    background-size: contain;
-} */
 
 .parkImageText {
     color: #fdfae9;
     font-family: 'Eczar', serif;
     text-align: center;
-    /* font-size: 4vw; */
     font-size: 3rem;
     background-color: rgba(0, 0, 0, 0.5);
     margin: 0;
     padding: 0.5rem 2rem;
     border-radius: 3rem;
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
 }
 
 
@@ -241,7 +198,7 @@ main {
     border: 2px solid #a65b6f;
     background-color: #fdfae9;
     font-family: 'Open Sans', sans-serif;
-    font-size: 1rem;
+    font-size: 1.2rem;
     transition: 500ms ease;
 }
 

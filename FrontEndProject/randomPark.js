@@ -29,7 +29,7 @@ document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", 
 const randomParkAPI = async () => {
 
     const randomLimit = Math.floor(Math.random()*468)
-
+    const url = ;
 
     const response = await fetch(url)
     const json = await response.json();
@@ -39,6 +39,7 @@ const randomParkAPI = async () => {
     const randomPark = jsonData[randomParkIndex]
 
     const jsonName = randomPark.fullName;
+    document.title = jsonName;
     const jsonZipCode = randomPark.addresses[0]["postalCode"];
     const jsonCity = randomPark.addresses[0]["city"];
     const jsonStreetAddress = randomPark.addresses[0]["line1"];
@@ -79,7 +80,7 @@ const randomParkAPI = async () => {
             }
 
     const getParkAlerts = async (parkCode) => {
-
+        const url = ;
     
         const response = await fetch(url)
         const json = await response.json();
