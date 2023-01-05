@@ -185,8 +185,8 @@ main {
 .showcase .showcase-inner {
     display: grid;
     grid-template-areas: 
-    "title explore"
-    "title random";
+    "title title"
+    "explore random";
     height: 100%;
     gap: 2rem;
 }
@@ -204,22 +204,22 @@ main {
 
 .titleDiv {
     grid-area: title;
-    margin: 2rem 0;
+    margin-top: 2rem;
     padding: 0 10px;
 }
 
-.titleDiv a {
+.titleDiv span {
     color: #3b4223;
     transition: color 500ms ease-in;
 }
 
-.titleDiv a:hover {
+.titleDiv span:hover {
     color: #929218;
 }
 
 .exploreDiv {
     grid-area: explore;
-    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .randomDiv {
@@ -272,4 +272,75 @@ main button:hover {
     margin: 0;
     padding: 0;
     margin-left: 10px;
+}
+
+@media only screen and (max-width: 1090px) {
+    .showcase .showcase-inner {
+        display: grid;
+        grid-template-areas: 
+        "title title"
+        "explore random";
+        height: 100%;
+        gap: 2rem;
+    }
+    .titleDiv {
+        margin-bottom: 0;
+    }
+    .exploreDiv {
+        margin-top: 0;
+        margin-bottom: 2rem;
+    }
+    .randomDiv {
+        margin-bottom: 2rem;
+    }
+}
+@media only screen and (max-width: 760px) {
+    .showcase .showcase-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .exploreDiv {
+        margin-bottom: 0;
+    }
+} 
+
+@media only screen and (max-width: 630px) {
+    .titleDiv h1 {
+        font-size: 3rem;
+    }
+    .showcase .showcase-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+
+    .titleDiv h1 {
+        font-size: 2rem;
+    }
+    .titleDiv p {
+        font-size: 1rem;
+        font-weight: 300;
+    }
+    h2 {
+        font-size: 1.1rem;
+        font-weight: 400;
+        margin-top: 5px;
+    }
+    .showcase .showcase-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        height: calc(100% - 2rem);
+    }
+    .titleDiv {
+        margin-top: 1rem;
+        height: 50%;
+    }
+    .randomDiv {
+        margin-bottom: 0;
+    }
 }

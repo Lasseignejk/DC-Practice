@@ -236,7 +236,7 @@ main {
 .modalText {
     background-color: #fdfae9;
     border-radius: 2rem;
-    margin: 10% auto;
+    margin: 5% auto;
     padding: 20px;
     width: 60%;
     display: flex;
@@ -319,6 +319,7 @@ main {
 
 .basicInfoDiv p {
     margin: 0;
+    font-size: 1.1rem;
 }
 
 .parkDescription {
@@ -333,6 +334,7 @@ main {
     width: 100%;
     display: flex;
     justify-content: center;
+    font-size: 1.1rem;
 }
 
 .parkActivities {
@@ -354,55 +356,9 @@ main {
     display: inline-block;
     width: 12rem;
     max-height: auto;
-    font-family: 'Eczar', serif;
-    font-size: larger;
     display: grid;
     place-items: center;
 }
-
-/* --------------------heart icon--------------------- */
-/* .addToFavorites {
-    border: 1px solid black;
-    text-align: center;
-    color: #a65b6f;
-    padding-bottom: 10px;
-    display: grid;
-    place-content: center;
-}
-
-.heartDiv {
-    width: 5rem;
-    height: 5rem;
-    position: relative;
-    border: 1px solid red;
-}
-
-.addToFavorites i {
-    font-size: 5rem;
-}
-
-.fa-heart:hover {
-    cursor: pointer;
-}
-
-.heartDiv span {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-}
-
-.solidHeartSpan {
-    display: none;
-}
-
-.showHeart {
-    display: inline-block;
-}
-toggle this class when heart is clicked on
-.mouseDown {
-    transform: scale(.9);
-} */
 
 /* -----------------------footer------------------------ */
 .footer {
@@ -423,16 +379,6 @@ toggle this class when heart is clicked on
 
 
 /* ------------------media queries---------------------- */
-/* Small screens  */
-/* @media only screen and (max-width: 600px) {
-
-}
-
-/* large screens */
-/* @media only screen and (min-width: 600px) {
-    
-} */ 
-
 @media only screen and (max-width: 1180px) {
     .basicInfoDiv i {
         font-size: 1.5rem;
@@ -496,9 +442,29 @@ toggle this class when heart is clicked on
 
     .alertTitle {
         font-size: 1.1rem;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .alertDescription {
+        margin-bottom: 30px;
     }
 
     .closeModal {
         font-size: 1rem;
+    }
+    .parkDescriptionDiv {
+        font-size: 1rem;
+    }
+    .alertButton {
+        font-size: 1rem;
+        padding: 5px;
+        width: 55%;
+        height: 3.5rem;
+    }
+    .modalText {
+        width: 80%;
+        overflow: hidden;
+        margin: 5% auto;
     }
 }

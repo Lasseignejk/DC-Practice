@@ -9,13 +9,11 @@
 html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
 body {
-    height: 100vh;
     font-family: 'Open Sans', sans-serif;
-    /* display: flex;
-    flex-direction: column; */
     display: grid;
     grid-template-areas: 
     "nav"
@@ -161,12 +159,14 @@ main {
     background-color: rgba(116, 116, 116, 0.75);
     /* height: 100vh; */
     position: relative;
+    /* border: 3px solid blue; */
 }
 .container {
     max-width: 2000px;
     margin: auto;
     padding: 0 3rem;
     text-align: center;
+    /* border: 3px solid yellow; */
 }
 
 .showcase:before {
@@ -199,38 +199,6 @@ flex-direction: column;
     border-radius: 2rem;
     margin-top: 30px;
 }
-
-/* aside {
-    grid-area: aside;
-    margin: 10px 0;
-    color: #fdfae9;
-    height: 100%;
-}
-
-.sticky {
-    position: sticky;
-    top: 0;
-    background-color: #3b4223;
-    border-top-left-radius: 2rem;
-    border-bottom-left-radius: 2rem;
-    padding: 50px 0;
-
-}
-
-.sticky ul {
-    list-style-type: none;
-    padding: 0 10px;
-}
-
-.sidebarSearchList {
-    font-size: 1.3rem;
-    margin: 0;
-    padding: 0;
-    margin-left: 10px;
-    font-family: 'Eczar', serif;
-    text-decoration: underline;
-    text-align: center;
-} */
 
 /* ------------------search for a park----------------------- */
 .tag {
@@ -269,7 +237,7 @@ flex-direction: column;
 /* -----------------------cards------------------------- */
 
 .cardContainer {
-    display: flex;
+    display: none;
     gap: 30px;
     flex-wrap: wrap;
     justify-content: center;
@@ -285,6 +253,11 @@ flex-direction: column;
     background-color: rgba(253, 250, 233, 0.6);
     border-radius: 2rem;
     margin-bottom: 30px;
+    /* border: 3px solid red; */
+}
+
+.displayCardContainer {
+    display: flex;
 }
 
 .card:hover {
@@ -430,11 +403,77 @@ flex-direction: column;
 
 /* ------------------media queries---------------------- */
 /* Small screens  */
-/* @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 535px) {
+.tag {
+    font-size: 1.5rem;
+}
+.searchLabel,
+.stateSelect{
+    font-size: 1rem;
+}
+option {
+    font-size: 1rem;
+}
+}
 
+@media only screen and (max-width: 416px) {
+    .tag {
+        font-size: 1.2rem;
+    }
+    .searchLabel {
+        display: none;
+    }
+    .cardContainer {
+        gap: 20px;
+        flex-grow: 1;
+        padding: 20px;
+        perspective: 2100px;
+        width: 88%;
+        margin: 0;
+        height: 100%;
+    }
+
+    .container {
+        margin: 0;
+        padding: 10px;
+    }
+
+    .contentDiv {
+        margin-top: 10px;
+    }
+
+    .parkName, .parkState {
+        font-size: 1rem;
+    }
+    .front {
+        gap: 20px;
+    }
+    .card {
+        height: 250px;
+        width: 250px;
+    }
+    .back {
+        font-size: .8rem;
+    }
+    .parkPhotoDiv {
+        height: 8rem;
+    }
+    .parkPhoto {
+        height: 8rem;
+    }
+    .backup {
+        font-size: 100px;
+    }
+    .showcase:before {
+        display: none;
+    }
+    .showcase .showcase-inner {
+            /* height: 90vh; */
+        height: auto;
+        }
 }
 
 /* large screens */
 /* @media only screen and (min-width: 600px) {
     
-} */ 
+} */

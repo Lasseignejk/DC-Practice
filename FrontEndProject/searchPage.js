@@ -106,7 +106,7 @@ const searchParkAPI = async () => {
         parkName.innerHTML = `${jsonName}`;
         const parkStateSpaced = addSpace(jsonState)
         parkState.innerHTML = `${checkStateLength(parkStateSpaced)}`;
-        parkAddress.innerHTML = `Address: ${jsonStreetAddress + ", " + jsonCity + ", " + jsonStateCode + " " + jsonZipCode}`
+        parkAddress.innerHTML = `${jsonStreetAddress + ", " + jsonCity + ", " + jsonStateCode + " " + jsonZipCode}`
         parkDescription.innerHTML = `${checkDescriptionLength(jsonDescription)}`
         readMoreButton.innerHTML = "Read More"
         readMoreButton.value = jsonParkID
@@ -129,6 +129,7 @@ const searchParkAPI = async () => {
         parkStateDiv.classList.add("parkStateDiv")
         readMoreButton.classList.add("readMoreButton")
         readMoreButtonDiv.classList.add("readMoreButtonDiv")
+        cardContainer.classList.add("displayCardContainer")
 
         // ----------------------append-----------------------
         parkPhotoDiv.append(parkPhotoBackup, parkPhoto)

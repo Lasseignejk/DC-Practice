@@ -29,7 +29,7 @@ document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", 
 const randomParkAPI = async () => {
 
     const randomLimit = Math.floor(Math.random()*468)
-    const url = ;
+   
 
     const response = await fetch(url)
     const json = await response.json();
@@ -80,7 +80,7 @@ const randomParkAPI = async () => {
             }
 
     const getParkAlerts = async (parkCode) => {
-        const url = ;
+
     
         const response = await fetch(url)
         const json = await response.json();
@@ -114,9 +114,9 @@ const randomParkAPI = async () => {
                     alertContainer.append(alertButton, modal)
                 } 
                 if (jsonData.length === 1) {
-                    alertButton.innerHTML = "There is 1 alert for this location."
+                    alertButton.innerHTML = "Click here to see 1 alert for this location."
                 } else if (jsonData.length > 1) {
-                    alertButton.innerHTML = `There are ${jsonData.length} alerts for this location.`  
+                    alertButton.innerHTML = `Click here to see ${jsonData.length} alerts for this location.`
                 }
                 alertButton.addEventListener("click", () => {
                     modal.style.display = "block";
