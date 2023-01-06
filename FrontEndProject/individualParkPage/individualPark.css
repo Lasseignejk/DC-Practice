@@ -15,8 +15,6 @@ html, body {
 body {
     height: 100vh;
     font-family: 'Open Sans', sans-serif;
-    /* display: flex;
-    flex-direction: column; */
     background-color: #fdfae9;
     display: grid;
     grid-template-areas: 
@@ -188,7 +186,6 @@ main {
     border-radius: 3rem;
 }
 
-
 /* -----------------------alerts------------------------ */
 
 .alertButton {
@@ -215,7 +212,6 @@ main {
 }
 
 .alertContainer {
-    /* border: 1px solid orange; */
     display: flex;
     justify-content: center;
 }
@@ -276,7 +272,6 @@ main {
     gap: 30px;
     width: 90%;
     box-sizing: border-box;
-    /* border: 5px solid purple; */
 }
 
 .parkInformationContainer {
@@ -288,7 +283,6 @@ main {
     align-items: center;
     gap: 30px;
     padding-bottom: 30px;
-    /* border: 1px solid black; */
 }
 
 .parkBasicInfo {
@@ -297,7 +291,6 @@ main {
     justify-content: space-around;
     margin: 0 3rem;
     gap: 3rem;
-    /* border: 1px solid blue; */
 }
 
 .basicInfoDiv {
@@ -324,7 +317,6 @@ main {
 
 .parkDescription {
     width: 80%;
-    /* border: 1px solid red; */
     text-align: center;
     padding: 0;
     margin: 0;
@@ -344,7 +336,6 @@ main {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    /* border: 1px solid purple; */
 }
 
 .parkActivities span {
@@ -398,7 +389,6 @@ main {
         gap: 20px;
         width: 100%;
     }
-    
     .parkInformationContainer {
         gap: 20px;
     }
@@ -409,7 +399,6 @@ main {
 
 
 @media only screen and (max-width: 950px) {
-
     .basicInfoDiv {
         flex-grow: 1;
         height: auto;
@@ -428,28 +417,22 @@ main {
     .parkBasicInfo {
         display: flex;
         flex-direction: column;
-        /* flex-wrap: wrap; */
     }
     .parkBasicInfo {
         display: flex;
         flex-wrap: wrap;
-        /* margin: 0;
-        padding: 5px; */
     }
     .parkImageText {
         font-size: 1.3rem;
     }
-
     .alertTitle {
         font-size: 1.1rem;
         margin-top: 0;
         margin-bottom: 10px;
     }
-
     .alertDescription {
         margin-bottom: 30px;
     }
-
     .closeModal {
         font-size: 1rem;
     }

@@ -11,6 +11,7 @@ const modal = document.querySelector(".modal")
 const closeModal = document.querySelector(".closeModal")
 const modalText = document.querySelector(".modalText")
 
+
 // --------------------hamburger menu------------------
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
@@ -25,29 +26,25 @@ document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", 
     navMenu.classList.remove("active")
 }))
 
-// --------------random park on load---------------
-const randomParkAPI = async () => {
-
-    const randomLimit = Math.floor(Math.random()*468)
-   
+// ----------------------functionality-----------------------
+const getIndividualPark = async () => {
+    const parkCode = window.localStorage.getItem('park')
+    const url = `https://developer.nps.gov/api/v1/parks?parkCode=${parkCode}&api_key=YOUR KEY`;
 
     const response = await fetch(url)
     const json = await response.json();
-    const jsonData = json.data
+    const jsonData = json.data[0]
 
-    const randomParkIndex = Math.floor(Math.random()*randomLimit)
-    const randomPark = jsonData[randomParkIndex]
-
-    const jsonName = randomPark.fullName;
+    const jsonName = jsonData.fullName;
     document.title = jsonName;
-    const jsonZipCode = randomPark.addresses[0]["postalCode"];
-    const jsonCity = randomPark.addresses[0]["city"];
-    const jsonStreetAddress = randomPark.addresses[0]["line1"];
-    const jsonStateCode = randomPark.addresses[0]["stateCode"]
-    const jsonImage = randomPark.images[0]["url"];
-    const jsonDescription = randomPark.description;
-    const jsonParkCode = randomPark.parkCode;
-    const jsonActivities = randomPark.activities;
+    const jsonZipCode = jsonData.addresses[0]["postalCode"];
+    const jsonCity = jsonData.addresses[0]["city"];
+    const jsonStreetAddress = jsonData.addresses[0]["line1"];
+    const jsonStateCode = jsonData.addresses[0]["stateCode"]
+    const jsonImage = jsonData.images[0]["url"];
+    const jsonDescription = jsonData.description;
+    const jsonParkCode = jsonData.parkCode;
+    const jsonActivities = jsonData.activities;
 
     for (let i = 0; i < jsonActivities.length; i++) {
         const activitySpan = document.createElement("span");
@@ -55,14 +52,14 @@ const randomParkAPI = async () => {
         parkActivities.append(activitySpan)
     }
 
-    const jsonParkPhone = randomPark.contacts.phoneNumbers[0]["phoneNumber"]
+    const jsonParkPhone = jsonData.contacts.phoneNumbers[0]["phoneNumber"]
     const modifyPhone = (phoneNumber) => {
         const removeHyphens = jsonParkPhone.replace(/-/g, '')
         const newPhone = "(" + removeHyphens.slice(0, 3) + ") " + removeHyphens.slice(3, 6) + "-" + removeHyphens.slice(6)
         return newPhone
     }
 
-    const jsonFee = randomPark.entranceFees;
+    const jsonFee = jsonData.entranceFees;
         const checkEntranceFee = (entranceFee) => {
             if (entranceFee.length === 0) {
                 const jsonEntranceFee = "Free"
@@ -80,15 +77,15 @@ const randomParkAPI = async () => {
             }
 
     const getParkAlerts = async (parkCode) => {
-
+        const url = `https://developer.nps.gov/api/v1/alerts?parkCode=${parkCode}&api_key=YOUR KEY`;
     
         const response = await fetch(url)
         const json = await response.json();
         const jsonData = json.data
-        console.log(jsonData);
 
         const checkAlert = (jsonData) => {
             if (jsonData.length >= 1) {
+
                 const alertButton = document.createElement("button")
                 alertButton.classList.add("showAlerts")
                 alertButton.classList.add("alertButton")
@@ -116,7 +113,7 @@ const randomParkAPI = async () => {
                 if (jsonData.length === 1) {
                     alertButton.innerHTML = "Click here to see 1 alert for this location."
                 } else if (jsonData.length > 1) {
-                    alertButton.innerHTML = `Click here to see ${jsonData.length} alerts for this location.`
+                    alertButton.innerHTML = `Click here to see ${jsonData.length} alerts for this location.`  
                 }
                 alertButton.addEventListener("click", () => {
                     modal.style.display = "block";
@@ -162,4 +159,4 @@ const randomParkAPI = async () => {
     addressDiv.append(parkAddress)
 }
 
-randomParkAPI()
+getIndividualPark()

@@ -155,18 +155,14 @@ a {
 main {
     grid-area: main;
     flex-grow: 1;
-    /* margin-right: 10px; */
     background-color: rgba(116, 116, 116, 0.75);
-    /* height: 100vh; */
     position: relative;
-    /* border: 3px solid blue; */
 }
 .container {
     max-width: 2000px;
     margin: auto;
     padding: 0 3rem;
     text-align: center;
-    /* border: 3px solid yellow; */
 }
 
 .showcase:before {
@@ -244,7 +240,6 @@ flex-direction: column;
     align-items: center;
     flex-grow: 1;
     max-height: 100%;
-    /* min-height: calc(100vh-3rem); */
     padding: 20px;
     perspective: 2100px;
     width: 80%;
@@ -253,7 +248,6 @@ flex-direction: column;
     background-color: rgba(253, 250, 233, 0.6);
     border-radius: 2rem;
     margin-bottom: 30px;
-    /* border: 3px solid red; */
 }
 
 .displayCardContainer {
@@ -275,14 +269,12 @@ flex-direction: column;
     transition: transform 1000ms;
     transform-style: preserve-3d;
     border-radius: 1.2em;
-    /* box-shadow: 10px 10px 10px gray; */
 }
 
 .front, .back {
     height: 100%;
     width: 100%;
     border-radius: 1.2rem;
-    /* box-shadow: 10px 10px 10px gray; */
     position: absolute;
     backface-visibility: hidden;
     border: 1px solid #3b4223;
@@ -325,7 +317,6 @@ flex-direction: column;
     border: 2px solid #3065a7;
     margin-bottom: 10px;
     transition: 300ms;
-
 }
 
 .readMoreButton:hover {
@@ -334,10 +325,6 @@ flex-direction: column;
     transform: scale(1.1);
 }
 
-
-.largeCard {
-    width: 600px;
-}
 /* ------------------card content----------------------- */
 
 .parkName {
@@ -402,18 +389,17 @@ flex-direction: column;
 }
 
 /* ------------------media queries---------------------- */
-/* Small screens  */
 @media only screen and (max-width: 535px) {
-.tag {
-    font-size: 1.5rem;
-}
-.searchLabel,
-.stateSelect{
-    font-size: 1rem;
-}
-option {
-    font-size: 1rem;
-}
+    .tag {
+        font-size: 1.5rem;
+    }
+    .searchLabel,
+    .stateSelect{
+        font-size: 1rem;
+    }
+    option {
+        font-size: 1rem;
+    }
 }
 
 @media only screen and (max-width: 416px) {
@@ -432,16 +418,13 @@ option {
         margin: 0;
         height: 100%;
     }
-
     .container {
         margin: 0;
         padding: 10px;
     }
-
     .contentDiv {
         margin-top: 10px;
     }
-
     .parkName, .parkState {
         font-size: 1rem;
     }
@@ -468,12 +451,6 @@ option {
         display: none;
     }
     .showcase .showcase-inner {
-            /* height: 90vh; */
         height: auto;
-        }
+    }
 }
-
-/* large screens */
-/* @media only screen and (min-width: 600px) {
-    
-} */

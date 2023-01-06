@@ -1,6 +1,3 @@
-// look up lazy-load, infinite scrolling 
-
-
 // --------------------hamburger menu------------------
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
@@ -15,43 +12,30 @@ document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", 
     navMenu.classList.remove("active")
 }))
 
-
-
 const cardContainer = document.querySelector(".cardContainer")
 window.localStorage.removeItem('park');
+window.localStorage.removeItem('searchPark')
 
 const searchParkAPI = async () => {
 
     cardContainer.innerHTML="";
-    // const searchField = document.querySelector(".inputField").value.toUpperCase();
     const stateValue = document.querySelector(".stateSelect").value;
-    const url = `https://developer.nps.gov/api/v1/parks?stateCode=${stateValue}&api_key=6FI7loYv9MUwZU9DxO2cLU5fpItuTdciKeFCJZfz`;
-    // const response = await fetch(url, {
-    //   method: "GET",
-    //   parameters: {
-    //     stateCode: "SC",
-    //   },
-    // });
+    const url = `https://developer.nps.gov/api/v1/parks?stateCode=${stateValue}&api_key=YOUR KEY`;
 
     const response = await fetch(url)
-    // console.log(url)
     const json = await response.json();
     const jsonData = json.data
-    // console.log(json);
-    // console.log(jsonData)
+
     for (const item of jsonData) {
-        // console.log(item)
-        jsonName = item.fullName;
-        jsonState = item.states;
-        // jsonWeatherInfo = item.weatherInfo;
-        jsonZipCode = item.addresses[0]["postalCode"];
-        jsonCity = item.addresses[0]["city"];
-        jsonStreetAddress = item.addresses[0]["line1"];
-        jsonStateCode = item.addresses[0]["stateCode"]
-        jsonImage = item.images[0]["url"];
-        jsonDescription = item.description;
-        jsonParkID = item.id;
-        console.log(jsonParkID)
+        const jsonName = item.fullName;
+        const jsonState = item.states;
+        const jsonZipCode = item.addresses[0]["postalCode"];
+        const jsonCity = item.addresses[0]["city"];
+        const jsonStreetAddress = item.addresses[0]["line1"];
+        const jsonStateCode = item.addresses[0]["stateCode"]
+        const jsonImage = item.images[0]["url"];
+        const jsonDescription = item.description;
+        const jsonParkCode = item.parkCode
 
         // ----------------------create-----------------------
         const card = document.createElement("div");
@@ -97,11 +81,7 @@ const searchParkAPI = async () => {
             }
         }
 
-        // const parkActivities = document.createElement("span");
-        // const parkWeatherInfo = document.createElement("p");
-
         // -----------------------modify------------------------
-        // front.style.backgroundImage = `url(${jsonImage})`
         parkPhoto.src = `${jsonImage}`
         parkName.innerHTML = `${jsonName}`;
         const parkStateSpaced = addSpace(jsonState)
@@ -109,10 +89,8 @@ const searchParkAPI = async () => {
         parkAddress.innerHTML = `${jsonStreetAddress + ", " + jsonCity + ", " + jsonStateCode + " " + jsonZipCode}`
         parkDescription.innerHTML = `${checkDescriptionLength(jsonDescription)}`
         readMoreButton.innerHTML = "Read More"
-        readMoreButton.value = jsonParkID
-        readMoreButtonLink.href = "individualPark.html"
-
-        // parkWeatherInfo.innerHTML = `${jsonWeatherInfo}`;
+        readMoreButton.value = jsonParkCode
+        readMoreButtonLink.href = "../individualParkPage/individualPark.html"
 
         // ------------------modify classes---------------------
         card.classList.add("card")
@@ -152,18 +130,6 @@ const searchParkAPI = async () => {
     }
 
 }
-
-
-// ------------------Event listeners--------------------
-// const searchButton = document.querySelector(".searchButton")
-// searchButton.addEventListener("click", searchParkAPI)
-
-// const searchField = document.querySelector(".inputField")
-// searchField.addEventListener("keypress", (e) => {
-//     if (e.key === "Enter") {
-//         searchParkAPI()
-//     }
-// }) 
 
 
 const stateSelect = document.querySelector(".stateSelect")

@@ -152,7 +152,6 @@ a {
 /* ------------------------main------------------------- */
 main {
     flex-grow: 1;
-    line-height: 1.4;
 }
 
 .showcase {
@@ -191,6 +190,94 @@ main {
     gap: 2rem;
 }
 
+/* ----------------- autocomplete -------------------- */
+.autocomplete {
+    position: relative;
+    display: inline-block;
+}
+
+input {
+    border: 1px solid transparent;
+    background-color: #fdfae9;
+    padding: 10px;
+    font-size: 1rem;
+    margin-right: 10px;
+    border-radius: 2rem;
+    text-align: center;
+    font-family: 'Open Sans';
+}
+
+.autocompletebtn {
+    border: 2px solid transparent;
+    color: #3b4223;
+    font-family: 'Open Sans';
+    background-color: #929218;
+    font-size: 1rem;
+    padding: 10px 30px;
+    border-radius: 2rem;
+    font-weight: 600;
+}
+
+.autocompletebtn:hover {
+    border: 2px solid #3b4223;
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    top: 120%;
+    left: 0;
+    right: 0;
+    font-family: 'Open Sans';
+    overflow-y: scroll;
+    max-height: 300px;
+}
+
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fdfae9;
+    border-bottom: 1px solid gray;
+}
+
+.autocomplete-items div:hover {
+    background-color: #3b4223;
+    color: #fdfae9;
+}
+
+.autocomplete-active {
+    background-color: #3b4223 !important;
+    color: #fdfae9;
+    }
+
+/* --------------------- content divs ----------------------- */
+
+.titleDiv {
+    grid-area: title;
+    margin-top: 2rem;
+    padding: 0 10px;
+}
+
+.titleSpanText {
+    transition: color 500ms ease-in;
+    font-family: 'Eczar', serif;
+}
+
+.titleDiv i {
+    transition: color 500ms ease-in;
+}
+
+.titleDiv:hover i{
+    color: #929218;
+}
+
+.titleDiv:hover .titleSpanText {
+    color: #fdfae9;
+}
+
 .contentDiv {
     border: 1px solid black;
     background-color: rgba(253, 250, 233, 0.6);
@@ -199,32 +286,37 @@ main {
     justify-content: center;
     align-items: center;
     border-radius: 2rem;
-    padding: 10px;
-}
-
-.titleDiv {
-    grid-area: title;
-    margin-top: 2rem;
-    padding: 0 10px;
-}
-
-.titleDiv span {
+    padding: 20px;
     color: #3b4223;
-    transition: color 500ms ease-in;
 }
 
-.titleDiv span:hover {
-    color: #929218;
+.innerContentDiv {
+    color: #3b4223;
+    transition: all 500ms ease-in;
+}
+
+.contentDiv:hover .innerContentDiv {
+    color: #fdfae9;
 }
 
 .exploreDiv {
     grid-area: explore;
     margin-bottom: 2rem;
+    transition: all 300ms ease-in;
+}
+
+.exploreDiv:hover,
+.randomDiv:hover {
+    background-color: rgba(149, 149, 66, 0.6);
+    color: #fdfae9;
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .randomDiv {
     grid-area: random;
     margin-bottom: 2rem;
+    transition: all 300ms ease-in;
 }
 
 .showcase h1 {
@@ -236,29 +328,6 @@ main {
     font-size: 1.3rem;
 }
 
-main button {
-    padding: 15px;
-    background:
-      linear-gradient(currentColor 0 0) 50% var(--d,0px),
-      linear-gradient(currentColor 0 0) var(--d,0px) 50%,
-      linear-gradient(currentColor 0 0) 50% calc(100% - var(--d,0px)),
-      linear-gradient(currentColor 0 0) calc(100% - var(--d,0px)) 50%;
-    background-size: 100% 2px,2px 100%;
-    background-repeat: no-repeat;
-    transition: 0.5s;
-    border: none;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #3b4223;
-  }
-main button:hover {
-    cursor: pointer;
-    --d:6px;
-  }
-
-.mousedown {
-    transform: scale(.9);
-}
 /* -----------------------footer------------------------ */
 .footer {
     width: 100%;
@@ -276,10 +345,6 @@ main button:hover {
 
 @media only screen and (max-width: 1090px) {
     .showcase .showcase-inner {
-        display: grid;
-        grid-template-areas: 
-        "title title"
-        "explore random";
         height: 100%;
         gap: 2rem;
     }
@@ -316,14 +381,12 @@ main button:hover {
     }
 }
 
-@media only screen and (max-width: 380px) {
-
+@media only screen and (max-width: 450px) {
     .titleDiv h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     .titleDiv p {
-        font-size: 1rem;
-        font-weight: 300;
+        display: none;
     }
     h2 {
         font-size: 1.1rem;
@@ -334,13 +397,27 @@ main button:hover {
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        height: calc(100% - 2rem);
     }
     .titleDiv {
         margin-top: 1rem;
-        height: 50%;
+        height: 40%;
+        padding: 0;
     }
     .randomDiv {
         margin-bottom: 0;
+    }
+    .exploreDiv, .randomDiv {
+        height: 100px;
+    }
+    .autocompletebtn {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+    #myInput {
+        font-size: 1rem;
+        padding: 0 10px;
+        margin-top: 10px;
+        width: 140px;
+        margin-right: 5px;
     }
 }

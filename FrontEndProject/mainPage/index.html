@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Park-a-pedia</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="treeFavicon.ico">
+    <link rel="icon" href="/FrontEndProject/pictures/treeFavicon.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600;700&display=swap" rel="stylesheet">
@@ -22,13 +22,10 @@
 
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">About</a>
+                    <a href="/FrontEndProject/exploreParksPage/exploreParksPage.html" class="nav-link">Explore Parks</a>
                 </li>
                 <li class="nav-item">
-                    <a href="searchPage.html" class="nav-link">Explore Parks</a>
-                </li>
-                <li class="nav-item">
-                    <a href="randomPark.html" class="nav-link">Random Park</a>
+                    <a href="/FrontEndProject/randomParkPage/randomPark.html" class="nav-link">Random Park</a>
                 </li>
             </ul>
             <div class="hamburger">
@@ -42,24 +39,29 @@
      <main class="showcase">
         <div class="container showcase-inner">
             <div class="titleDiv contentDiv">
-                <h1>Welcome to</h1>
-                <h1><span><i class="fa-solid fa-tree tree"></i> Park-a-pedia</span>!</h1>
-            <p>A site to explore parks and historical sites across the US</p>
+            <h1>Welcome to</h1>
+                    <h1><span><i class="fa-solid fa-tree"></i> <span class="titleSpanText"> Park-a-pedia</span></span>!</h1>
+                    <p>A site to explore parks and historical sites across the US</p>
+                    <div class="autocomplete">
+                    <input id="myInput" type="text" name="park" placeholder="park/site name" autofocus><a href="../individualParkPage/individualPark.html"><button class="autocompletebtn">Let's go!</button></a>
+                    </div>
             </div>
             <div class="exploreDiv contentDiv">
-                <h2>Want to explore parks by state? Check out the 'Explore Parks' feature here!</h2>
-                <a href="searchPage.html"><button class="btn">Explore!</button></a>
+                <a href="../exploreParksPage/exploreParksPage.html">
+                    <div class="innerContentDiv">
+                        <h2> Want to explore parks by state? Check out the 'Explore Parks' feature here!</h2>
+                    </div>
+                </a>
             </div>
             <div class="randomDiv contentDiv">
-                <h2>How about leaving your next adventure up to fate? Click this button and prepare to travel!</h2>
-                <a href="randomPark.html"><button class="btn">Random!</button></a>
+                <a href="../randomParkPage/randomPark.html">
+                    <div class="innerContentDiv">
+                    <h2>How about leaving your next adventure up to fate? Click here and prepare to travel!</h2>
+                </div>
+                </a>
             </div>
         </div>
     </main>
-
-    <!-- <footer class="footer">
-        <p>Park-a-pedia</p>
-    </footer> -->
 </body>
 <script src="app.js"></script>
 </html>
