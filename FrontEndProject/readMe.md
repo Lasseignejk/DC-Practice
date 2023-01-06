@@ -4,7 +4,7 @@
 
 Park-a-pedia was created as my frontend project for my bootcamp with DigitalCrafts. Users can search parks and historical sites by name, or, if they want a broader search, they can use the 'Explore Parks' section and search by state. If they want to be surprised, they can click 'Random Park' and be taken to the page of a random park in the National Park Service API.
 
-Click here to view the Medium article I wrote on this project!
+Click [here](https://medium.com/@jayelonlasseigne/building-a-website-with-the-nps-api-1c5cc0c68cd9?postPublishedType=initial) to view the Medium article I wrote on this project!
 
 ## What I used
 
