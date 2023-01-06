@@ -1,6 +1,8 @@
 # Welcome to Park-a-pedia, a site to explore parks and historical sties across the US
 
-Park-a-pedia was created as my frontend project for my bootcamp with DigitalCrafts. Users can search parks and historical sites by name, or, if they want a broader search, they can use the 'Explore Parks' section and search by state. If they want to be surprised, they can click 'Random Park' and be taken to the page of a random park in the National Parks Service API.
+![Park-a-pedia Home Page](/FrontEndProject/pictures/parkapediaHome.png)
+
+Park-a-pedia was created as my frontend project for my bootcamp with DigitalCrafts. Users can search parks and historical sites by name, or, if they want a broader search, they can use the 'Explore Parks' section and search by state. If they want to be surprised, they can click 'Random Park' and be taken to the page of a random park in the National Park Service API.
 
 Click here to view the Medium article I wrote on this project!
 
@@ -9,7 +11,7 @@ Click here to view the Medium article I wrote on this project!
 - HTML
 - CSS -- transitions, transforms, dynamic navbar, flexbox, css grid, media queries
 - JavaScript -- DOM manipulation, async functions, event listeners
-- An API from the [National Parks Service](https://www.nps.gov/subjects/developer/guides.htm)
+- An API from the [National Park Service](https://www.nps.gov/subjects/developer/guides.htm)
 
 ## Getting started
 
