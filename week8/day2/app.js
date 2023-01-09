@@ -17,7 +17,10 @@ app.get("/speak", (req, res) => {
 app.post("/userSpeak", (req, res) => {
     // console.log(req)
     res.send(
-        cowsay.say({text: req.body.message})
+        // req are handled in postman
+        // req {body {"message:" "blahblahblah"}}
+        cowsay.say({text: `${req.body.message}`
+    })
     )
 })
 
@@ -27,11 +30,11 @@ app.get("/think", (req, res) => {
     e: "oO",
 T: "U"}))
 })
-
+// post requests have a body because you are sending data. get requests do not because you are just getting data that already exists. 
 app.post("/yell", (req, res) => {
     res.send(
         cowsay.say({
-            text:req.body.message.toUpperCase()
+            text: `${req.body.message.toUpperCase()}`
         })
     )
 })
