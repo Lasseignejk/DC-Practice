@@ -1028,7 +1028,8 @@ function autocomplete(inp, arr) {
 
 const autocompletebtn = document.querySelector(".autocompletebtn")
 autocompletebtn.addEventListener("click", () => {
-    const index = listOfParks.indexOf(myInput.value)
+    const capitalizedInput = myInput.value.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
+    const index = listOfParks.indexOf(capitalizedInput)
     window.localStorage.setItem('park', listOfParkCodes[index])    
 })
 
