@@ -158,7 +158,7 @@ const calculatePointsOnStand = (points, array) => {
 const getCardImage = (array) => {
   for (const item of array) {
   let newCard = document.createElement("img");
-  newCard.setAttribute("src", `/week5/day2/blackjack/images/${item["rank"]}_of_${item["suit"]}.png`)
+  newCard.src = `/blackJackProject/images/${item["rank"]}_of_${item["suit"]}.png`
   return newCard
   }
 }
