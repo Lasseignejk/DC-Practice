@@ -64,9 +64,16 @@ result.addEventListener("click", () => {
     // join returns a string "239+439" so answer is a string 
     let answer = equation.join('');
     console.log(answer)
-    // looks through answer to find + and returns it in an array. Doesn't edit the string.
-    let operator = answer.match(/\+/);
-    console.log(operator)
+    console.log(parseInt(answer))
+    // let operator = answer.indexOf("+");
+    // if (operator != -1) {
+    //     numsToAdd = answer.split("+");
+    //     let total = 0;
+    //     numsToAdd.forEach(num => {
+    //         total += parseInt(num)
+    //     });
+    //     console.log(total)
+    // } 
     // const filteredEquation = equation.filter(checkNum)
     // console.log(filteredEquation)
     // let realAnswer = eval?.(`"use strict";(${answer})`)
