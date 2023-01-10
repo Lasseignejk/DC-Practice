@@ -1026,11 +1026,23 @@ function autocomplete(inp, arr) {
   autocomplete(myInput, listOfParks)
   // ------------------Event listeners--------------------
 
-const autocompletebtn = document.querySelector(".autocompletebtn")
-autocompletebtn.addEventListener("click", () => {
-    const capitalizedInput = myInput.value.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
-    const index = listOfParks.indexOf(capitalizedInput)
-    window.localStorage.setItem('park', listOfParkCodes[index])    
-})
+  const autocompletebtn = document.querySelector(".autocompletebtn")
+  const autocompletebtnlink = document.querySelector(".autocompletebtnlink")
+  const errorMessage = document.querySelector(".errorMessage")
+
+  autocompletebtn.addEventListener("click", () => {
+      const capitalizedInput = myInput.value.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
+      const index = listOfParks.indexOf(capitalizedInput)
+      if (index != -1) {
+      window.localStorage.setItem('park', listOfParkCodes[index])
+      autocompletebtnlink.setAttribute("href", "../individualParkPage/individualPark.html")
+      myInput.classList.remove("invalid")
+      } else {
+        autocompletebtnlink.href = "#";
+        myInput.classList.add("invalid")
+        errorMessage.classList.add("showErrorMessage")
+        errorMessage.innerHTML = `Sorry, "${myInput.value}" is not a valid park name.`
+      }   
+  })
 
 

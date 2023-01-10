@@ -207,6 +207,20 @@ input {
     font-family: 'Open Sans';
 }
 
+.invalid {
+    border: 2px solid red;
+}
+
+.errorMessage {
+    display: none;
+}
+
+.showErrorMessage {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
 .autocompletebtn {
     border: 2px solid transparent;
     color: #3b4223;
