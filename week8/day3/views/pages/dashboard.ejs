@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('../partials/dashboardhead'); %>
+	</head>
+	<body>
+		<header><%- include('../partials/dashboardnav'); %></header>
+
+		<main>
+            <%-
+			include('../partials/dashboardsearch'); %>
+			<%- include('../partials/dashboardoverview'); %> 
+            <%-
+			include('../partials/dashboardactivity'); %>
+		</main>
+	</body>
+</html>

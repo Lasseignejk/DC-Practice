@@ -1,0 +1,345 @@
+html,
+body {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	height: 100%;
+    overflow: auto;
+}
+
+body {
+    min-height: 100%;
+	display: flex;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    background-color: rgb(246, 239, 255);
+}
+
+header {
+    width: 250px;
+	background-color: rgb(113, 78, 181);
+	color: snow;
+	box-sizing: border-box;
+    height: auto;
+    padding-top: 15px;
+}
+
+.nav-logo {
+	margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 20px;
+    transition: transform 300ms ease-in-out;
+}
+
+.nav-logo:hover {
+    transform: scale(1.1);
+}
+
+.nav-logo a{
+    color: snow;
+    text-decoration: none;
+}
+
+header ul li {
+	list-style: none;
+	color: snow;
+    transition: transform 300ms ease-in-out;
+}
+
+header ul li:hover {
+	transform: scale(1.1);
+}
+
+header ul a {
+	text-decoration: none;
+}
+
+header ul {
+	padding: 0;
+	margin: 0;
+	margin-left: 20px;
+    display: grid;
+    gap: 20px;
+}
+
+.nav-pic {
+    height: 15px;
+    width: 15px;
+    margin-right: 10px;
+}
+
+main {
+    display: flex;
+    width: calc(100% - 250px);
+    flex-direction: column;
+    align-items: center;
+}
+
+.searchContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    background-color: snow;
+}
+
+.searchInputDiv {
+    margin-left: 15px;
+    color: rgb(134, 91, 148);
+    display: flex;
+    gap: 10px;
+    font-size: 1.2rem;
+}
+
+#sitesearch {
+    border: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 15rem;
+    border-radius: 5px;
+}
+
+label:hover {
+    cursor: pointer;
+}
+
+#sitesearch:hover {
+    cursor: pointer;
+}
+
+.searchIconsDiv {
+    width: 8rem;
+    display: flex;
+}
+
+.searchIconsDiv ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    align-items: center;
+    padding-right: 10px;
+    color: rgb(134, 91, 148);
+}
+
+.profilePic {
+    width: 33px;
+    height: 33px;
+    background-color: rgb(113, 78, 181);
+    border-radius: 50%;
+}
+
+.overviewContainer {
+    background-color: rgb(246, 239, 255);
+    width: 95%;
+    /* overflow: hidden; */
+    display: inline;
+    margin-bottom: 50px;
+}
+
+.sectionTitle {
+    background-color: rgb(246, 239, 255);
+    margin: 10px, 0;
+    color: rgb(56, 56, 56);
+}
+
+.overviewInfoDivContainer {
+	display: flex;
+    flex-wrap: wrap;
+    /* gap: 5rem; */
+    justify-content: space-between;
+}
+
+.overviewInfoDiv {
+    display: grid;
+    grid-template-areas: 
+    "pic info"
+    "view view"
+    ;
+    grid-template-columns: 70px 1fr;
+    width: 30%;
+    min-width: 200px;
+    background-color: snow;
+    box-shadow: 5px 5px 5px rgb(160, 160, 160);
+}
+
+.infoPic {
+    grid-area: pic;
+    font-size: 2rem;
+    display: grid;
+    place-items: center;
+    color: rgb(113, 78, 181);
+}
+
+.infoTitleMoneyDiv {
+    grid-area: info;
+}
+
+.infoTitleMoneyDiv p {
+    color: rgb(56, 56, 56);
+}
+
+.overviewInfoDiv h3 {
+    color: rgb(134, 91, 148);
+}
+
+.viewDiv {
+    grid-area: view;
+    background-color: rgb(249, 249, 249);
+}
+
+.viewDiv p {
+    color: rgb(113, 78, 181);
+    font-weight: bold;
+    margin: 0;
+    padding-left: 13px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.viewDiv a {
+    text-decoration: none;
+}
+
+.viewDiv a:hover {
+    cursor: pointer;
+}
+
+.activityContainer {
+    background-color: rgb(246, 239, 255);
+    margin: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.activityTitle {
+    color: gray;
+    background-color: snow;
+    margin: 0;
+    padding: 20px 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-left: 50px;
+}
+
+.activityTable {
+    width: 1200px;
+    background-color: snow;
+    border-radius: 10px;
+    margin-left: 50px;
+}
+
+table, th td {
+    border-collapse: collapse;
+}
+
+.tableHead {
+    background-color: whitesmoke;
+    height: 4rem;
+    text-align: left;
+    padding-left: 10px;
+    color: rgb(56, 56, 56);
+}
+
+.tableHeadName {
+    padding-left: 10px;
+}
+
+.tableRow {
+    height: 4.5rem;
+    color: rgb(56, 56, 56);
+}
+
+.tableRow:nth-child(odd){
+    background-color: rgb(253, 244, 255);
+}
+
+.tableRowName {
+    padding-left: 10px;
+}
+
+.companyInfoDiv {
+    display: flex;
+    background-color: snow;
+    width: 370px;
+    margin-right: 20px;
+}
+
+.companyInfo p {
+    margin-top: 0;
+    font-size: .8rem;
+    color: rgb(56, 56, 56);
+}
+
+.companyPic {
+    color: rgb(134, 91, 148);
+    font-size: 2rem;
+    display: grid;
+    place-items: center;
+    padding: 0 15px;
+}
+
+.companyInfoDiv h3 {
+    color: rgb(113, 78, 181);
+    margin-bottom: 5px;
+}
+
+.birthdayDiv {
+    background-color: snow;
+    margin-top: 30px;
+    display: grid;
+    place-items: center;
+    width: 370px;
+}
+
+.birthdayInfoDiv {
+    display: flex;
+    width: 100%;
+}
+
+.birthdayInfo h4 {
+    margin-bottom: 0;
+    color: rgb(56, 56, 56);
+}
+
+.birthdayInfo p {
+    margin-top: 0;
+    font-size: .9rem;
+    color: rgb(56, 56, 56);
+}
+
+.birthdayPicContainer {
+    display: grid;
+    place-items: center;
+    padding: 10px;
+    margin-right: 2px;
+}
+
+.birthdayPic {
+    height: 60px;
+    width: 60px;
+    background-color: rgb(113, 78, 181);
+    border-radius: 50%;
+}
+
+.birthdayDiv button {
+    border: none;
+    border-radius: 3px;
+    background-color: rgb(113, 78, 181);
+    color: snow;
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: transform 300ms ease-in-out;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.birthdayDiv button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}

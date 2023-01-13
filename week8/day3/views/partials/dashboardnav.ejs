@@ -1,0 +1,12 @@
+<nav>
+	<div class="nav-logo">
+		<a href="#"><i class="fa-solid fa-link"></i> easywire</a>
+	</div>
+	<div class="nav-list">
+		<ul>
+			<% navItems.forEach((item) => { %>
+			<a href="#"><li class="nav-item"><img class="nav-pic" src=<%= item.pic %> alt=""> <%= item.title %></li></a>
+			<% }); %>
+		</ul>
+	</div>
+</nav>

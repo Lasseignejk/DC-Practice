@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/aboutmehead'); %>
+</head>
+<body class="container">
+
+<header>
+  <%- include('../partials/header'); %>
+</header>
+
+<main>
+  <div class="aboutme">
+    <h1>About Me</h1>
+  </div>
+
+    <div class="infoContainer">
+      <div class="titleDiv">
+        <h2><%= me.name %></h2>
+        <h2><%= me.occupation %></h2>
+      </div>
+      <div class="pictureDescriptionContainer">
+        <div class="pictureDiv">
+          <img class="picture" src=<%= me.pic %> alt="">
+        </div>
+
+        <div class="descriptionDiv">
+          <p><%= me.description %></p>
+        </div>
+    </div>
+    </div>
+</main>
+
+<footer>
+  <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>

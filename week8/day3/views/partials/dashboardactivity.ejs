@@ -1,0 +1,64 @@
+<div class="activityContainer">
+	<div>
+	<h3 class="activityTitle">Recent activity</h3>
+	<table class="activityTable">
+		<tr class="tableHead">
+			<th class="tableHeadName">Name</th>
+			<th>Company</th>
+			<th>Balance</th>
+			<th>Email</th>
+		</tr>
+		<% data.forEach((item) => { %>
+		<tr class="tableRow">
+			<td class="tableRowName"><%= item.name %></td>
+			<td><%= item.company %></td>
+			<td><%= item.balance %></td>
+			<td><%= item.email %></td>
+		</tr>
+		<% }); %>
+	</table>
+</div>
+<div class="sidebar">
+    <div class="companyOverviewDiv">
+        <div class="companyInfoDiv">
+            <div class="companyPic">
+                <i class="fa-regular fa-id-card"></i>
+            </div>
+            <div class="companyInfo">
+                <h3>196</h3>
+                <p>Number of staff</p>
+            </div>
+        </div>
+        <div class="companyInfoDiv">
+            <div class="companyPic">
+                <i class="fa-solid fa-calendar-week"></i>
+            </div>
+            <div class="companyInfo">
+                <h3>16</h3>
+                <p>Number of leave</p>
+            </div>
+        </div>
+        <div class="companyInfoDiv">
+            <div class="companyPic">
+                <i class="fa-regular fa-face-smile"></i>
+            </div>
+            <div class="companyInfo">
+                <h3>12</h3>
+                <p>Profile update request</p>
+            </div>
+        </div>
+    </div>
+    <div class="birthdayDiv">
+        <div class="birthdayInfoDiv">
+            <div class="birthdayPicContainer">
+            <div class="birthdayPic"></div>
+        </div>
+            <div class="birthdayInfo">
+                <h4>Dwayne F. Sanders</h4>
+                <p>Birthday Today</p>
+            </div>
+        </div>
+        <button><i class="fa-solid fa-gift"></i> Wish him</button>
+    </div>
+</div>
+</div>

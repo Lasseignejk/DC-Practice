@@ -1,0 +1,47 @@
+<div class="overviewContainer">
+	<h2 class="sectionTitle">Overview</h2>
+	<div class="overviewInfoDivContainer">
+		<div class="overviewInfoDiv">
+			<div class="infoPic">
+				<i class="fa-solid fa-briefcase"></i>
+			</div>
+			<div class="infoTitleMoneyDiv">
+				<h3>Account Balance</h3>
+				<p><strong><%= accountBalance.amount %></strong></p>
+			</div>
+			<div class="viewDiv">
+				<a href="">
+					<p>View All</p>
+				</a>
+			</div>
+		</div>
+		<div class="overviewInfoDiv">
+			<div class="infoPic">
+				<i class="fa-solid fa-rotate"></i>
+			</div>
+			<div class="infoTitleMoneyDiv">
+				<h3>Pending</h3>
+				<p><strong><%= pending.amount %></strong></p>
+			</div>
+			<div class="viewDiv">
+				<a href="">
+					<p>View All</p>
+				</a>
+			</div>
+		</div>
+		<div class="overviewInfoDiv">
+			<div class="infoPic">
+				<i class="fa-regular fa-square-check"></i>
+			</div>
+			<div class="infoTitleMoneyDiv">
+				<h3>Processed</h3>
+				<p><strong><%= processedData.amount %></strong></p>
+			</div>
+			<div class="viewDiv">
+				<a href="">
+					<p>View All</p>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

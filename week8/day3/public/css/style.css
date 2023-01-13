@@ -1,0 +1,134 @@
+html,
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	display: grid;
+	grid-template-areas:
+		"header"
+		"main"
+		"footer";
+	grid-template-rows: 3rem 1fr 3rem;
+	/* grid-template-columns: 1fr; */
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+header {
+	grid-area: header;
+	background-color: aliceblue;
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.navbar-brand {
+	margin-left: 10px;
+	font-size: 1.5rem;
+}
+
+nav li {
+	list-style: none;
+}
+
+nav a {
+	text-decoration: none;
+	color: black;
+}
+
+nav a:hover {
+	text-decoration: underline;
+	color: cornflowerblue;
+}
+
+nav ul {
+	display: flex;
+	width: 40%;
+	justify-content: space-between;
+	margin-right: 10px;
+	padding: 0;
+	max-width: 300px;
+}
+
+main {
+	grid-area: main;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.aboutme {
+	text-align: center;
+	grid-area: aboutme;
+	margin-bottom: 10px;
+}
+
+.aboutme h1 {
+	margin-top: 0;
+	padding-top: 0;
+}
+
+.infoContainer {
+	display: grid;
+	grid-template-areas:
+		"aboutme"
+		"title"
+		"pictureDescription";
+	width: 80%;
+	box-shadow: 10px 10px 50px grey;
+	border-radius: 2rem;
+	max-width: 800px;
+}
+
+.titleDiv {
+	grid-area: title;
+	display: flex;
+	justify-content: space-around;
+	background-color: aliceblue;
+	border-top-left-radius: 2rem;
+	border-top-right-radius: 2rem;
+}
+
+.pictureDescriptionContainer {
+	grid-area: pictureDescription;
+	display: flex;
+}
+
+.pictureDiv {
+	grid-area: picture;
+	display: grid;
+	place-items: center;
+	text-align: center;
+	margin: 10px 0;
+}
+
+.picture {
+	width: 50%;
+	height: auto;
+	border-radius: 50%;
+}
+
+.descriptionDiv {
+	grid-area: description;
+	display: grid;
+	place-items: center;
+	/* border: 1px solid black; */
+	padding-right: 10px;
+	text-align: center;
+}
+
+footer {
+	grid-area: footer;
+	background-color: aliceblue;
+}
+
+footer p {
+	margin-left: 10px;
+}
