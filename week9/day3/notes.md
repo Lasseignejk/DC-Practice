@@ -119,24 +119,33 @@ In the Seed files:
 
 up -- inserts data 
 
-    await queryInterface.bulkInsert('Pets',[
-    {
-    petName: "Sasha",
-    petType: "Siberian Husky Dog",
-    petOwner: "Dad",
-    petAge: "8",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    },
-    {
-    petName: "Nikkita",
-    petType: "Siberian Husky Dog",
-    petOwner: "Jaye",
-    petAge: "4",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    },
-    ])
+**When inserting data into your child tables, make sure you assign them a value for their foreign key. This hooks up the two tables.**
+
+So for each owner, we've assigned them a value at 'pet', the foreign key, which links them to a specific pet on the Pets table.
+
+    await queryInterface.bulkInsert('Owners',[
+        {
+            firstName: "Lon",
+            lastName: "Lasseigne",
+            pet: 1,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        },
+        {
+            firstName: "Jaye",
+            lastName: "Lasseigne",
+            pet: 2,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        },
+        {
+            firstName: "Hunter",
+            lastName: "Rasmussen",
+            pet: 3,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        },
+        ])
 
 down -- deletes data
 
@@ -155,6 +164,13 @@ Now you can run nodemon in your terminal and open up Postman to start setting up
 The index.js file in your models file is by default exporting all your models. Then, you can hook it up with the index.js in the uppermost file like this at the top:
 
     const {Owners,Pets} = require("./models")
+
+So you should have all of this in the top of your file: 
+
+    const express = require('express');
+    const app = express()
+    const {Owners,Pets} = require("./models")
+    const PORT = port#
 
 Also make sure to include app.use at the top (middleware) so you can access the 'body' of requests in Postman
 
