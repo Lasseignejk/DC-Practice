@@ -14,6 +14,9 @@ Worst-case scenario, if you mess up the sequelize, drop the table and try it aga
 
 This creates the config.json file.
 
+To display all the sequelize commands: 
+
+    npx sequelize --help
 <br>
 <br>
 
