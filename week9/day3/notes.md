@@ -1,4 +1,5 @@
 [Sequelize documentation](https://sequelize.org/docs/v6/core-concepts/model-querying-basics/)
+
 [npm sequelize documentation](https://www.npmjs.com/package/sequelize-cli#documentation)
 # Sequelize
 
@@ -39,6 +40,8 @@ First, make a model.
     npx sequelize model:generate --name NameOfTable --attributes NameOfColumn:dataType,NameOfColumn:dataType
 
 If you are successful, a migration file will also be created.
+
+You DO NOT have to put an id in attributes; one will be generated automatically
 
 ### The model file
 Go to the model file in the model folder.
@@ -87,7 +90,7 @@ Because we specified in the modal tables that we have a foreign key, we need to 
 We have to add the references section. The 'model' is Pets, because that's the table it's tied to, the 'key' is 'id' because that's the column on Pets that we're pulling data from, and the 'as' is 'pet' because that's where we're including the 'key' data from. 'key' is equal to 'as'
 
 
-DEFINE YOUR RELATIONSHIPS BEFORE YOU MIGRATE
+**DEFINE YOUR RELATIONSHIPS BEFORE YOU MIGRATE**
 <br>
 <br>
 
@@ -111,9 +114,9 @@ Here's some dummy data to start off with
 
 In the Seed files: 
 
-- up -- inserts data 
+up -- inserts data 
 
-    `await queryInterface.bulkInsert('Pets',[
+    await queryInterface.bulkInsert('Pets',[
     {
     petName: "Sasha",
     petType: "Siberian Husky Dog",
@@ -121,20 +124,20 @@ In the Seed files:
     petAge: "8",
     createdAt: new Date(),
     updatedAt: new Date(),
-   },
-   {
+    },
+    {
     petName: "Nikkita",
     petType: "Siberian Husky Dog",
     petOwner: "Jaye",
     petAge: "4",
     createdAt: new Date(),
     updatedAt: new Date(),
-   },
-   ])`
+    },
+    ])
 
-- down -- deletes data
+down -- deletes data
 
-    `await queryInterface.bulkDelete("Pets", null, {});`
+    await queryInterface.bulkDelete("Pets", null, {});
 
 To put the seed data in your created table:
 
