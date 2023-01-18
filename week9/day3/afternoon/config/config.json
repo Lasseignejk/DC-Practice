@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "Palmer914",
+    "database": "clinic_development",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "Palmer914",
+    "database": "clinic_test",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "Palmer914",
+    "database": "clinic_production",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}

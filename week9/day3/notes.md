@@ -11,14 +11,7 @@ Worst-case scenario, if you mess up the sequelize, drop the table and try it aga
     npx sequelize init
     npm i dotenv (we didn't end up using)
 
-<br>
-<br>
-
-## Create a database
-
-    npx sequelize db:create
-
-I believe that creates the config.json file
+This creates the config.json file.
 
 <br>
 <br>
@@ -29,6 +22,13 @@ There are 3 things here, development, test, and production. FOR ALL THREE
 - change password to the password you set up for postgres
 - change host to "localhost"
 - change dialect to "postgres" because that's the flavor of sql we're using
+
+<br>
+<br>
+
+## Create a database
+
+    npx sequelize db:create
 
 <br>
 <br>
@@ -84,7 +84,7 @@ Because we specified in the modal tables that we have a foreign key, we need to 
         }
       }
 
-We have to add the references section. The 'model' is Pets, because that's the table it's tied to, the 'key' is 'id' because that's the column on Pets that we're pulling data from, and the 'as' is 'pet' because that's where we're including the 'key' data from I think
+We have to add the references section. The 'model' is Pets, because that's the table it's tied to, the 'key' is 'id' because that's the column on Pets that we're pulling data from, and the 'as' is 'pet' because that's where we're including the 'key' data from. 'key' is equal to 'as'
 
 
 DEFINE YOUR RELATIONSHIPS BEFORE YOU MIGRATE
