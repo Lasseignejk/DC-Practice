@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Timer</title>
+		<link rel="stylesheet" href="styles.css" />
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="timer">
+				<div class="arrowDiv">
+					<button>
+						<span class="material-icons hourUp"> keyboard_arrow_up </span>
+					</button>
+					<button>
+						<span class="material-icons minuteUp"> keyboard_arrow_up </span>
+					</button>
+					<button>
+						<span class="material-icons secondUp"> keyboard_arrow_up </span>
+					</button>
+				</div>
+				<span class="timerPart hoursSection">00</span>
+				<span class="timerPart">:</span>
+				<span class="timerPart minutesSection">00</span>
+				<span class="timerPart">:</span>
+				<span class="timerPart SecondsSection">00</span>
+				<div class="arrowDiv">
+					<button>
+						<span class="material-icons hourDown"> keyboard_arrow_down </span>
+					</button>
+					<button>
+						<span class="material-icons minuteDown"> keyboard_arrow_down </span>
+					</button>
+					<button>
+						<span class="material-icons secondDown"> keyboard_arrow_down </span>
+					</button>
+				</div>
+			</div>
+			<div class="timerButtons">
+				<button type="button" class="startbtn">
+					<span class="material-icons"> play_arrow </span>
+				</button>
+				<button type="button" class="timer__btn timer__btn--reset">
+					<span class="material-icons"> timer </span>
+				</button>
+			</div>
+		</div>
+	</body>
+	<script src="app.js"></script>
+</html>

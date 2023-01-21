@@ -1,0 +1,45 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	min-height: 100vh;
+}
+
+body {
+	background: #ddd;
+	display: grid;
+	place-items: center;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+	padding: 50px;
+	height: 200px;
+	border-radius: 30px;
+	background-color: snow;
+	box-shadow: 10px 10px 10px gray;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.timer {
+	border: 1px solid blue;
+}
+
+.timerPart {
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.timerButtons {
+	border: 1px solid red;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.arrowDiv {
+	display: flex;
+	justify-content: space-between;
+}
