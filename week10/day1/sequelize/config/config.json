@@ -1,0 +1,23 @@
+{
+	"development": {
+		"username": "yluxeipr",
+		"password": "NOT MY REAL PASSWORD",
+		"database": "yluxeipr",
+		"host": "kashin.db.elephantsql.com",
+		"dialect": "postgres"
+	},
+	"test": {
+		"username": "yluxeipr",
+		"password": "NOT MY REAL PASSWORD",
+		"database": "yluxeipr",
+		"host": "kashin.db.elephantsql.com",
+		"dialect": "postgres"
+	},
+	"production": {
+		"username": "yluxeipr",
+		"password": "NOT MY REAL PASSWORD",
+		"database": "yluxeipr",
+		"host": "kashin.db.elephantsql.com",
+		"dialect": "postgres"
+	}
+}
