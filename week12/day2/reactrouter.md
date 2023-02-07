@@ -6,4 +6,174 @@
 
     npm install react-router-dom
 
-Delete
+Delete the pictures from src and public
+
+On the index.html change the title of the document and remove the logo from the head
+
+Today, we're going to create a SPA (Single Page Application)
+
+Make a folder for components inside src
+
+Inside that folder, make folders for Navbar, Account, Homepage, then put a .jsx file in each with the same name as the folder
+
+## Default Export vs not default export
+
+    function Account() {
+        return <h1>Account</h1>;
+    }
+
+    export default Account;
+
+Sometimes our functions look like this and sometimes they have
+
+    export function Account() {
+        return blah blah blah
+    }
+
+So what's the difference? Do we need both of those exports, one in front of the function and one at the end? do we only need one?
+
+If you use export in front of the function, when you import it on your app.jsx, you need to put it in {}
+
+    import { function } from "./blah"
+
+If you remove those curly braces, save, refresh, the code breaks. "The requested module does not provide an export named default."
+
+So when you don't have curly braces, you are saying that that file exports that thing by default.
+
+You can put helper components in a separate file. Then, when you want to use a specific function from that file, you can just import that one thing.
+
+    import { Red } from "./blah"
+
+If you want to share a component in multiple places, put export in front of the function then import it in curly braces where you need it. If a page has only one function, export default at the bottom.
+
+Pages should only have ONE default export. If the page is going to have multiple components on it, just put an export in front of each one. Don't have a default.
+
+## Set up React Router
+
+Whenever you need to give something to your entire application, go to main.jsx
+
+On main.jsx:
+
+    import { BrowserRouter } from "react-router-dom"
+
+Then wrap <App /> with <BrowserRouter>
+
+    ReactDOM.createRoot(document.getElementById("root")).render(
+        <React.StrictMode>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </React.StrictMode>
+    );
+
+Now we can use routes. Close out of main.jsx.
+
+Go back to App.jsx, import:
+
+    import { Route, Routes } from "react-router-dom";
+
+Delete the div and add <Routes>
+
+    function App() {
+        return (
+            <Routes>
+                <Account />
+                <Homepage />
+                <Navbar />
+            </Routes>
+        );
+
+    }
+
+THen inside routes, make a singular route, add a path and an element which is the component.
+
+    function App() {
+        return (
+            <Routes>
+                <Route path="/homepage" element={<Homepage />} />
+                <Route path="/account" element={<Account />} />
+                <Route path="/navbar" element={<Navbar />} />
+            </Routes>
+        );
+    }
+
+Now, if you go up to the url and type /homepage, you should see your homepage render. But that's dumb. Let's change it. Let's make navbar.jsx act like a navbar.
+
+In Navbar.jsx, import:
+
+    import { Link } from "react-router-dom";
+
+This lets us use link tages! Throw some in the return:
+
+    function Navbar() {
+        return (
+            <div>
+                <Link to="/homepage">Home</Link>
+                <Link to="/account">Account</Link>
+            </div>
+        );
+    }
+
+Then, on App.jsx, remove the navbar route, invoke navbar above Routes, then wrap everything in a fragment.
+
+    function App() {
+        return (
+            <>
+                <Navbar />
+                <Routes>
+                    <Route path="/homepage" element={<Homepage />} />
+                    <Route path="/account" element={<Account />} />
+                </Routes>
+            </>
+        );
+    }
+
+You should see your navbar render on the screen! If you want your navbar to look a LITTLE BIT nicer:
+
+    import { Link } from "react-router-dom";
+
+    function Navbar() {
+        return (
+            <nav>
+                <ul>
+                    <li>
+                        <Link to="/homepage">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/account">Account</Link>
+                    </li>
+                </ul>
+            </nav>
+        );
+    }
+
+    export default Navbar;
+
+So now we have a navbar. But what if someone goes up to the url and types in gibberish? It just renders "home." Instead, let's make a new component for error page.
+
+    import React from "react";
+
+    const ErrorPage = () => {
+        return <div>THIS PAGE DOES NOT EXIST</div>;
+    };
+
+    export default ErrorPage;
+
+Then on App.jsx, add a new route beneath the others
+
+    function App() {
+        return (
+            <>
+                <Navbar />
+                <Routes>
+                    <Route path="/homepage" element={<Homepage />} />
+                    <Route path="/account" element={<Account />} />
+                    <Route path="*" element={<ErrorPage />} />
+                </Routes>
+            </>
+        );
+    }
+
+The \* path means it'll render if it doesn't match any of the above routes.
+
+## Nested Routes
