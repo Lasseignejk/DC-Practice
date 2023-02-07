@@ -177,3 +177,168 @@ Then on App.jsx, add a new route beneath the others
 The \* path means it'll render if it doesn't match any of the above routes.
 
 ## Nested Routes
+
+For example, /account/settings
+
+Inside the Account foler, make a new file called AccountSettings.jsx
+
+    import React from "react";
+
+    const AccountSettings = () => {
+        return (
+            <div>
+                <h1>Settings</h1>
+                <p>This is a nested account settings page</p>
+            </div>
+        );
+    };
+
+    export default AccountSettings;
+
+Then on App, change the routes:
+
+    function App() {
+        return (
+            <>
+                <Navbar />
+                <Routes>
+                    <Route path="/homepage" element={<Homepage />} />
+                    <Route path="/account">
+                        <Route index element={<Account />} />
+                        <Route path="settings" element={<AccountSettings />} />
+                    </Route>
+                    <Route path="*" element={<ErrorPage />} />
+                </Routes>
+            </>
+        );
+    }
+
+Now, /account has a nested route, with settings underneath it.
+
+## useParams Hook -- making pages dynamic
+
+Let's add another component inside the account: AccountUser
+
+    import React from "react";
+
+    const AccountUser = () => {
+        return (
+            <div>
+                <h1>This is account for param: </h1>
+            </div>
+        );
+    };
+
+    export default AccountUser;
+
+And make a route
+
+    function App() {
+        return (
+            <>
+                <Navbar />
+                <Routes>
+                    <Route path="/homepage" element={<Homepage />} />
+                    <Route path="/account">
+                        <Route index element={<Account />} />
+                        <Route path="settings" element={<AccountSettings />} />
+                        <Route path=":id" element={<AccountUser />} />
+                    </Route>
+                    <Route path="*" element={<ErrorPage />} />
+                </Routes>
+            </>
+        );
+    }
+
+in AccountUser, import useParams
+
+    import { useParams } from "react-router-dom";
+
+Then in the function:
+
+    const AccountUser = () => {
+        const { id } = useParams();
+        return (
+            <div>
+                <h1>This is account for param: {id}</h1>
+            </div>
+        );
+
+    };
+
+It's id in the curly braces because that's what we called it in the route -- <Route path=":id" />
+
+## State and Props
+
+Let's set up state for the application. On App.jsx, above the return,
+
+    const [user, setUser] = useState("Jaye");
+
+Make sure it imports useState at the top!
+
+You can still use props like normal:
+
+    <Route path="/homepage" element={<Homepage user={user} />} />
+
+Homepage.jsx:
+
+    function Homepage({ user }) {
+        return (
+            <div>
+                <h1>Homepage</h1>
+                <h1>Welcome, {user} </h1>
+            </div>
+        );
+    }
+
+But how can we pass data in other ways? Let's give the user a book. On homepage.jsx:
+
+    import { Link } from "react-router-dom";
+
+    function Homepage({ user }) {
+        const bookInfo = { name: "Art of War" };
+        return (
+            <div>
+                <h1>Homepage</h1>
+                <h1>Welcome, {user} </h1>
+                <Link to="/account" state={bookInfo}>
+                    Go to account with book info
+                </Link>
+            </div>
+        );
+    }
+
+So on that link, we are updating state to include the book info.
+
+Now, on the account.jsx, import the useLocation hook at the top of the page, then make a new variable above the return statement and set it equal to that state. It should render out Art of War.
+
+    import { useLocation } from "react-router-dom";
+
+    function Account() {
+        const location = useLocation();
+        return (
+            <div className="Account">
+                <h1>Account</h1>
+                <h2>I am currently reading this book: {location?.state?.name}</h2>
+            </div>
+        );
+    }
+
+In the h2, we can put question marks next to location and state to make them optional. That way, if they don't exist, it won't break our code immediately.
+
+Next, on the AccountUser.jsx, let's update that too. Import link at the top from react-router-dom. Then make a new bookInfo like we did on the account page.
+
+    const AccountUser = () => {
+        const { id } = useParams();
+        const bookInfo = { name: "goblet of fire" };
+        return (
+            <div>
+                <h1>This is account for param: {id}</h1>
+                <Link to="/account" state={bookInfo}>
+                    Go to account with book info
+                </Link>
+            </div>
+        );
+    };
+
+So now, if you go to account/user/123 and click on the link there, it updates state with that new book. So account.jsx should now render goblet of fire instead of art of war.

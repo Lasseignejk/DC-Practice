@@ -1,0 +1,19 @@
+nav {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 20px;
+	align-items: center;
+	color: snow;
+	background-color: darkslategray;
+}
+
+nav ul {
+	list-style: none;
+	text-decoration: none;
+}
+
+nav ul li a {
+	text-decoration: none;
+	font-weight: bold;
+	color: snow;
+}

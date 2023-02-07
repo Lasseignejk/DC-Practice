@@ -1,0 +1,9 @@
+/* .pokeCard {
+	border: 1px solid black;
+	height: 500px;
+} */
+
+.pokeImage {
+	width: 200px;
+	height: auto;
+}
