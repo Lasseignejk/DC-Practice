@@ -4,21 +4,30 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faSmile, faHouse } from "@fortawesome/free-solid-svg-icons";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { createClient } from "@supabase/supabase-js";
 
 const ContactForm = () => {
+	const apiKey = import.meta.env.VITE_API_KEY;
+
+	const url = import.meta.env.VITE_URL;
+
+	const supabase = createClient(url, apiKey);
+
+	async function postContactForm(signUpForm) {
+		console.log(signUpForm);
+		const { data, error } = await supabase
+			.from("reactUserData2")
+			.insert([signUpForm]);
+		console.log(data);
+		console.log(error);
+	}
+
 	const [signUpForm, setSignUpForm] = useState({});
 
 	const setFormState = (e) => {
 		setSignUpForm({
 			...signUpForm,
 			[e.target.name]: e.target.value,
-		});
-	};
-
-	const sendForm = async () => {
-		const sendFormData = await fetch("www.signupforurl.com", {
-			method: "POST",
-			body: signUpForm,
 		});
 	};
 
@@ -43,18 +52,19 @@ const ContactForm = () => {
 			}
 		);
 
-	const ageGroupAlert = () =>
+	const ethnicityAlert = () =>
+		toast.error("Please type your ethnicity.", {
+			position: toast.POSITION.TOP_CENTER,
+		});
+
+	const veteranAlert = () =>
 		toast.error("Please select an age group from the drop-down menu.", {
 			position: toast.POSITION.TOP_CENTER,
 		});
 
 	const authenticateForm = () => {
-		// USERNAME, ZIPCODE, AND AGEGROUP ARE REQUIRED
-		if (
-			signUpForm?.username?.length < 6 ||
-			signUpForm?.username?.length > 14 ||
-			!("username" in signUpForm)
-		) {
+		// FIRST AND LAST NAME, ADDRESS, CITY, STATE, VETERAN, ETHNICITY ARE REQUIRED
+		if (signUpForm?.username?.length < 6 || signUpForm?.username?.length > 14) {
 			usernameAlert();
 		}
 
@@ -63,8 +73,7 @@ const ContactForm = () => {
 		if (
 			signUpForm?.zip?.length < 5 ||
 			signUpForm?.zip?.length > 5 ||
-			checkZip(signUpForm?.zip) === null ||
-			!("zip" in signUpForm)
+			checkZip(signUpForm?.zip) === null
 		) {
 			zipAlert();
 			// window.alert(
@@ -72,9 +81,15 @@ const ContactForm = () => {
 			// );
 		}
 
-		if (!("ageGroup" in signUpForm)) {
-			ageGroupAlert();
+		if (!("veteran" in signUpForm)) {
+			veteranAlert();
 		}
+
+		if (!("ethnicity" in signUpForm)) {
+			ethnicityAlert();
+		}
+
+		postContactForm(signUpForm);
 	};
 
 	return (
@@ -96,7 +111,7 @@ const ContactForm = () => {
 						className="w-full py-2 px-3 mr-3 text-center text-sm bg-transparent text-white md:text-lg md:text-start md:py-3 md:px-3"
 						id="username"
 						type="text"
-						placeholder="Enter Your Username*"
+						placeholder="Enter Your Username"
 						name="username"
 						onChange={(e) => setFormState(e)}
 						value={signUpForm.username ? signUpForm.username : ""}
@@ -114,7 +129,7 @@ const ContactForm = () => {
 							className="w-full py-2 px-3 mr-3 text-center text-sm bg-transparent text-white md:text-lg md:text-start md:py-3 md:px-3"
 							id="firstName"
 							type="text"
-							placeholder="Enter Your First Name"
+							placeholder="Enter Your First Name*"
 							name="firstName"
 							onChange={(e) => setFormState(e)}
 							value={signUpForm.firstName ? signUpForm.firstName : ""}
@@ -123,7 +138,7 @@ const ContactForm = () => {
 							className="w-full py-3 px-3 mr-3 text-center text-sm bg-transparent text-white md:text-lg md:text-start"
 							id="lastName"
 							type="text"
-							placeholder="Enter Your Last Name"
+							placeholder="Enter Your Last Name*"
 							name="lastName"
 							onChange={(e) => setFormState(e)}
 							value={signUpForm.lastName ? signUpForm.lastName : ""}
@@ -142,7 +157,7 @@ const ContactForm = () => {
 							className="w-full py-3 px-3 text-center mr-3 text-sm bg-transparent text-white md:text-lg md:text-start"
 							id="address"
 							type="text"
-							placeholder="Enter Your Street Address"
+							placeholder="Enter Your Street Address*"
 							name="address"
 							onChange={(e) => setFormState(e)}
 							value={signUpForm.address ? signUpForm.address : ""}
@@ -153,7 +168,7 @@ const ContactForm = () => {
 							className="w-full py-3 px-3 mr-3 text-sm bg-transparent text-center text-white md:text-lg"
 							id="city"
 							type="text"
-							placeholder="City"
+							placeholder="City*"
 							name="city"
 							onChange={(e) => setFormState(e)}
 							value={signUpForm.city ? signUpForm.city : ""}
@@ -163,7 +178,7 @@ const ContactForm = () => {
 							className="w-full py-3 px-3 mr-3 text-sm bg-transparent text-center text-white md:text-lg"
 							id="state"
 							type="text"
-							placeholder="State"
+							placeholder="State*"
 							name="state"
 							onChange={(e) => setFormState(e)}
 							value={signUpForm.state ? signUpForm.state : ""}
@@ -173,7 +188,7 @@ const ContactForm = () => {
 							className="w-full py-3 px-3 mr-3 text-sm bg-transparent text-center text-white md:text-lg"
 							id="zip"
 							type="text"
-							placeholder="Zip Code*"
+							placeholder="Zip Code"
 							name="zip"
 							required
 							onChange={(e) => setFormState(e)}
@@ -185,7 +200,7 @@ const ContactForm = () => {
 				{/* AGE GROUP -- REQUIRED */}
 				<div className="mb-4 flex flex-col border-b-2 border-[#264370] items-center pb-3 md:flex-row md:ml-10">
 					<p className="block text-[#d44d78] text-lg pr-2 font-bold mb-2 md:mb-0">
-						What is your age group?*
+						What is your age group?
 					</p>
 					<select
 						className="px-3 bg-transparent text-white focus:border-2 focus:border-white"
@@ -225,7 +240,7 @@ const ContactForm = () => {
 				{/* VETERAN */}
 				<div className="mb-4 flex flex-col border-b-2 border-[#264370] items-center pb-3 md:flex-row md:ml-10">
 					<p className="block text-[#d44d78] text-lg pr-2 font-bold mb-2 md:mb-0">
-						Are you a veteran?
+						Are you a veteran?*
 					</p>
 					<select
 						className="px-3 bg-transparent text-white focus:border-2 focus:border-white"
@@ -260,7 +275,7 @@ const ContactForm = () => {
 					<label
 						className="block text-[#d44d78] text-lg mb-2 font-bold md:pr-2"
 						htmlFor="ethnicity">
-						Ethnicity
+						Ethnicity*
 					</label>
 					<input
 						className="w-full py-3 px-3 text-sm text-center bg-transparent text-white md:text-lg md:text-start md:mr-3"
