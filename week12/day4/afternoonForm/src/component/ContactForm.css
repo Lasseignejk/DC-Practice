@@ -1,0 +1,10 @@
+html,
+body {
+	background-color: #d44d78;
+	min-width: 100%;
+	min-height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
