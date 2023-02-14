@@ -11,7 +11,7 @@ import {
 
 const Navbar = () => {
 	return (
-		<nav className="flex h-20 justify-between px-5 py-5 bg-[#050609] text-[#F9F9F9] items-center text-sm sticky top-0 z-10">
+		<nav className="flex h-20 justify-between px-5 py-5 bg-[#050609] text-[#F9F9F9] items-center text-sm sticky top-0 z-20">
 			<div className="flex gap-12 items-center">
 				<img src="../../public/disneyLogo.webp" className="w-[120px]" alt="" />
 				<Link to="/" className="font-bold">

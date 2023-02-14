@@ -9,8 +9,7 @@ const MovieCards = ({ movie }) => {
 		const url = import.meta.env.VITE_URL_SEARCH_ONE + movie.Title;
 		const rawData = await fetch(url);
 		const json = await rawData.json();
-
-		// dispatch is storing the movie we searched for in state. using the useSelector above,
+		console.log(json);
 		dispatch(searchOneMovie(json));
 	};
 	return (

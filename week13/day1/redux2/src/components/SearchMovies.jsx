@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { addMovie, searchMovie } from "../reducers/movieSlice";
+import { searchMovie } from "../reducers/movieSlice";
 import MovieCards from "./MovieCards";
 
 const SearchMovies = () => {
@@ -22,8 +22,8 @@ const SearchMovies = () => {
 	};
 
 	return (
-		<div className="flex-col sticky top-20 z-10 border-2 border-white h-[calc(100%-17rem)]">
-			<div className="bg-[#3B3D47] flex justify-between items-center">
+		<div className="flex-col">
+			<div className="bg-[#3B3D47] flex justify-between items-center sticky top-20 z-20">
 				<input
 					className="w-full h-28 bg-[#3b3d47] text-5xl text-white pl-14 font-bold focus:outline-none"
 					type="text"
@@ -36,13 +36,17 @@ const SearchMovies = () => {
 					Search Movies
 				</button>
 			</div>
-			<div className="flex gap-5 flex-wrap justify-center my-5 border-2">
-				{movies?.length !== 0 ? (
+			<div className="flex gap-5 flex-wrap justify-center my-5">
+				{/* {movies?.length !== 0 ? (
 					movies?.map((movie) => <MovieCards movie={movie} />)
 				) : (
 					<p>Search for a movie!</p>
-				)}
+				)} */}
+				{movies?.map((movie) => (
+					<MovieCards movie={movie} />
+				))}
 			</div>
+			{/* h-[calc(100%-17rem)] */}
 		</div>
 	);
 };

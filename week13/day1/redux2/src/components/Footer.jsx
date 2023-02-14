@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 const Footer = () => {
 	return (
 		<footer className="flex flex-col items-center bg-[#0E0B14] py-6 h-48">
-			<img src="../../public/disneyLogo.webp" alt="" className="w-[120px]" />
+			<img
+				src="../../public/disneyLogo.webp"
+				alt=""
+				className="w-[120px] mb-3"
+			/>
 			<div className="flex flex-wrap gap-6 px-3 justify-center text-[#f9f9f9] text-[12px]">
 				<Link>Privacy Policy</Link>
 				<Link>Subscriber Agreement</Link>
