@@ -3,7 +3,7 @@ body {
 	background: rgb(28, 175, 237);
 	background: linear-gradient(
 		90deg,
-		rgba(28, 175, 237, 1) 0%,
+		rgb(25, 160, 218) 0%,
 		rgba(69, 252, 228, 1) 100%
 	);
 	min-width: 100%;
