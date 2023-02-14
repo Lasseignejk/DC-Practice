@@ -7,3 +7,40 @@ body {
 	min-width: 100%;
 	min-height: 100%;
 }
+
+body {
+	display: flex;
+	border: 1px solid blue;
+	background: rgb(21, 23, 34);
+	background: linear-gradient(
+		180deg,
+		rgba(21, 23, 34, 1) 0%,
+		rgba(41, 45, 61, 1) 37%,
+		rgba(41, 45, 61, 1) 63%,
+		rgba(15, 17, 25, 1) 100%
+	);
+}
+
+.linkUnderline {
+	display: inline-block;
+	position: relative;
+	color: #f9f9f9;
+}
+
+.linkUnderline::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	transform: scaleX(0);
+	height: 2px;
+	bottom: -5px;
+	left: 0;
+	background-color: #f9f9f9;
+	transform-origin: bottom left;
+	transition: transform 0.25s ease-out;
+}
+
+.linkUnderline:hover::after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+}

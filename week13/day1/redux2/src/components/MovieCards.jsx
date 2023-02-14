@@ -19,7 +19,7 @@ const MovieCards = ({ movie }) => {
 				<img
 					src={movie.Poster}
 					alt=""
-					className="object-fit w-[280px] h-[400px] rounded-md drop-shadow-card"
+					className="object-fit w-[280px] h-[400px] rounded-xl border-4 border-transparent drop-shadow-card hover:scale-105 hover:border-4 hover:border-[#f9f9f9] transition-all duration-300 ease-in-out box-border"
 				/>
 			</Link>
 		</div>

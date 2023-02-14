@@ -22,11 +22,12 @@ const SearchMovies = () => {
 	};
 
 	return (
-		<div className="flex-col">
-			<div className="bg-slate-600 flex justify-between items-center">
+		<div className="flex-col sticky top-20 z-10 border-2 border-white h-[calc(100%-17rem)]">
+			<div className="bg-[#3B3D47] flex justify-between items-center">
 				<input
-					className="w-full h-24 bg-slate-600 text-5xl text-white pl-6"
+					className="w-full h-28 bg-[#3b3d47] text-5xl text-white pl-14 font-bold focus:outline-none"
 					type="text"
+					placeholder="Search by title"
 					onChange={(e) => setMovieToSearch(e.target.value)}
 				/>
 				<button
@@ -35,30 +36,13 @@ const SearchMovies = () => {
 					Search Movies
 				</button>
 			</div>
-			<div className="flex gap-5 flex-wrap justify-center my-5">
+			<div className="flex gap-5 flex-wrap justify-center my-5 border-2">
 				{movies?.length !== 0 ? (
 					movies?.map((movie) => <MovieCards movie={movie} />)
 				) : (
 					<p>Search for a movie!</p>
 				)}
 			</div>
-			{/* {movies.map((movie) => (
-				<p>{movie?.Title}</p>
-			))} */}
-			{/* old stuff */}
-			{/* {movies.length !== 0 ? (
-				movies.map((movie) => <p>{movie?.name}</p>)
-			) : (
-				<p>Search for a movie!</p>
-			)} */}
-			{/* <button onClick={() => dispatch(addMovie({ name: movieToAdd }))}>
-				Add Movie
-			</button> */}
-			{/* {movies.length !== 0 ? (
-				movies.map((movie) => <p>{movie?.Title}</p>)
-			) : (
-				<p>Search for a movie!</p>
-			)} */}
 		</div>
 	);
 };

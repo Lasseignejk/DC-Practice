@@ -4,6 +4,7 @@ import SearchMovies from "./components/SearchMovies";
 import Counter from "./components/Counter";
 import Navbar from "./components/Navbar";
 import MoviePage from "./components/MoviePage";
+import Footer from "./components/Footer";
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 					<Route path=":movieTitle" element={<MoviePage />} />
 				</Route>
 			</Routes>
+			<Footer />
 		</>
 	);
 }

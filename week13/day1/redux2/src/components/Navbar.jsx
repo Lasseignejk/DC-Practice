@@ -1,17 +1,52 @@
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+	faFilm,
+	faHouse,
+	faMagnifyingGlass,
+	faPlus,
+	faStar,
+	faTelevision,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
 	return (
-		<nav className="flex justify-between px-5 py-5 bg-[#1b1a1a] text-[#dad8d8]">
-			<img
-				src="../../public/en_dplus_lg_r_2x_54572343.webp"
-				className="w-[100px]"
-				alt=""
-			/>
-			<div className="flex gap-10">
-				<Link to="/search">Search</Link>
-				<Link to="/">Counter</Link>
+		<nav className="flex h-20 justify-between px-5 py-5 bg-[#050609] text-[#F9F9F9] items-center text-sm sticky top-0 z-10">
+			<div className="flex gap-12 items-center">
+				<img src="../../public/disneyLogo.webp" className="w-[120px]" alt="" />
+				<Link to="/" className="font-bold">
+					<FontAwesomeIcon icon={faHouse} className="text-[13px] mr-3" />{" "}
+					<span className="linkUnderline">HOME</span>
+				</Link>
+				<Link to="/search" className="font-bold">
+					<FontAwesomeIcon
+						icon={faMagnifyingGlass}
+						className="text-[13px] mr-3"
+					/>
+					<span className="linkUnderline">SEARCH</span>
+				</Link>
+				<Link to="#" className="font-bold">
+					<FontAwesomeIcon icon={faPlus} className="text-[13px] mr-3" />
+					<span className="linkUnderline">WATCHLIST</span>
+				</Link>
+				<Link to="#" className="font-bold">
+					<FontAwesomeIcon icon={faStar} className="text-[13px] mr-3" />
+					<span className="linkUnderline">ORIGINALS</span>
+				</Link>
+				<Link to="#" className="font-bold">
+					<FontAwesomeIcon icon={faFilm} className="text-[13px] mr-3" />
+					<span className="linkUnderline">MOVIES</span>
+				</Link>
+				<Link to="#" className="font-bold">
+					<FontAwesomeIcon icon={faTelevision} className="text-[13px] mr-3" />
+					<span className="linkUnderline">SERIES</span>
+				</Link>
 			</div>
+			<img
+				src="../../public/profilePic.png"
+				alt=""
+				className="w-[50px] h-[50px]"
+			/>
 		</nav>
 	);
 };
