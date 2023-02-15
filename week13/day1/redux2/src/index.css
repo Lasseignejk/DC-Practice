@@ -18,6 +18,7 @@ body {
 		rgba(41, 45, 61, 1) 63%,
 		rgba(15, 17, 25, 1) 100%
 	);
+	font-family: "Noto Sans", sans-serif;
 }
 
 .linkUnderline {
@@ -42,4 +43,8 @@ body {
 .linkUnderline:hover::after {
 	transform: scaleX(1);
 	transform-origin: bottom left;
+}
+
+.movieGradient {
+	box-shadow: 700px -100px 130px 10px rgb(21, 23, 34) inset;
 }

@@ -27,6 +27,7 @@ const SearchMovies = () => {
 				<input
 					className="w-full h-28 bg-[#3b3d47] text-5xl text-white pl-14 font-bold focus:outline-none"
 					type="text"
+					autoFocus
 					placeholder="Search by title"
 					onChange={(e) => setMovieToSearch(e.target.value)}
 				/>
