@@ -13,11 +13,15 @@ export const movieSlice = createSlice({
 			return action.payload;
 		},
 		searchOneMovie: (state, action) => {
-			return action.payload;
+			return [action.payload];
+		},
+		reset: (state, action) => {
+			return initialState;
 		},
 	},
 });
 
-export const { addMovie, searchMovie, searchOneMovie } = movieSlice.actions;
+export const { addMovie, searchMovie, searchOneMovie, reset } =
+	movieSlice.actions;
 
 export default movieSlice.reducer;

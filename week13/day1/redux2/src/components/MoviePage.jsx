@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const MoviePage = () => {
-	const movies = useSelector((state) => state.movies);
+	const movies = useSelector((state) => state.movies[0]);
 	return (
 		<div className="text-[#f9f9f9] min-h-[calc(100vh-17rem)] pl-10 bg-[#151722]">
 			<div className="flex relative h-[600px] justify-end">

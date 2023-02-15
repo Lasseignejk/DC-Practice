@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import { searchMovie } from "../reducers/movieSlice";
+import { useState, useEffect } from "react";
+import { searchMovie, reset } from "../reducers/movieSlice";
 import MovieCards from "./MovieCards";
 
 const SearchMovies = () => {
@@ -10,6 +10,10 @@ const SearchMovies = () => {
 	const dispatch = useDispatch();
 
 	const [movieToSearch, setMovieToSearch] = useState("");
+
+	useEffect(() => {
+		dispatch(reset());
+	}, []);
 
 	const apiCall = async () => {
 		const url = import.meta.env.VITE_URL_SEARCH_ALL + movieToSearch;
