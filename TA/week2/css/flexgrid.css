@@ -1,0 +1,48 @@
+html,
+body {
+	border: 1px solid blue;
+	padding: 0;
+	margin: 0;
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+	min-width: 100%;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(5, 1fr);
+	height: 100%;
+	gap: 10px;
+}
+
+.box {
+	border: 1px solid black;
+	background-color: aliceblue;
+}
+
+.yellow {
+	background: yellow;
+	/* grid-column-start: 1; */
+	/* grid-column-end: 3; */
+	/* tell the column to span multiple columns */
+	/* grid-column-end: span 4; */
+	/* shorthand property for grid-column start/end */
+	/* grid-column: 4/6; */
+	/* grid-column: 2 / span 3; */
+	/* grid-row-start: 3; */
+	/* grid-row: 3 / 6; */
+	/* use both properties at the same time: */
+	/* grid-column: 2;
+	grid-row: 5; */
+	/* use grid-area as a shorthand for grid-column and grid-row. it has four properties: grid-row-start, grid-column-start, grid-row-end, grid-column-end */
+	grid-area: 1/2/4/6;
+}
+
+/* .blue {
+	background: blue;
+	grid-area: 1/4/6/5;
+} */
